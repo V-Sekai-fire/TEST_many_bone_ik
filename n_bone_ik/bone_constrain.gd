@@ -25,13 +25,16 @@ func _run():
 		
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
-		new_ik.set_kusudama_limit_cone_count(bone_i, 3)
+		if bone_name in ["Root"]:
+			new_ik.set_pin_enabled(bone_i, false)
 		for radius_i in range(3):
 			new_ik.set_kusudama_limit_cone_radius(bone_i, radius_i, PI / 2)
 		if not humanoid_bones.has(bone_name):
 			continue
 		if not bone_name in ["Head", "LeftHand", "RightHand", "LeftFoot", "RightFoot"]:
 			continue
+		if bone_name in ["LeftFoot", "RightFoot"]:
+			new_ik.set_pin_passthrough_factor(bone_i, 0)
 		var node_3d : BoneAttachment3D = BoneAttachment3D.new()
 		node_3d.name = bone_name
 		node_3d.bone_name = bone_name
