@@ -8,9 +8,19 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node3D",
+"class": &"VRMTopLevel",
+"language": &"GDScript",
+"path": "res://addons/vrm/vrm_toplevel.gd"
+}]
+_global_script_class_icons={
+"VRMTopLevel": ""
+}
+
 [application]
 
-config/name="ManyBoneIK3D Game Project"
+config/name="Test ManyBoneIK3D Game Project"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
