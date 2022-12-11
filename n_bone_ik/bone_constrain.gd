@@ -77,13 +77,7 @@ func _run():
 		
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
-		##########
-		# Optional
 		var twist_min = new_ik.get_kusudama_twist(bone_i).x
-		if bone_name.ends_with("Root"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(371.3), deg_to_rad(33.4)))
-
-		# Optional
 		if bone_name.ends_with("Root"):
 			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(371.3), deg_to_rad(33.4)))
 		elif bone_name.ends_with("Hips"):
@@ -133,6 +127,9 @@ func _run():
 			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(180), deg_to_rad(30)))
 		elif bone_name.ends_with("RightToes"):
 			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(180), deg_to_rad(30)))
+
+	for bone_i in skeleton.get_bone_count():
+		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if bone_name in ["Head"]:
 			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
 			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 1, 0))
@@ -175,7 +172,7 @@ func _run():
 				new_ik.set_kusudama_limit_cone_center(bone_i, 1, Vector3(-1, 0, 0))
 			new_ik.set_kusudama_limit_cone_radius(bone_i, 1, deg_to_rad(20))
 			new_ik.set_kusudama_limit_cone_center(bone_i, 2, Vector3(0, -1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 2, deg_to_rad(10))
+			new_ik.set_kusudama_limit_cone_radius(bone_i, 2, deg_to_rad(20))
 		elif bone_name.ends_with("Hand"):
 			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
 			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 1, 0))
@@ -201,5 +198,9 @@ func _run():
 			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 0, -1))
 			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(15))
 
+	# Overwrite all previous twists.
+	for bone_i in skeleton.get_bone_count():
+		var bone_name : String = skeleton.get_bone_name(bone_i)
+		new_ik.set_kusudama_twist(bone_i, Vector2(0, deg_to_rad(350)))
 		
 	new_ik.visible = true
