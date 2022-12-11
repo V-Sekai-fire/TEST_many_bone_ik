@@ -30,7 +30,7 @@ func _run():
 			new_ik.set_kusudama_limit_cone_radius(bone_i, radius_i, PI / 2)
 		if not humanoid_bones.has(bone_name):
 			continue
-		if not bone_name in ["Root", "Head", "LeftHand", "RightHand", "LeftFoot", "RightFoot"]:
+		if not bone_name in ["Head", "LeftHand", "RightHand", "LeftFoot", "RightFoot"]:
 			continue
 		var node_3d : BoneAttachment3D = BoneAttachment3D.new()
 		node_3d.name = bone_name
