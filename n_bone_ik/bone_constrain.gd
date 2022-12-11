@@ -25,6 +25,7 @@ func _run():
 		
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
+		new_ik.set_kusudama_limit_cone_count(bone_i, 3)
 		if not humanoid_bones.has(bone_name):
 			continue
 		if not bone_name in ["Root", "Head", "LeftHand", "RightHand", "LeftFoot", "RightFoot"]:
