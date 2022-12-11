@@ -27,8 +27,11 @@ func _run():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if bone_name in ["Root"]:
 			new_ik.set_pin_enabled(bone_i, false)
-		if bone_name in ["Hips", "Spine", "Chest"]:
+		if bone_name in ["LeftToes", "RightToes"]:
 			new_ik.set_pin_weight(bone_i, 0)
+			new_ik.set_pin_enabled(bone_i, true)
+		if bone_name in ["Hips", "Spine", "Chest", "UpperChest"]:
+			new_ik.set_pin_weight(bone_i, 0.2)
 		for radius_i in range(3):
 			new_ik.set_kusudama_limit_cone_radius(bone_i, radius_i, PI / 2)
 		if not humanoid_bones.has(bone_name):
@@ -42,11 +45,11 @@ func _run():
 		node_3d.bone_name = bone_name
 		node_3d.bone_idx = bone_i
 		node_3d.set_use_external_skeleton (true)
-		node_3d.set_external_skeleton("../" + str(root.get_path_to(skeleton)))
-		root.add_child(node_3d, true)
+		node_3d.set_external_skeleton("../" + str(new_ik.get_path_to(skeleton)))
+		new_ik.add_child(node_3d, true)
 		node_3d.owner = root
 		new_ik.set_pin_enabled(bone_i, true)
-		new_ik.set_pin_nodepath(bone_i, "../" + str(bone_name))
+		new_ik.set_pin_nodepath(bone_i, bone_name)
 		var node_global_transform = node_3d.global_transform
 		var marker_3d : Marker3D = Marker3D.new()
 		marker_3d.name = bone_name
