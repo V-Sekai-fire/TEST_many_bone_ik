@@ -22,24 +22,33 @@ func _run():
 	for bone_i in humanoid_profile.bone_size:
 		var bone_name : String = humanoid_profile.get_bone_name(bone_i)
 		humanoid_bones.push_back(bone_name)
+	var is_humanoid : bool = false
+	
+	for bone_i in skeleton.get_bone_count():
+		var bone_name : String = skeleton.get_bone_name(bone_i)
+		if bone_name in humanoid_bones:
+			if bone_name == "Root":
+				continue
+			is_humanoid = true
+			break
 		
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if bone_name in ["Root"]:
 			new_ik.set_pin_enabled(bone_i, false)
-		if bone_name in ["LeftToes", "RightToes"]:
-			new_ik.set_pin_weight(bone_i, 0)
-			new_ik.set_pin_enabled(bone_i, true)
-		if bone_name in ["Hips", "Spine", "Chest", "UpperChest"]:
-			new_ik.set_pin_weight(bone_i, 0.2)
-		for radius_i in range(3):
-			new_ik.set_kusudama_limit_cone_radius(bone_i, radius_i, PI / 2)
-		if not humanoid_bones.has(bone_name):
-			continue
-		if not bone_name in ["Head", "LeftHand", "RightHand", "LeftFoot", "RightFoot"]:
-			continue
-		if bone_name in ["LeftFoot", "RightFoot"]:
-			new_ik.set_pin_passthrough_factor(bone_i, 0)
+		if is_humanoid:
+			if bone_name in ["LeftToes", "RightToes"]:
+				new_ik.set_pin_weight(bone_i, 0)
+				new_ik.set_pin_enabled(bone_i, true)
+			if bone_name in ["Hips", "Spine", "Chest", "UpperChest"]:
+				new_ik.set_pin_weight(bone_i, 0)
+				new_ik.set_pin_enabled(bone_i, true)
+			if not humanoid_bones.has(bone_name):
+				continue
+			if not bone_name in ["Head", "LeftHand", "RightHand", "LeftFoot", "RightFoot"]:
+				continue
+			if bone_name in ["LeftFoot", "RightFoot"]:
+				new_ik.set_pin_passthrough_factor(bone_i, 0)
 		var node_3d : BoneAttachment3D = BoneAttachment3D.new()
 		node_3d.name = bone_name
 		node_3d.bone_name = bone_name
@@ -47,6 +56,7 @@ func _run():
 		node_3d.set_use_external_skeleton (true)
 		node_3d.set_external_skeleton("../" + str(new_ik.get_path_to(skeleton)))
 		new_ik.add_child(node_3d, true)
+			
 		node_3d.owner = root
 		new_ik.set_pin_enabled(bone_i, true)
 		new_ik.set_pin_nodepath(bone_i, bone_name)
@@ -55,5 +65,5 @@ func _run():
 		marker_3d.name = bone_name
 		marker_3d.global_transform = node_global_transform
 		node_3d.replace_by(marker_3d, true)
-
+		
 	new_ik.visible = true
