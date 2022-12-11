@@ -27,6 +27,8 @@ func _run():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if bone_name in ["Root"]:
 			new_ik.set_pin_enabled(bone_i, false)
+		if bone_name in ["Hips", "Spine", "Chest"]:
+			new_ik.set_pin_weight(bone_i, 0)
 		for radius_i in range(3):
 			new_ik.set_kusudama_limit_cone_radius(bone_i, radius_i, PI / 2)
 		if not humanoid_bones.has(bone_name):
