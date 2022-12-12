@@ -17,6 +17,7 @@ func _run():
 	var skeleton : Skeleton3D = skeletons[0]
 	root.add_child(new_ik, true)
 	new_ik.skeleton_node_path = "../" + str(root.get_path_to(skeleton))
+	new_ik.iterations_per_frame = 200
 	new_ik.owner = root
 
 	new_ik.visible = false
@@ -201,6 +202,6 @@ func _run():
 	# Overwrite all previous twists.
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
-		new_ik.set_kusudama_twist(bone_i, Vector2(0, deg_to_rad(350)))
+		new_ik.set_kusudama_twist(bone_i, Vector2(0, deg_to_rad(270)))
 		
 	new_ik.visible = true
