@@ -17,7 +17,6 @@ func _run():
 	var skeleton : Skeleton3D = skeletons[0]
 	root.add_child(new_ik, true)
 	new_ik.skeleton_node_path = "../" + str(root.get_path_to(skeleton))
-	new_ik.iterations_per_frame = 200
 	new_ik.owner = root
 
 	new_ik.visible = false
