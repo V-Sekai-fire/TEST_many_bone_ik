@@ -126,16 +126,16 @@ func _run():
 		"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 		"LeftUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
 		"RightUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
-		"LeftLowerLeg":  [
-			{"center": Vector3(0, -1, 0), "radius": deg_to_rad(5)},
-			{"center": Vector3(0, 0, 1), "radius": deg_to_rad(5)},
-		],
-		"RightLowerLeg":  [
-			{"center": Vector3(0, -1, 0), "radius": deg_to_rad(5)},
-			{"center": Vector3(0, 0, 1), "radius": deg_to_rad(5)},
-		],
-		"LeftFoot":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(200)}],
-		"RightFoot":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(200)}],
+#		"LeftLowerLeg":  [
+#			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
+#			{"center": Vector3(0, 0, -1), "radius": deg_to_rad(10)},
+#		],
+#		"RightLowerLeg":  [
+#			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
+#			{"center": Vector3(0, 0, -1), "radius": deg_to_rad(10)},
+#		],
+		"LeftFoot":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(90)}],
+		"RightFoot":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(90)}],
 		"LeftToes":  [{"center": Vector3(0, 0, -1), "radius": deg_to_rad(15)}],
 		"RightToes":  [{"center": Vector3(0, 0, -1), "radius": deg_to_rad(15)}],
 	}
