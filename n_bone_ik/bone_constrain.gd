@@ -32,8 +32,8 @@ func _run():
 			if bone_name == "Root":
 				continue
 			is_humanoid = true
-			break
-		
+			continue
+		new_ik.set_pin_weight(bone_i, 0)
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if bone_name in ["Root"]:
