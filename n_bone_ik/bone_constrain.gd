@@ -40,9 +40,10 @@ func _run():
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if bone_name in ["Root"]:
-			new_ik.set_pin_enabled(bone_i, false)
-			new_ik.set_pin_weight(bone_i, 0)
-			new_ik.set_pin_nodepath(bone_i, str(new_ik.name))
+			new_ik.set_pin_enabled(bone_i, true)
+			new_ik.set_pin_weight(bone_i, 1)
+			new_ik.set_pin_passthrough_factor(bone_i, 0.8)
+			new_ik.set_pin_nodepath(bone_i, ".")
 		if is_humanoid:
 			if bone_name in ["LeftToes", "RightToes"]:
 				new_ik.set_pin_weight(bone_i, 0)
