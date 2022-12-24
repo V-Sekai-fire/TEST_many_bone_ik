@@ -72,133 +72,90 @@ func _run():
 		marker_3d.global_transform = node_global_transform
 		node_3d.replace_by(marker_3d, true)
 		
+	var bone_name_from_to_twist : Dictionary = {
+		# Spine
+		"Root": Vector2(deg_to_rad(371.3), deg_to_rad(33.4)),
+		"Hips": Vector2(deg_to_rad(340.1), deg_to_rad(25)),
+		"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
+		"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),		
+		"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
+#		# Head
+#		"Head": Vector2(deg_to_rad(0), deg_to_rad(10)),
+#		"Neck": Vector2(deg_to_rad(356), deg_to_rad(10)),
+#		# Arms
+#		"RightShoulder": Vector2(deg_to_rad(103), deg_to_rad(10)),
+#		"LeftShoulder": Vector2(deg_to_rad(295.1), deg_to_rad(10)),
+#		"RightUpperArm": Vector2(deg_to_rad(135.2), deg_to_rad(40)),
+#		"LeftUpperArm": Vector2(deg_to_rad(95), deg_to_rad(40)),
+#		"RightLowerArm": Vector2(deg_to_rad(77), deg_to_rad(20)),
+#		"LeftLowerArm": Vector2(deg_to_rad(250), deg_to_rad(20)),
+#		"RightHand": Vector2(deg_to_rad(281), deg_to_rad(10)),
+#		"LeftHand": Vector2(deg_to_rad(78.6), deg_to_rad(10)),
+#		# Legs
+#		"LeftUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
+#		"RightUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
+#		"LeftLowerLeg": Vector2(deg_to_rad(0), deg_to_rad(350)),
+#		"RightLowerLeg": Vector2(deg_to_rad(0), deg_to_rad(350)),
+#		"LeftFoot": Vector2(deg_to_rad(300), deg_to_rad(350)),
+#		"RightFoot": Vector2(deg_to_rad(240), deg_to_rad(350)),
+#		"LeftToes": Vector2(deg_to_rad(180), deg_to_rad(30)),
+#		"RightToes": Vector2(deg_to_rad(180), deg_to_rad(30)),
+	}
 	for bone_i in skeleton.get_bone_count():
-		break
 		var bone_name : String = skeleton.get_bone_name(bone_i)
-		var twist_min = new_ik.get_kusudama_twist(bone_i).x
-		if bone_name.ends_with("Root"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(371.3), deg_to_rad(33.4)))
-		elif bone_name.ends_with("Hips"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(340.1), deg_to_rad(25)))
-		elif bone_name.ends_with("Spine"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(355), deg_to_rad(30)))
-		elif bone_name.ends_with("Chest"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(355), deg_to_rad(30)))
-		elif bone_name.ends_with("UpperChest"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(355), deg_to_rad(30)))
-		# HEAD ---------
-		elif bone_name.ends_with("Head"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(0), deg_to_rad(10)))
-		elif bone_name.ends_with("Neck"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(356), deg_to_rad(10)))
-		# ARMS ---------
-		elif bone_name.ends_with("RightShoulder"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(103), deg_to_rad(10)))
-		elif bone_name.ends_with("LeftShoulder"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(295.1), deg_to_rad(10)))
-		elif bone_name.ends_with("RightUpperArm"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(135.2), deg_to_rad(40)))
-		elif bone_name.ends_with("LeftUpperArm"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(95), deg_to_rad(40)))
-		elif bone_name.ends_with("RightLowerArm"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(77), deg_to_rad(20)))
-		elif bone_name.ends_with("LeftLowerArm"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(250), deg_to_rad(20)))
-#			elif bone_name.ends_with("RightHand"):
-#				new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(281), deg_to_rad(10)))
-#			elif bone_name.ends_with("LeftHand"):
-#				new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(78.6), deg_to_rad(10)))
-		# LEGS ---------
-		elif bone_name.ends_with("LeftUpperLeg"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(0), deg_to_rad(358)))
-		elif bone_name.ends_with("RightUpperLeg"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(0), deg_to_rad(358)))
-		elif bone_name.ends_with("LeftLowerLeg"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(0), deg_to_rad(350)))
-		elif bone_name.ends_with("RightLowerLeg"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(0), deg_to_rad(350)))
-		elif bone_name.ends_with("LeftFoot"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(300), deg_to_rad(350)))
-		elif bone_name.ends_with("RightFoot"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(240), deg_to_rad(350)))
-		elif bone_name.ends_with("LeftToes"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(180), deg_to_rad(30)))
-		elif bone_name.ends_with("RightToes"):
-			new_ik.set_kusudama_twist(bone_i, Vector2(deg_to_rad(180), deg_to_rad(30)))
+		var keys : Array = bone_name_from_to_twist.keys()
+		if keys.has(bone_name):
+			var twist : Vector2 = bone_name_from_to_twist[bone_name]
+			new_ik.set_kusudama_twist(bone_i, twist)
+
+	var bone_name_cones : Dictionary = {
+		"Head": [{"center": Vector3(0, 1, 0)}],
+		"Hips": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(1)}],
+		"Neck": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(50)}],
+		"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
+		"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(1)}],
+		"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(1)}],
+		"RightShoulder": [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(30)}],
+		"LeftShoulder": [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(30)}],
+		"LeftUpperArm":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(1)}],
+		"RightUpperArm":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(1)}],
+		"LeftLowerArm":  [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(20)}],
+		"RightLowerArm":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(20)}],
+		"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
+		"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
+		"LeftUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
+		"RightUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
+		"LeftLowerLeg":  [
+			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(2)},
+			{"center": Vector3(0, 0, -1), "radius": deg_to_rad(2)},
+			{"center": Vector3(0, -1, 0), "radius": deg_to_rad(2)},
+		],
+		"RightLowerLeg":  [
+			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(2)},
+			{"center": Vector3(0, 0, -1), "radius": deg_to_rad(2)},
+			{"center": Vector3(0, -1, 0), "radius": deg_to_rad(2)},
+		],
+		"LeftFoot":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(200)}],
+		"RightFoot":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(200)}],
+		"LeftToes":  [{"center": Vector3(0, 0, -1), "radius": deg_to_rad(15)}],
+		"RightToes":  [{"center": Vector3(0, 0, -1), "radius": deg_to_rad(15)}],
+	}
 
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
-		if bone_name in ["Head"]:
-			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 1, 0))
-		elif bone_name in ["Hips"]:
-			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(1))
-		elif bone_name in ["Neck"]:
-			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(50))
-		elif bone_name in ["UpperChest"]:
-			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(5))
-		elif bone_name in ["Chest"]:
-			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(5))
-		elif bone_name in ["Spine"]:
-			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(1))
-		elif bone_name.ends_with("Shoulder"):
-			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(-1, 0, 0))
-			if bone_name.begins_with("Left"):
-				new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(1, 0, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(30))
-		elif bone_name.ends_with("UpperArm"):
-			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(1))
-		elif bone_name.ends_with("LowerArm"):
-			new_ik.set_kusudama_limit_cone_count(bone_i, 3)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(1))
-			new_ik.set_kusudama_limit_cone_center(bone_i, 1, Vector3(1, 0, 0))
-			if bone_name.begins_with("Left"):
-				new_ik.set_kusudama_limit_cone_center(bone_i, 1, Vector3(-1, 0, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 1, deg_to_rad(20))
-			new_ik.set_kusudama_limit_cone_center(bone_i, 2, Vector3(0, -1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 2, deg_to_rad(20))
-		elif bone_name.ends_with("Hand"):
-			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(20))
-		elif bone_name.ends_with("UpperLeg"):
-			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, -1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(80))
-		elif bone_name.ends_with("LowerLeg"):
-			new_ik.set_kusudama_limit_cone_count(bone_i, 3)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(2))
-			new_ik.set_kusudama_limit_cone_center(bone_i, 1, Vector3(0, 0, -1))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 1, deg_to_rad(2))
-			new_ik.set_kusudama_limit_cone_center(bone_i, 2, Vector3(0, -1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 2, deg_to_rad(2))
-		elif bone_name.ends_with("Foot"):
-			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 1, 0))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(200))
-		elif bone_name.ends_with("Toes"):
-			new_ik.set_kusudama_limit_cone_count(bone_i, 1)
-			new_ik.set_kusudama_limit_cone_center(bone_i, 0, Vector3(0, 0, -1))
-			new_ik.set_kusudama_limit_cone_radius(bone_i, 0, deg_to_rad(15))
+		var keys : Array = bone_name_cones.keys()
+		if keys.has(bone_name):
+			var cones : Array = bone_name_cones[bone_name]
+			new_ik.set_kusudama_limit_cone_count(bone_i, cones.size())
+			for cone_i in range(cones.size()):
+				var cone : Dictionary = cones[cone_i]
+				if cone.keys().has("center"):
+					new_ik.set_kusudama_limit_cone_center(bone_i, cone_i, cone["center"])
+				else:
+					new_ik.set_kusudama_limit_cone_center(bone_i, cone_i, Vector3(0, 1, 0))
+				if cone.keys().has("radius"):
+					new_ik.set_kusudama_limit_cone_radius(bone_i, cone_i, cone["radius"])
+				else:
+					new_ik.set_kusudama_limit_cone_radius(bone_i, cone_i, deg_to_rad(90))
 
-	# Overwrite all previous twists.
-	for bone_i in skeleton.get_bone_count():
-		var bone_name : String = skeleton.get_bone_name(bone_i)
-		new_ik.set_kusudama_twist(bone_i, Vector2(0, deg_to_rad(270)))
-		
 	new_ik.visible = true
