@@ -17,6 +17,7 @@ func _run():
 	new_ik.owner = root
 
 	new_ik.visible = false
+	new_ik.constraint_mode = true
 	skeleton.reset_bone_poses()
 	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
 	var humanoid_bones : PackedStringArray = []
@@ -110,14 +111,14 @@ func _run():
 
 	var bone_name_cones : Dictionary = {
 		"Head": [{"center": Vector3(0, 1, 0)}],
-		"Hips": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(1)}],
+		"Root": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(1)}],
 		"Neck": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(50)}],
 		"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
 		"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(1)}],
 		"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(1)}],
-		"RightShoulder": [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(30)}],
-		"LeftShoulder": [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(30)}],
-		"LeftUpperArm":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(1)}],
+		"RightShoulder": [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(90)}],
+		"LeftShoulder": [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
+		"LeftUpperArm":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(1)}],
 		"RightUpperArm":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(1)}],
 		"LeftLowerArm":  [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(20)}],
 		"RightLowerArm":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(20)}],
@@ -126,14 +127,14 @@ func _run():
 		"LeftUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
 		"RightUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
 		"LeftLowerLeg":  [
-			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(2)},
-			{"center": Vector3(0, 0, -1), "radius": deg_to_rad(2)},
 			{"center": Vector3(0, -1, 0), "radius": deg_to_rad(2)},
+			{"center": Vector3(0, 0, -1), "radius": deg_to_rad(2)},
+			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(2)},
 		],
 		"RightLowerLeg":  [
-			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(2)},
-			{"center": Vector3(0, 0, -1), "radius": deg_to_rad(2)},
 			{"center": Vector3(0, -1, 0), "radius": deg_to_rad(2)},
+			{"center": Vector3(0, 0, -1), "radius": deg_to_rad(2)},
+			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(2)},
 		],
 		"LeftFoot":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(200)}],
 		"RightFoot":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(200)}],
