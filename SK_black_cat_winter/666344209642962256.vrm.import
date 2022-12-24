@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://6voe4x6kleat"
+uid="uid://chwqcynfymllf"
 path="res://.godot/imported/666344209642962256.vrm-26d3dce14bdbb2ed88589613a2db4fbd.scn"
 
 [deps]
@@ -27,4 +27,14 @@ animation/import=true
 animation/fps=30
 animation/trimming=false
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:GeneralSkeleton": {
+"retarget/bone_map": null,
+"retarget/remove_tracks/unimportant_positions": false,
+"retarget/remove_tracks/unmapped_bones": true,
+"retarget/rest_fixer/fix_silhouette/enable": true,
+"retarget/rest_fixer/fix_silhouette/filter": ["LeftEye", "RightEye"]
+}
+}
+}

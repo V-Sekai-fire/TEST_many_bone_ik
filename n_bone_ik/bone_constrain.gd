@@ -6,6 +6,9 @@ func _run():
 	if root == null:
 		return
 	var properties : Array[Dictionary] = root.get_property_list() 
+	for property in properties:
+		if property["name"] == "update_in_editor":
+			root.set("update_in_editor", true)
 	var iks : Array[Node] = root.find_children("*", "ManyBoneIK3D")
 	for ik in iks:
 		ik.free()
@@ -50,7 +53,7 @@ func _run():
 			if not humanoid_bones.has(bone_name):
 				new_ik.set_pin_weight(bone_i, 0)
 				continue
-			if not bone_name in ["Head", "LeftHand", "RightHand", "LeftFoot", "RightFoot"]:
+			if not bone_name in ["Head", "LeftFoot", "RightFoot"]: # "LeftHand", "RightHand", 
 				continue
 			if bone_name in ["LeftFoot", "RightFoot"]:
 				new_ik.set_pin_passthrough_factor(bone_i, 0)
@@ -80,27 +83,27 @@ func _run():
 		"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
 		"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),		
 		"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
-#		# Head
-#		"Head": Vector2(deg_to_rad(0), deg_to_rad(10)),
-#		"Neck": Vector2(deg_to_rad(356), deg_to_rad(10)),
-#		# Arms
-#		"RightShoulder": Vector2(deg_to_rad(103), deg_to_rad(10)),
-#		"LeftShoulder": Vector2(deg_to_rad(295.1), deg_to_rad(10)),
-#		"RightUpperArm": Vector2(deg_to_rad(135.2), deg_to_rad(40)),
-#		"LeftUpperArm": Vector2(deg_to_rad(95), deg_to_rad(40)),
-#		"RightLowerArm": Vector2(deg_to_rad(77), deg_to_rad(20)),
-#		"LeftLowerArm": Vector2(deg_to_rad(250), deg_to_rad(20)),
-#		"RightHand": Vector2(deg_to_rad(281), deg_to_rad(10)),
-#		"LeftHand": Vector2(deg_to_rad(78.6), deg_to_rad(10)),
-#		# Legs
-#		"LeftUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
-#		"RightUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
-#		"LeftLowerLeg": Vector2(deg_to_rad(0), deg_to_rad(350)),
-#		"RightLowerLeg": Vector2(deg_to_rad(0), deg_to_rad(350)),
-#		"LeftFoot": Vector2(deg_to_rad(300), deg_to_rad(350)),
-#		"RightFoot": Vector2(deg_to_rad(240), deg_to_rad(350)),
-#		"LeftToes": Vector2(deg_to_rad(180), deg_to_rad(30)),
-#		"RightToes": Vector2(deg_to_rad(180), deg_to_rad(30)),
+		# Head
+		"Head": Vector2(deg_to_rad(0), deg_to_rad(10)),
+		"Neck": Vector2(deg_to_rad(356), deg_to_rad(10)),
+		# Arms
+		"RightShoulder": Vector2(deg_to_rad(77), deg_to_rad(10)),
+		"LeftShoulder": Vector2(deg_to_rad(250), deg_to_rad(10)),
+		"RightUpperArm": Vector2(deg_to_rad(77), deg_to_rad(20)),
+		"LeftUpperArm": Vector2(deg_to_rad(250), deg_to_rad(20)),
+		"RightLowerArm": Vector2(deg_to_rad(77), deg_to_rad(20)),
+		"LeftLowerArm": Vector2(deg_to_rad(250), deg_to_rad(20)),
+		"RightHand": Vector2(deg_to_rad(281), deg_to_rad(10)),
+		"LeftHand": Vector2(deg_to_rad(78.6), deg_to_rad(10)),
+		# Legs
+		"LeftUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
+		"RightUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
+		"LeftLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(-1)),
+		"RightLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(1)),
+		"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
+		"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
+		"LeftToes": Vector2(deg_to_rad(180), deg_to_rad(30)),
+		"RightToes": Vector2(deg_to_rad(180), deg_to_rad(30)),
 	}
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
@@ -108,6 +111,7 @@ func _run():
 		if keys.has(bone_name):
 			var twist : Vector2 = bone_name_from_to_twist[bone_name]
 			new_ik.set_kusudama_twist(bone_i, twist)
+			continue
 
 	var bone_name_cones : Dictionary = {
 		"Head": [{"center": Vector3(0, 1, 0)}],
@@ -126,14 +130,15 @@ func _run():
 		"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 		"LeftUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
 		"RightUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
-#		"LeftLowerLeg":  [
-#			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
-#			{"center": Vector3(0, 0, -1), "radius": deg_to_rad(10)},
-#		],
-#		"RightLowerLeg":  [
-#			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
-#			{"center": Vector3(0, 0, -1), "radius": deg_to_rad(10)},
-#		],
+		"LeftLowerLeg":  [
+			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
+			{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
+		],
+		"RightLowerLeg":  [
+			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
+			{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
+			
+		],
 		"LeftFoot":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(90)}],
 		"RightFoot":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(90)}],
 		"LeftToes":  [{"center": Vector3(0, 0, -1), "radius": deg_to_rad(15)}],
