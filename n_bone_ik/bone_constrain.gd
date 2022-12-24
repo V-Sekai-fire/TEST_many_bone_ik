@@ -6,9 +6,6 @@ func _run():
 	if root == null:
 		return
 	var properties : Array[Dictionary] = root.get_property_list() 
-	for property in properties:
-		if property["name"] == "update_in_editor":
-			root.set("update_in_editor", true)
 	var iks : Array[Node] = root.find_children("*", "ManyBoneIK3D")
 	for ik in iks:
 		ik.free()
@@ -76,6 +73,7 @@ func _run():
 		node_3d.replace_by(marker_3d, true)
 		
 	for bone_i in skeleton.get_bone_count():
+		break
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		var twist_min = new_ik.get_kusudama_twist(bone_i).x
 		if bone_name.ends_with("Root"):
