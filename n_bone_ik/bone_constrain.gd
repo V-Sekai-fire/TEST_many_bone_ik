@@ -42,6 +42,7 @@ func _run():
 		if bone_name in ["Root"]:
 			new_ik.set_pin_enabled(bone_i, false)
 			new_ik.set_pin_weight(bone_i, 0)
+			new_ik.set_pin_nodepath(bone_i, str(new_ik.name))
 		if is_humanoid:
 			if bone_name in ["LeftToes", "RightToes"]:
 				new_ik.set_pin_weight(bone_i, 0)
@@ -139,8 +140,8 @@ func _run():
 			{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
 			
 		],
-		"LeftFoot":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(90)}],
-		"RightFoot":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(90)}],
+		"LeftFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
+		"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
 		"LeftToes":  [{"center": Vector3(0, 0, -1), "radius": deg_to_rad(15)}],
 		"RightToes":  [{"center": Vector3(0, 0, -1), "radius": deg_to_rad(15)}],
 	}
