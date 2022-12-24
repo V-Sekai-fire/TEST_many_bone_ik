@@ -17,7 +17,7 @@ func _run():
 	new_ik.owner = root
 
 	new_ik.visible = false
-	new_ik.constraint_mode = true
+	new_ik.constraint_mode = false
 	skeleton.reset_bone_poses()
 	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
 	var humanoid_bones : PackedStringArray = []
@@ -112,7 +112,7 @@ func _run():
 	var bone_name_cones : Dictionary = {
 		"Head": [{"center": Vector3(0, 1, 0)}],
 		"Root": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(1)}],
-		"Neck": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(50)}],
+		"Neck": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 		"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 		"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 		"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
