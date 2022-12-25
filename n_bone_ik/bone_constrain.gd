@@ -32,6 +32,8 @@ func _run():
 	var filter_bones : Array[StringName]  = [
 		"LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
 		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
+		"RightToes", "LeftToes",
+		"RightEye", "LeftEye",
 	]
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
