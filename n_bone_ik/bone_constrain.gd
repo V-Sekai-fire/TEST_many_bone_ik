@@ -21,6 +21,7 @@ func _run():
 	new_ik.iterations_per_frame = 20
 	new_ik.default_damp = deg_to_rad(10)
 	new_ik.visible = false
+#	new_ik.constraint_mode = true
 	skeleton.reset_bone_poses()
 	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
 	var humanoid_bones : PackedStringArray = []
@@ -32,6 +33,9 @@ func _run():
 	var filter_bones : Array[StringName]  = [
 		"LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
 		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
+#		"LeftUpperLeg",
+#		"RightUpperLeg",
+#		"Neck",
 	]
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
@@ -103,8 +107,8 @@ func _run():
 		"RightShoulder": Vector2(deg_to_rad(77), deg_to_rad(10)),
 		"LeftUpperArm": Vector2(deg_to_rad(-120), deg_to_rad(-60)),
 		"RightUpperArm": Vector2(deg_to_rad(120), deg_to_rad(60)),
-		"LeftLowerArm": Vector2(deg_to_rad(60), deg_to_rad(60)),
-		"RightLowerArm": Vector2(deg_to_rad(-55), deg_to_rad(60)),
+		"LeftLowerArm": Vector2(deg_to_rad(-75), deg_to_rad(100)),
+		"RightLowerArm": Vector2(deg_to_rad(75), deg_to_rad(-100)),
 		"LeftHand": Vector2(deg_to_rad(0), deg_to_rad(-90)),
 		"RightHand": Vector2(deg_to_rad(0), deg_to_rad(90)),
 		# Legs
@@ -114,8 +118,8 @@ func _run():
 		"RightLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(20)),
 		"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
 		"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
-		"LeftToes": Vector2(deg_to_rad(180), deg_to_rad(30)),
-		"RightToes": Vector2(deg_to_rad(180), deg_to_rad(30)),
+#		"LeftToes": Vector2(deg_to_rad(180), deg_to_rad(30)),
+#		"RightToes": Vector2(deg_to_rad(180), deg_to_rad(30)),
 	}
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
@@ -161,8 +165,8 @@ func _run():
 		],
 		"LeftFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
 		"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
-		"LeftToes":  [{"center": Vector3(0, 0, -1), "radius": deg_to_rad(15)}],
-		"RightToes":  [{"center": Vector3(0, 0, -1), "radius": deg_to_rad(15)}],
+#		"LeftToes":  [{"center": Vector3(0, 0, -1), "radius": deg_to_rad(15)}],
+#		"RightToes":  [{"center": Vector3(0, 0, -1), "radius": deg_to_rad(15)}],
 	}
 
 	for bone_i in skeleton.get_bone_count():
