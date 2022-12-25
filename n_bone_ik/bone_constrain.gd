@@ -19,7 +19,7 @@ func _run():
 	new_ik.skeleton_node_path = ".."
 	new_ik.owner = root
 	new_ik.iterations_per_frame = 10
-	new_ik.default_damp = deg_to_rad(10)
+	new_ik.default_damp = deg_to_rad(45)
 	new_ik.visible = false
 	new_ik.constraint_mode = false
 	skeleton.reset_bone_poses()
