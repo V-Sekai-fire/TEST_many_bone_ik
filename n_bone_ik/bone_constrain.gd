@@ -45,19 +45,18 @@ func _run():
 	new_ik.filter_bones = filter_bones
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
-		if not is_humanoid:
-			continue
-		if bone_name in ["Hips", "Chest", "UpperChest"]:
-			new_ik.set_pin_weight(bone_i, 1)
-		if bone_name.begins_with("Spine"):
-			new_ik.set_pin_weight(bone_i, 0.2)
-		if bone_name in ["Hips"]:
-			new_ik.set_pin_passthrough_factor(bone_i, 1)
-			new_ik.set_pin_weight(bone_i, 1)
-		if bone_name in ["LeftFoot", "RightFoot"]:
-			new_ik.set_pin_passthrough_factor(bone_i, 0)
-		if not bone_name in ["Root", "Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand",]:
-			continue
+		if is_humanoid:
+			if bone_name in ["Hips", "Chest", "UpperChest"]:
+				new_ik.set_pin_weight(bone_i, 1)
+			if bone_name.begins_with("Spine"):
+				new_ik.set_pin_weight(bone_i, 0.2)
+			if bone_name in ["Hips"]:
+				new_ik.set_pin_passthrough_factor(bone_i, 1)
+				new_ik.set_pin_weight(bone_i, 1)
+			if bone_name in ["LeftFoot", "RightFoot"]:
+				new_ik.set_pin_passthrough_factor(bone_i, 0)
+			if not bone_name in ["Root", "Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand",]:
+				continue
 		var node_3d : BoneAttachment3D = BoneAttachment3D.new()
 		node_3d.name = bone_name
 		node_3d.bone_name = bone_name
