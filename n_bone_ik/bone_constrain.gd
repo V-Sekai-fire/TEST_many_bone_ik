@@ -103,8 +103,8 @@ func _run():
 		"RightShoulder": Vector2(deg_to_rad(77), deg_to_rad(10)),
 		"LeftUpperArm": Vector2(deg_to_rad(-120), deg_to_rad(-60)),
 		"RightUpperArm": Vector2(deg_to_rad(120), deg_to_rad(60)),
-		"LeftLowerArm": Vector2(deg_to_rad(0), deg_to_rad(-60)),
-		"RightLowerArm": Vector2(deg_to_rad(0), deg_to_rad(60)),
+		"LeftLowerArm": Vector2(deg_to_rad(60), deg_to_rad(60)),
+		"RightLowerArm": Vector2(deg_to_rad(-55), deg_to_rad(60)),
 		"LeftHand": Vector2(deg_to_rad(0), deg_to_rad(-90)),
 		"RightHand": Vector2(deg_to_rad(0), deg_to_rad(90)),
 		# Legs
