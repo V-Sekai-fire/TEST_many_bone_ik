@@ -65,9 +65,15 @@ func _run():
 		node_3d.set_use_external_skeleton (true)
 		node_3d.set_external_skeleton("../" + str(new_ik.get_path_to(skeleton)))
 		new_ik.add_child(node_3d, true)
-		if bone_name in ["Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand"]:
+		if bone_name in ["Head"]:
 			# Move slightly higher to avoid the crunching into the body effect.
-			node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.05, 0)
+			node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
+		if bone_name in ["LeftHand"]:
+			# Move slightly higher to avoid the crunching into the body effect.
+			node_3d.transform.origin = node_3d.transform.origin + Vector3(0.1, 0, 0)
+		if bone_name in ["RightHand"]:
+			# Move slightly higher to avoid the crunching into the body effect.
+			node_3d.transform.origin = node_3d.transform.origin - Vector3(0.1, 0, 0)
 		node_3d.owner = root
 		new_ik.set_pin_nodepath(bone_i, bone_name)
 		var node_global_transform = node_3d.global_transform
