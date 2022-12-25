@@ -5,10 +5,10 @@ func _run():
 	var root : Node3D = get_editor_interface().get_edited_scene_root()
 	if root == null:
 		return
-	var properties : Array[Dictionary] = root.get_property_list() 
-	for property in properties:
-		if property["name"] == "update_in_editor":
-			root.set("update_in_editor", true)
+#	var properties : Array[Dictionary] = root.get_property_list() 
+#	for property in properties:
+#		if property["name"] == "update_in_editor":
+#			root.set("update_in_editor", true)
 	var iks : Array[Node] = root.find_children("*", "ManyBoneIK3D")
 	for ik in iks:
 		ik.free()
@@ -18,10 +18,9 @@ func _run():
 	root.add_child(new_ik, true)
 	new_ik.skeleton_node_path = "../" + str(root.get_path_to(skeleton))
 	new_ik.owner = root
-	new_ik.iterations_per_frame = 120
-	new_ik.default_damp = deg_to_rad(20)
+	new_ik.iterations_per_frame = 20
+	new_ik.default_damp = deg_to_rad(10)
 	new_ik.visible = false
-	new_ik.constraint_mode = false
 	skeleton.reset_bone_poses()
 	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
 	var humanoid_bones : PackedStringArray = []
@@ -30,6 +29,10 @@ func _run():
 		humanoid_bones.push_back(bone_name)
 	var is_humanoid : bool = false
 	
+	var filter_bones : Array[StringName]  = [
+		"LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
+		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
+	]
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if bone_name in humanoid_bones:
@@ -38,6 +41,8 @@ func _run():
 			is_humanoid = true
 			continue
 		new_ik.set_pin_weight(bone_i, 0)
+		filter_bones.push_back(StringName(bone_name))
+	new_ik.filter_bones = filter_bones
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		new_ik.set_pin_passthrough_factor(bone_i, 0.8)
@@ -62,6 +67,10 @@ func _run():
 				new_ik.set_pin_passthrough_factor(bone_i, 0)
 				new_ik.set_pin_enabled(bone_i, true)
 			new_ik.set_pin_enabled(bone_i, true)
+		if bone_name in ["Hips"]:
+			new_ik.set_pin_enabled(bone_i, true)
+			new_ik.set_pin_passthrough_factor(bone_i, 1)
+			new_ik.set_pin_weight(bone_i, 1)
 		var node_3d : BoneAttachment3D = BoneAttachment3D.new()
 		node_3d.name = bone_name
 		node_3d.bone_name = bone_name
@@ -90,19 +99,19 @@ func _run():
 		"Head": Vector2(deg_to_rad(0), deg_to_rad(10)),
 		"Neck": Vector2(deg_to_rad(356), deg_to_rad(10)),
 		# Arms
-#		"RightShoulder": Vector2(deg_to_rad(77), deg_to_rad(10)),
-#		"LeftShoulder": Vector2(deg_to_rad(250), deg_to_rad(10)),
-#		"RightUpperArm": Vector2(deg_to_rad(77), deg_to_rad(20)),
-#		"LeftUpperArm": Vector2(deg_to_rad(250), deg_to_rad(20)),
-#		"RightLowerArm": Vector2(deg_to_rad(77), deg_to_rad(20)),
-#		"LeftLowerArm": Vector2(deg_to_rad(250), deg_to_rad(20)),
-#		"RightHand": Vector2(deg_to_rad(281), deg_to_rad(10)),
-#		"LeftHand": Vector2(deg_to_rad(78.6), deg_to_rad(10)),
+		"LeftShoulder": Vector2(deg_to_rad(250), deg_to_rad(-10)),
+		"RightShoulder": Vector2(deg_to_rad(77), deg_to_rad(10)),
+		"LeftUpperArm": Vector2(deg_to_rad(-120), deg_to_rad(-60)),
+		"RightUpperArm": Vector2(deg_to_rad(120), deg_to_rad(60)),
+		"LeftLowerArm": Vector2(deg_to_rad(0), deg_to_rad(-60)),
+		"RightLowerArm": Vector2(deg_to_rad(0), deg_to_rad(60)),
+		"LeftHand": Vector2(deg_to_rad(0), deg_to_rad(-90)),
+		"RightHand": Vector2(deg_to_rad(0), deg_to_rad(90)),
 		# Legs
 		"LeftUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
 		"RightUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
-		"LeftLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(-2)),
-		"RightLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(2)),
+		"LeftLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(20)),
+		"RightLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(20)),
 		"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
 		"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
 		"LeftToes": Vector2(deg_to_rad(180), deg_to_rad(30)),
@@ -123,14 +132,22 @@ func _run():
 		"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 		"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 		"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
-#		"RightShoulder": [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(90)}],
-#		"LeftShoulder": [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
-#		"LeftUpperArm":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(90)}],
-#		"RightUpperArm":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(90)}],
-#		"LeftLowerArm":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
-#		"RightLowerArm":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
-#		"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
-#		"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
+		"LeftShoulder": [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
+		"RightShoulder": [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(90)}],
+		"LeftUpperArm":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(90)}],
+		"RightUpperArm":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(90)}],
+		"LeftLowerArm":  [
+			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)},
+			{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(20)},
+			{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(20)},
+		],
+		"RightLowerArm":  [
+			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)},
+			{"center": Vector3(1, 0, 0), "radius": deg_to_rad(20)},
+			{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(20)},
+		],
+		"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
+		"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 		"LeftUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
 		"RightUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
 		"LeftLowerLeg":  [
