@@ -29,20 +29,10 @@ func _run():
 		var bone_name : String = humanoid_profile.get_bone_name(bone_i)
 		humanoid_bones.push_back(bone_name)
 	var is_humanoid : bool = false
-	var filter_bones : Array[StringName]  = [
-		"LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
-		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
-		"RightToes", "LeftToes",
-		"RightEye", "LeftEye",
-	]
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if bone_name in humanoid_bones:
 			is_humanoid = true
-			continue
-		new_ik.set_pin_weight(bone_i, 0)
-		filter_bones.push_back(StringName(bone_name))
-	new_ik.filter_bones = filter_bones
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if is_humanoid:
