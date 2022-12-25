@@ -5,10 +5,10 @@ func _run():
 	var root : Node3D = get_editor_interface().get_edited_scene_root()
 	if root == null:
 		return
-#	var properties : Array[Dictionary] = root.get_property_list() 
-#	for property in properties:
-#		if property["name"] == "update_in_editor":
-#			root.set("update_in_editor", true)
+	var properties : Array[Dictionary] = root.get_property_list() 
+	for property in properties:
+		if property["name"] == "update_in_editor":
+			root.set("update_in_editor", true)
 	var iks : Array[Node] = root.find_children("*", "ManyBoneIK3D")
 	for ik in iks:
 		ik.free()
@@ -21,7 +21,7 @@ func _run():
 	new_ik.iterations_per_frame = 20
 	new_ik.default_damp = deg_to_rad(45)
 	new_ik.visible = false
-#	new_ik.constraint_mode = true
+	new_ik.constraint_mode = false
 	skeleton.reset_bone_poses()
 	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
 	var humanoid_bones : PackedStringArray = []
@@ -29,13 +29,9 @@ func _run():
 		var bone_name : String = humanoid_profile.get_bone_name(bone_i)
 		humanoid_bones.push_back(bone_name)
 	var is_humanoid : bool = false
-	
 	var filter_bones : Array[StringName]  = [
 		"LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
 		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
-#		"LeftUpperLeg",
-#		"RightUpperLeg",
-#		"Neck",
 	]
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
@@ -106,8 +102,6 @@ func _run():
 		"RightLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(20)),
 		"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
 		"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
-#		"LeftToes": Vector2(deg_to_rad(180), deg_to_rad(30)),
-#		"RightToes": Vector2(deg_to_rad(180), deg_to_rad(30)),
 	}
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
@@ -115,7 +109,6 @@ func _run():
 		if keys.has(bone_name):
 			var twist : Vector2 = bone_name_from_to_twist[bone_name]
 			new_ik.set_kusudama_twist(bone_i, twist)
-			continue
 
 	var bone_name_cones : Dictionary = {
 		"Head": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
@@ -161,8 +154,6 @@ func _run():
 		],
 		"LeftFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
 		"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
-#		"LeftToes":  [{"center": Vector3(0, 0, -1), "radius": deg_to_rad(15)}],
-#		"RightToes":  [{"center": Vector3(0, 0, -1), "radius": deg_to_rad(15)}],
 	}
 
 	for bone_i in skeleton.get_bone_count():
@@ -175,11 +166,7 @@ func _run():
 				var cone : Dictionary = cones[cone_i]
 				if cone.keys().has("center"):
 					new_ik.set_kusudama_limit_cone_center(bone_i, cone_i, cone["center"])
-				else:
-					new_ik.set_kusudama_limit_cone_center(bone_i, cone_i, Vector3(0, 1, 0))
 				if cone.keys().has("radius"):
 					new_ik.set_kusudama_limit_cone_radius(bone_i, cone_i, cone["radius"])
-				else:
-					new_ik.set_kusudama_limit_cone_radius(bone_i, cone_i, deg_to_rad(90))
 
 	new_ik.visible = true
