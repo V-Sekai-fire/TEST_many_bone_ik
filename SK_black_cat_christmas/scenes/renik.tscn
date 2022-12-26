@@ -1,6 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://bkcqsn12j6qyo"]
+[gd_scene load_steps=26 format=3 uid="uid://q6dplxqrb08h"]
 
-[ext_resource type="PackedScene" uid="uid://w5rmvpnnlmq1" path="res://SK_black_cat_christmas/Black Cat Fire Christmas 2022.vrm" id="1_8tqn8"]
+[ext_resource type="PackedScene" uid="uid://w5rmvpnnlmq1" path="res://SK_black_cat_christmas/Black Cat Fire Christmas 2022.vrm" id="1_n3tiq"]
 
 [sub_resource type="Animation" id="Animation_4amfj"]
 resource_name = "Chat Anim"
@@ -4896,7 +4896,7 @@ _data = {
 "U": SubResource("Animation_mmch7")
 }
 
-[node name="Black Cat Fire Christmas 2022" instance=ExtResource("1_8tqn8")]
+[node name="Black Cat Fire Christmas 2022" instance=ExtResource("1_n3tiq")]
 update_in_editor = true
 
 [node name="GeneralSkeleton" parent="." index="0"]
