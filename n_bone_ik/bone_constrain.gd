@@ -10,7 +10,9 @@ func _run():
 		if property["name"] == "update_in_editor":
 			root.set("update_in_editor", true)
 	var iks : Array[Node] = root.find_children("*", "ManyBoneIK3D")
+	var old_constraint_node = false
 	for ik in iks:
+		old_constraint_node = ik.constraint_mode or old_constraint_node
 		ik.free()
 	var new_ik : ManyBoneIK3D = ManyBoneIK3D.new()
 	var skeletons : Array[Node] = root.find_children("*", "Skeleton3D")
@@ -21,7 +23,7 @@ func _run():
 	new_ik.iterations_per_frame = 10
 	new_ik.default_damp = deg_to_rad(45)
 	new_ik.visible = false
-	new_ik.constraint_mode = true
+	new_ik.constraint_mode = old_constraint_node
 	skeleton.reset_bone_poses()
 	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
 	var humanoid_bones : PackedStringArray = []
@@ -35,8 +37,8 @@ func _run():
 			is_humanoid = true
 		else:
 			new_ik.filter_bones.push_back(bone_name)
-	new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
-		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
+	new_ik.filter_bones.append_array(["LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
+		"RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
 #		"RightToes", "LeftToes",
 		"RightEye", "LeftEye"])
 	for bone_i in skeleton.get_bone_count():
@@ -51,7 +53,7 @@ func _run():
 				new_ik.set_pin_weight(bone_i, 1)
 			if bone_name in ["LeftFoot", "RightFoot"]:
 				new_ik.set_pin_passthrough_factor(bone_i, 0)
-			if not bone_name in ["Root", "Hips", "Head", "LeftToes", "RightToes", "LeftHand", "RightHand",]:
+			if not bone_name in ["Root", "Hips", "Head", "LeftToes", "RightToes", "LeftIndexDistal", "RightIndexDistal",]:
 				continue
 		var node_3d : BoneAttachment3D = BoneAttachment3D.new()
 		node_3d.name = bone_name
