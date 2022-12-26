@@ -21,7 +21,7 @@ func _run():
 	new_ik.iterations_per_frame = 10
 	new_ik.default_damp = deg_to_rad(45)
 	new_ik.visible = false
-	new_ik.constraint_mode = false
+	new_ik.constraint_mode = true
 	skeleton.reset_bone_poses()
 	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
 	var humanoid_bones : PackedStringArray = []
@@ -37,7 +37,7 @@ func _run():
 			new_ik.filter_bones.push_back(bone_name)
 	new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
 		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
-		"RightToes", "LeftToes",
+#		"RightToes", "LeftToes",
 		"RightEye", "LeftEye"])
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
@@ -51,7 +51,7 @@ func _run():
 				new_ik.set_pin_weight(bone_i, 1)
 			if bone_name in ["LeftFoot", "RightFoot"]:
 				new_ik.set_pin_passthrough_factor(bone_i, 0)
-			if not bone_name in ["Root", "Hips", "Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand",]:
+			if not bone_name in ["Root", "Hips", "Head", "LeftToes", "RightToes", "LeftHand", "RightHand",]:
 				continue
 		var node_3d : BoneAttachment3D = BoneAttachment3D.new()
 		node_3d.name = bone_name
