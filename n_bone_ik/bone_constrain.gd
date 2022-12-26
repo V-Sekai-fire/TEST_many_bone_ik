@@ -65,10 +65,10 @@ func _run():
 		if bone_name in ["Head"]:
 			# Move slightly higher to avoid the crunching into the body effect.
 			node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
-		if bone_name in ["LeftHand"]:
+		if bone_name in ["LeftIndexDistal"]:
 			# Move slightly higher to avoid the crunching into the body effect.
 			node_3d.transform.origin = node_3d.transform.origin + Vector3(0.1, 0, 0)
-		if bone_name in ["RightHand"]:
+		if bone_name in ["RightIndexDistal"]:
 			# Move slightly higher to avoid the crunching into the body effect.
 			node_3d.transform.origin = node_3d.transform.origin - Vector3(0.1, 0, 0)
 		node_3d.owner = root
