@@ -37,9 +37,9 @@ func _run():
 			is_humanoid = true
 		else:
 			new_ik.filter_bones.push_back(bone_name)
-	new_ik.filter_bones.append_array(["LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
-		"RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
-#		"RightToes", "LeftToes",
+	new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
+		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
+		"RightToes", "LeftToes",
 		"RightEye", "LeftEye"])
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
@@ -53,7 +53,7 @@ func _run():
 				new_ik.set_pin_weight(bone_i, 1)
 			if bone_name in ["LeftFoot", "RightFoot"]:
 				new_ik.set_pin_passthrough_factor(bone_i, 0)
-			if not bone_name in ["Root", "Hips", "Head", "LeftToes", "RightToes", "LeftIndexDistal", "RightIndexDistal",]:
+			if not bone_name in ["Root", "Hips", "Head", "LeftLeg", "RightLeg", "LeftHand", "RightHand",]:
 				continue
 		var node_3d : BoneAttachment3D = BoneAttachment3D.new()
 		node_3d.name = bone_name
@@ -65,10 +65,10 @@ func _run():
 		if bone_name in ["Head"]:
 			# Move slightly higher to avoid the crunching into the body effect.
 			node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
-		if bone_name in ["LeftIndexDistal"]:
+		if bone_name in ["LeftHand"]:
 			# Move slightly higher to avoid the crunching into the body effect.
 			node_3d.transform.origin = node_3d.transform.origin + Vector3(0.1, 0, 0)
-		if bone_name in ["RightIndexDistal"]:
+		if bone_name in ["RightHand"]:
 			# Move slightly higher to avoid the crunching into the body effect.
 			node_3d.transform.origin = node_3d.transform.origin - Vector3(0.1, 0, 0)
 		node_3d.owner = root
