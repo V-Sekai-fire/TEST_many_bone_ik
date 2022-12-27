@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://q6dplxqrb08h"]
 
-[ext_resource type="PackedScene" uid="uid://w5rmvpnnlmq1" path="res://SK_black_cat_christmas/Black Cat Fire Christmas 2022.vrm" id="1_n3tiq"]
+[ext_resource type="PackedScene" uid="uid://b56itd1mp2pur" path="res://SK_black_cat_christmas/Black Cat Fire Christmas 2022.vrm" id="1_n3tiq"]
 
 [sub_resource type="Animation" id="Animation_4amfj"]
 resource_name = "Chat Anim"
@@ -5033,7 +5033,7 @@ bones/108/position = Vector3(0.0262166, 0.149689, 0.0220934)
 
 [node name="RenIK" type="RenIK" parent="GeneralSkeleton" index="0"]
 live_preview = true
-armature_skeleton_path = NodePath("/root/@@16564/@@655/@@656/@@665/@@668/@@676/@@684/@@685/@@687/@@713/@@714/@@753/MainScreen/@@9722/@@9549/@@9551/@@9553/@@9554/@@9555/@@9556/Black Cat Fire Christmas 2022/GeneralSkeleton")
+armature_skeleton_path = NodePath("/root/@@16565/@@655/@@656/@@665/@@668/@@676/@@684/@@685/@@687/@@713/@@714/@@753/MainScreen/@@9722/@@9549/@@9551/@@9553/@@9554/@@9555/@@9556/Black Cat Fire Christmas 2022/GeneralSkeleton")
 armature_head = "Head"
 armature_left_hand = "LeftHand"
 armature_left_lower_arm = "LeftLowerArm"
@@ -5064,7 +5064,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000231911, 0.896172, 0.012
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000231875, 1.46945, -0.01599)
 
 [node name="LeftHand" type="Marker3D" parent="GeneralSkeleton" index="6"]
-transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 0.636313, 1.25757, -0.0166056)
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 0.477648, 1.25757, 0.0871156)
 
 [node name="RightHand" type="Marker3D" parent="GeneralSkeleton" index="7"]
 transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.636776, 1.25758, -0.0166062)
@@ -5073,7 +5073,7 @@ transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.636776, 1.25758, -0.0166
 transform = Transform3D(-1, 0, 0, 0, -2.22045e-16, 1, 0, 1, 2.22045e-16, 0.255668, 0.0990702, -0.0187464)
 
 [node name="RightFoot" type="Marker3D" parent="GeneralSkeleton" index="9"]
-transform = Transform3D(-1, 0, 0, 0, -2.22045e-16, 1, 0, 1, 2.22045e-16, -0.0594599, 0.0990702, -0.0187461)
+transform = Transform3D(-1, 0, 0, 0, -2.22045e-16, 1, 0, 1, 2.22045e-16, -0.51873, 0.185088, -0.0187461)
 
 [node name="anim" parent="." index="2"]
 libraries = {

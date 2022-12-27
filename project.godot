@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Test ManyBoneIK3D Game Project"
-run/main_scene="res://SK_black_cat_winter/666344209642962256.tscn"
+run/main_scene="res://SK_black_cat_christmas/scenes/stress_test.tscn"
 config/features=PackedStringArray("4.0", "Double Precision")
 config/icon="res://icon.png"
 
@@ -31,7 +31,7 @@ file_logging/enable_file_logging=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Godot-MToon-Shader/plugin.cfg", "res://addons/vrm/plugin.cfg")
+enabled=PackedStringArray("res://addons/vrm/plugin.cfg")
 
 [gui]
 
