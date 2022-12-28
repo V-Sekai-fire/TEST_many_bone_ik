@@ -29,16 +29,16 @@ func _input(event):
 		elif event.button_mask == MOUSE_BUTTON_LEFT and not event.pressed:
 			dragging = false
 
-	if event is InputEventMouseMotion and event.button_mask == MOUSE_BUTTON_RIGHT and dragging:
+	if event is InputEventMouseMotion and event.button_mask == MOUSE_BUTTON_LEFT and dragging:
 		var motion = event.relative * 0.0008
 		var pointer : Node3D = $SubViewportContainer/SubViewport/Pointer
 		pointer.global_transform.origin = pointer.global_transform.origin + Vector3(motion.x, -motion.y, 0.0)
 
-	if event is InputEventMouseMotion and event.button_mask == MOUSE_BUTTON_LEFT and dragging:
+	if event is InputEventMouseMotion and event.button_mask == MOUSE_BUTTON_RIGHT and dragging:
 		var motion = event.relative * 0.0005
 		var pointer : Node3D = $SubViewportContainer/SubViewport/Pointer
 		var viewport : Transform3D = $SubViewportContainer/SubViewport/Camera3D.get_camera_transform()
-		var snapped_nodes : Array = lasso_db.calc_top_two_snapping_power(pointer.global_transform, pointer, 0, 1.0, false)
+		var snapped_nodes : Array = lasso_db.calc_top_two_snapping_power(pointer.global_transform, pointer, 0, 0, false)
 		for snapped_point in snapped_nodes:
 			var snapped_node = snapped_point.get_origin()
 			$SubViewportContainer/SubViewport/Label3D.text = snapped_node.get_name()
