@@ -53,7 +53,7 @@ func _run():
 				new_ik.set_pin_weight(bone_i, 1)
 			if bone_name in ["LeftFoot", "RightFoot"]:
 				new_ik.set_pin_passthrough_factor(bone_i, 0)
-			if not bone_name in ["Hips", "Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand",]:
+			if not bone_name in ["Hips", "Head", "LeftLowerLeg", "LeftFoot", "RightLowerLeg", "RightFoot", "LeftHand", "LeftLowerArm", "RightLowerArm", "RightHand",]:
 				continue
 		var node_3d : BoneAttachment3D = BoneAttachment3D.new()
 		node_3d.name = bone_name
