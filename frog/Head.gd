@@ -1,1 +1,1 @@
-extends "res://markers.gd"
+extends "res://frog/markers.gd"
