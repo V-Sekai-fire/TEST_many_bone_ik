@@ -21,13 +21,29 @@ _global_script_class_icons={
 [application]
 
 config/name="Test ManyBoneIK3D Game Project"
-run/main_scene="res://SK_black_cat_christmas/scenes/stress_test.tscn"
+run/main_scene="res://frog/sub_viewport.tscn"
 config/features=PackedStringArray("4.0", "Double Precision")
 config/icon="res://icon.png"
 
 [debug]
 
 file_logging/enable_file_logging=true
+
+[display]
+
+window/size/mode=2
+window/size/resizable=false
+window/size/borderless=true
+window/size/always_on_top=true
+window/size/transparent=true
+window/size/extend_to_title=true
+window/size/no_focus=true
+window/per_pixel_transparency/allowed=true
+window/stretch/aspect="expand"
+
+[editor]
+
+movie_writer/fps=20
 
 [editor_plugins]
 
@@ -43,5 +59,6 @@ theme/default_font_generate_mipmaps=true
 textures/default_filters/anisotropic_filtering_level=4
 anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/msaa_3d=1
+viewport/transparent_background=true
 occlusion_culling/use_occlusion_culling=true
 environment/default_environment="res://default_env.tres"
