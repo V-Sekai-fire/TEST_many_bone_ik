@@ -5,16 +5,16 @@
 [node name="many_bone_ik_test_rig" instance=ExtResource("1_w3sxp")]
 
 [node name="Skeleton3D" parent="Simple_Test_Rig_Armature" index="0"]
-bones/0/rotation = Quaternion(2.37093e-07, 6.37384e-08, 1.90203e-14, 1)
-bones/1/position = Vector3(-1.626e-16, 0.600001, -2.84217e-14)
-bones/1/rotation = Quaternion(0.17307, 0.00242753, -0.132814, 0.97591)
-bones/2/position = Vector3(-2.77162e-06, 0.599987, -5.23031e-06)
-bones/2/rotation = Quaternion(0.0705382, 0.184658, 0.124836, 0.972287)
+bones/0/position = Vector3(0.0708111, 0.0163003, 0.0746488)
+bones/0/rotation = Quaternion(-0.0836081, 7.73939e-08, 2.32803e-08, 0.996499)
+bones/1/position = Vector3(-1.64658e-06, 0.59997, -1.10492e-05)
+bones/1/rotation = Quaternion(0.0669596, -0.00258024, 0.0577879, 0.996077)
+bones/2/position = Vector3(-1.65403e-06, 0.600275, -9.70997e-06)
+bones/2/rotation = Quaternion(0.00117103, -0.00167909, -0.057708, 0.998331)
 
 [node name="ManyBoneIK3D" type="ManyBoneIK3D" parent="Simple_Test_Rig_Armature/Skeleton3D" index="1"]
 iterations_per_frame = 10.0
 default_damp = 0.785398
-ui_selected_bone = 2
 filter_bones = [&"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightToes", &"LeftToes", &"RightEye", &"LeftEye"]
 pin_count = 3
 pins/0/bone_name = "Bone_01"
@@ -39,23 +39,23 @@ constraints/0/twist_range = 6.28318
 constraints/0/twist_current = 1.0
 constraints/0/kusudama_limit_cone_count = 0
 constraints/0/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/0/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/0/bone_direction = Transform3D(1, 1.86286e-16, 0, -1.86293e-16, 1, -5.68434e-14, 0, 5.68434e-14, 1, 0, 0, 0)
+constraints/0/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0708111, 0.0163003, 0.0746488)
+constraints/0/bone_direction = Transform3D(1, 6.6814e-17, 0, -6.68072e-17, 1, -2.84217e-14, 0, 2.84217e-14, 1, 0, 0, 0)
 constraints/1/bone_name = &"Bone_02"
 constraints/1/twist_from = 0.0
-constraints/1/twist_range = 0.0872665
+constraints/1/twist_range = 6.28318
 constraints/1/twist_current = 1.0
 constraints/1/kusudama_limit_cone_count = 0
-constraints/1/kusudama_twist = Transform3D(0.997645, 0.0684568, -0.00432102, -0.0684568, 0.989717, -0.125592, -0.00432102, 0.125592, 0.992073, -1.11785e-16, 0.600001, -2.84217e-14)
-constraints/1/kusudama_orientation = Transform3D(1, -6.77626e-21, 0, 0, 1, 0, 0, 0, 1, -1.626e-16, 0.600001, -2.84217e-14)
-constraints/1/bone_direction = Transform3D(1, -8.04197e-07, 0, 8.11182e-07, 1, -1.46031e-06, 1.86265e-09, 1.47521e-06, 1, 0, 0, 0)
+constraints/1/kusudama_twist = Transform3D(1, 1.79601e-09, 6.03961e-12, -1.79601e-09, 0.999977, 0.00673098, 6.03961e-12, -0.00673098, 0.999977, -4.00782e-17, 0.600001, -2.84217e-14)
+constraints/1/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64658e-06, 0.59997, -1.10492e-05)
+constraints/1/bone_direction = Transform3D(1, -6.6902e-13, 1.42109e-14, 6.69131e-13, 1, -9.83011e-07, 0, 9.83011e-07, 1, 0, 0, 0)
 constraints/2/bone_name = &"Bone_03"
-constraints/2/twist_from = 0.493928
-constraints/2/twist_range = 0.0872665
+constraints/2/twist_from = 0.0
+constraints/2/twist_range = 6.28318
 constraints/2/twist_current = 1.0
 constraints/2/kusudama_limit_cone_count = 0
-constraints/2/kusudama_twist = Transform3D(0.999432, -0.0291028, 0.0169786, 0.0291028, 0.491716, -0.870269, 0.0169787, 0.870269, 0.492283, 4.95464e-07, 0.60005, -8.9407e-07)
-constraints/2/kusudama_orientation = Transform3D(1, 5.58794e-09, 1.86265e-09, 5.12227e-09, 1, 0, 1.86265e-09, 0, 1, -2.77162e-06, 0.599987, -5.23031e-06)
+constraints/2/kusudama_twist = Transform3D(1, -9.38913e-08, -5.83437e-09, 9.38913e-08, 0.992307, 0.123802, -5.83444e-09, -0.123802, 0.992307, 4.01526e-13, 0.600066, -5.90924e-07)
+constraints/2/kusudama_orientation = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, 0, 0, 1, -1.65403e-06, 0.600275, -9.70997e-06)
 constraints/2/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bone_count = 3
 bone/0/bone_name = "Bone_01"
@@ -66,10 +66,10 @@ bone/2/bone_name = "Bone_03"
 bone/2/damp = 3.14159
 
 [node name="Bone_01" type="Marker3D" parent="Simple_Test_Rig_Armature/Skeleton3D/ManyBoneIK3D" index="0"]
-transform = Transform3D(1, -7.81678e-15, 1.27477e-07, 6.82644e-14, 1, -4.74185e-07, -1.27477e-07, 4.74185e-07, 1, 0, 0, 0)
+transform = Transform3D(1, -2.12417e-08, 1.25695e-07, 7.10543e-14, 0.98602, 0.166631, -1.27477e-07, -0.166631, 0.98602, 0.0708111, 0.0163003, 0.0746488)
 
 [node name="Bone_02" type="Marker3D" parent="Simple_Test_Rig_Armature/Skeleton3D/ManyBoneIK3D" index="1"]
-transform = Transform3D(1, 4.99546e-08, 1.17281e-07, 7.10543e-14, 0.92002, -0.391872, -1.27477e-07, 0.391872, 0.92002, -4.69008e-15, 0.600001, 2.84512e-07)
+transform = Transform3D(1, 1.92493e-08, 1.26016e-07, 6.75016e-14, 0.988534, -0.151002, -1.27477e-07, 0.151002, 0.988534, 0.0259003, 0.594619, -0.0371016)
 
 [node name="Bone_03" type="Marker3D" parent="Simple_Test_Rig_Armature/Skeleton3D/ManyBoneIK3D" index="2"]
-transform = Transform3D(0.864915, 0.501918, 1.04308e-07, -0.409036, 0.704859, -0.579538, -0.290881, 0.501251, 0.814946, 2.2597e-08, 1.05342, 0.177264)
+transform = Transform3D(1, -4.90916e-09, 1.27382e-07, 6.75016e-14, 0.999258, 0.0385094, -1.27477e-07, -0.0385094, 0.999258, -5.91896e-09, 1.19821, -0.0464309)
