@@ -31,13 +31,15 @@ func _run():
 		var bone_name : String = humanoid_profile.get_bone_name(bone_i)
 		humanoid_bones.push_back(bone_name)
 	var is_humanoid : bool = false
+	var is_filtering : bool = true
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if bone_name in humanoid_bones:
 			is_humanoid = true
-		else:
+		elif is_filtering and is_humanoid:
 			new_ik.filter_bones.push_back(bone_name)
-	new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
+	if is_filtering:
+		new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
 		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
 		"RightToes", "LeftToes",
 		"RightEye", "LeftEye"])
@@ -53,7 +55,7 @@ func _run():
 				new_ik.set_pin_weight(bone_i, 1)
 			if bone_name in ["LeftFoot", "RightFoot"]:
 				new_ik.set_pin_passthrough_factor(bone_i, 0)
-			if not bone_name in ["Hips", "Head", "LeftLowerLeg", "LeftFoot", "RightLowerLeg", "RightFoot", "LeftHand", "LeftLowerArm", "RightLowerArm", "RightHand",]:
+			if not bone_name in ["Hips", "Head", "LeftFoot", "RightFoot", "RightLowerArm", "RightHand",]:
 				continue
 		var node_3d : BoneAttachment3D = BoneAttachment3D.new()
 		node_3d.name = bone_name
@@ -153,7 +155,7 @@ func _run():
 		"RightLowerLeg":  [
 			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
 			{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
-			
+
 		],
 		"LeftFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
 		"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],

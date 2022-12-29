@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://q6dplxqrb08h"]
+[gd_scene load_steps=26 format=3]
 
 [ext_resource type="PackedScene" uid="uid://b56itd1mp2pur" path="res://SK_black_cat_christmas/Black Cat Fire Christmas 2022.vrm" id="1_n3tiq"]
+
 
 [sub_resource type="Animation" id="Animation_4amfj"]
 resource_name = "Chat Anim"
