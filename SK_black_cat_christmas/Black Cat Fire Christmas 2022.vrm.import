@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cw14sp3jlbjwa"
+uid="uid://b56itd1mp2pur"
 path="res://.godot/imported/Black Cat Fire Christmas 2022.vrm-1fcde03a6457fec2cfc444b8bbb25714.scn"
 
 [deps]
@@ -25,7 +25,7 @@ meshes/lightmap_texel_size=0.2
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=true
+animation/trimming=false
 import_script/path=""
 _subresources={
 "meshes": {
@@ -48,16 +48,6 @@ _subresources={
 "save_to_file/enabled": false,
 "save_to_file/make_streamable": "",
 "save_to_file/path": ""
-}
-},
-"nodes": {
-"PATH:GeneralSkeleton": {
-"retarget/bone_map": null,
-"retarget/realtime_retarget/profile": Object(RetargetProfileLocalFingersGlobalOthers,"resource_local_to_scene":false,"resource_name":"","label_for_animation_name":"Loc-Fingers Glb-Others","global_transform_target_size":26,"local_transform_target_size":30,"absolute_transform_target_size":0,"script":null)
-,
-"retarget/remove_tracks/except_bone_transform": true,
-"retarget/remove_tracks/unmapped_bones": true,
-"retarget/rest_fixer/fix_silhouette/enable": true
 }
 }
 }

@@ -21,7 +21,7 @@ func _run():
 	new_ik.skeleton_node_path = ".."
 	new_ik.owner = root
 	new_ik.iterations_per_frame = 10
-	new_ik.default_damp = deg_to_rad(10)
+	new_ik.default_damp = deg_to_rad(45)
 	new_ik.visible = false
 	new_ik.constraint_mode = old_constraint_node
 	skeleton.reset_bone_poses()
@@ -46,9 +46,16 @@ func _run():
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if is_humanoid:
+			if bone_name in ["Hips", "Chest", "UpperChest"]:
+				new_ik.set_pin_weight(bone_i, 1)
+			if bone_name.begins_with("Spine"):
+				new_ik.set_pin_weight(bone_i, 0.2)
+			if bone_name in ["Hips"]:
+				new_ik.set_pin_passthrough_factor(bone_i, 1)
+				new_ik.set_pin_weight(bone_i, 1)
 			if bone_name in ["LeftFoot", "RightFoot"]:
-				new_ik.set_pin_passthrough_factor(bone_i, 0.2)
-			if not bone_name in ["Root", "Hips", "Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand",]:
+				new_ik.set_pin_passthrough_factor(bone_i, 0)
+			if not bone_name in ["Root", "Hips", "Head", "LeftFoot", "RightFoot", "RightLowerArm", "RightHand",]:
 				continue
 		var node_3d : BoneAttachment3D = BoneAttachment3D.new()
 		node_3d.name = bone_name
@@ -60,10 +67,10 @@ func _run():
 		if bone_name in ["Head"]:
 			# Move slightly higher to avoid the crunching into the body effect.
 			node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
-		elif bone_name in ["LeftHand"]:
+		if bone_name in ["LeftHand"]:
 			# Move slightly higher to avoid the crunching into the body effect.
 			node_3d.transform.origin = node_3d.transform.origin + Vector3(0.1, 0, 0)
-		elif bone_name in ["RightHand"]:
+		if bone_name in ["RightHand"]:
 			# Move slightly higher to avoid the crunching into the body effect.
 			node_3d.transform.origin = node_3d.transform.origin - Vector3(0.1, 0, 0)
 		node_3d.owner = root
@@ -73,8 +80,6 @@ func _run():
 		marker_3d.name = bone_name
 		marker_3d.global_transform = node_global_transform
 		node_3d.replace_by(marker_3d, true)
-		if bone_name in ["LeftFoot", "RightFoot"]:
-			marker_3d.global_transform.basis = Basis.from_euler(Vector3(0, PI, 0))
 		
 	var bone_name_from_to_twist : Dictionary = {
 		# Spine
