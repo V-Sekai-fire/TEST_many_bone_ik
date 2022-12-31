@@ -50,20 +50,26 @@ func _run():
 					"Neck": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
 					"Head": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
 			},
-
 			"bone_name_from_to_twist": {
-			# Spine
-			"Root": Vector2(deg_to_rad(371.3), deg_to_rad(33.4)),
-			"Hips": Vector2(deg_to_rad(340.1), deg_to_rad(25)),
-			"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
-			"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
-			"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
-			# Head
-			"Head": Vector2(deg_to_rad(0), deg_to_rad(10)),
+				# Spine
+				"Root": Vector2(deg_to_rad(371.3), deg_to_rad(33.4)),
+				"Hips": Vector2(deg_to_rad(340.1), deg_to_rad(25)),
+				"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
+				"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
+				"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
+				# Head
+				"Head": Vector2(deg_to_rad(0), deg_to_rad(10)),
+			}
 		}
-	}
 	for bone_i in skeleton.get_bone_count():
-		var bone_name : String = skeleton.get_bone_name(bone_i)
+		var bone_name : String = skeleton.get_bone_name(bone_i)		
+		if not bone_name in [
+				"Root",
+				"Hips",
+				"LeftFoot",
+				"RightFoot"
+			]:
+				continue
 		if bone_name in humanoid_bones:
 			is_humanoid = true
 		elif is_filtering and is_humanoid:
@@ -71,21 +77,16 @@ func _run():
 		if is_filtering:
 			new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
 			"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
-			"LeftShoulder", "RightShoulder",
-			"LeftUpperLeg", "LeftUpperLeg",
+#			"LeftShoulder", "RightShoulder",
+#			"LeftUpperLeg", "LeftUpperLeg",
+			"RightEye", "LeftEye",
 			"RightToes", "LeftToes",
-			"RightEye", "LeftEye"])
+			])
 		if is_humanoid:
 			if bone_name in ["Root", "Hips"]:
 				new_ik.set_pin_passthrough_factor(bone_i, 0)
-			if not bone_name in [
-					"Root",
-					"Hips",
-					"Head"
-				]:
-					return
-			tune_bone(new_ik, skeleton, bone_name, bone_i, config["bone_name_cones"], config["bone_name_from_to_twist"])
-		
+
+		tune_bone(new_ik, skeleton, bone_name, bone_i, config["bone_name_cones"], config["bone_name_from_to_twist"])
 		config =  {
 		"bone_name_cones": {
 				"Root": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(2)}],
@@ -182,6 +183,8 @@ func tune_bone(new_ik, skeleton, bone_name, bone_i, bone_name_cones, bone_name_f
 	if bone_name in ["RightHand"]:
 		# Move slightly higher to avoid the crunching into the body effect.
 		node_3d.transform.origin = node_3d.transform.origin - Vector3(0.1, 0, 0)
+	if bone_name in ["LeftFoot", "RightFoot"]:
+		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, PI, 0))
 	node_3d.owner = new_ik.owner
 	new_ik.set_pin_nodepath(bone_i, bone_name)
 	var node_global_transform = node_3d.global_transform
@@ -189,7 +192,6 @@ func tune_bone(new_ik, skeleton, bone_name, bone_i, bone_name_cones, bone_name_f
 	marker_3d.name = bone_name
 	marker_3d.global_transform = node_global_transform
 	node_3d.replace_by(marker_3d, true)
-
 	var keys : Array = bone_name_from_to_twist.keys()
 	if keys.has(bone_name):
 		var twist : Vector2 = bone_name_from_to_twist[bone_name]
