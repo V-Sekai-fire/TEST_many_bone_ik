@@ -62,29 +62,35 @@ func _run():
 			}
 		}
 	for bone_i in skeleton.get_bone_count():
-		var bone_name : String = skeleton.get_bone_name(bone_i)		
-		if not bone_name in [
-				"Root",
-				"Hips",
-				"LeftFoot",
-				"RightFoot"
-			]:
-				continue
+		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if bone_name in humanoid_bones:
 			is_humanoid = true
-		elif is_filtering and is_humanoid:
-			new_ik.filter_bones.push_back(bone_name)
+			continue
 		if is_filtering:
-			new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
-			"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
+			new_ik.filter_bones.push_back(bone_name)
+	if is_filtering and is_humanoid:
+		new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
+		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
 #			"LeftShoulder", "RightShoulder",
 #			"LeftUpperLeg", "LeftUpperLeg",
-			"RightEye", "LeftEye",
-			"RightToes", "LeftToes",
-			])
+		"RightEye", "LeftEye",
+		"RightToes", "LeftToes",
+		])
+	for bone_i in skeleton.get_bone_count():
+		var bone_name : String = skeleton.get_bone_name(bone_i)
+		if is_humanoid and not bone_name in [
+				"Root",
+				"Hips",
+				"Head",
+				"LeftFoot",
+				"RightFoot",
+#				"LeftHand",
+#				"RightHand",
+			]:
+				continue
 		if is_humanoid:
 			if bone_name in ["Root", "Hips"]:
-				new_ik.set_pin_passthrough_factor(bone_i, 0)
+				new_ik.set_pin_passthrough_factor(bone_i, 0.2)
 
 		tune_bone(new_ik, skeleton, bone_name, bone_i, config["bone_name_cones"], config["bone_name_from_to_twist"])
 		config =  {
@@ -166,7 +172,7 @@ func _run():
 		
 	new_ik.visible = true
 
-func tune_bone(new_ik, skeleton, bone_name, bone_i, bone_name_cones, bone_name_from_to_twist):
+func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_name, bone_i, bone_name_cones, bone_name_from_to_twist):
 	var node_3d : BoneAttachment3D = BoneAttachment3D.new()
 	node_3d.name = bone_name
 	node_3d.bone_name = bone_name
