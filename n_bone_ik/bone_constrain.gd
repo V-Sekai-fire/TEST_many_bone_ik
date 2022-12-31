@@ -40,27 +40,7 @@ func _run():
 	var is_humanoid : bool = false
 	var is_filtering : bool = true
 
-	var config : Dictionary = {
-			"bone_name_cones": {
-					"Root": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(2)}],
-					"Hips": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
-					"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
-					"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
-					"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
-					"Neck": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
-					"Head": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
-			},
-			"bone_name_from_to_twist": {
-				# Spine
-				"Root": Vector2(deg_to_rad(371.3), deg_to_rad(33.4)),
-				"Hips": Vector2(deg_to_rad(340.1), deg_to_rad(25)),
-				"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
-				"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
-				"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
-				# Head
-				"Head": Vector2(deg_to_rad(0), deg_to_rad(10)),
-			}
-		}
+	var config : Dictionary = {}
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if bone_name in humanoid_bones:
@@ -84,17 +64,16 @@ func _run():
 				"Head",
 				"LeftFoot",
 				"RightFoot",
-#				"LeftHand",
-#				"RightHand",
+				"LeftHand",
+				"RightHand",
 			]:
 				continue
 		if is_humanoid:
 			if bone_name in ["Root", "Hips"]:
 				new_ik.set_pin_passthrough_factor(bone_i, 0.2)
 
-		tune_bone(new_ik, skeleton, bone_name, bone_i, config["bone_name_cones"], config["bone_name_from_to_twist"])
 		config =  {
-		"bone_name_cones": {
+			"bone_name_cones": {
 				"Root": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(2)}],
 				"Hips": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
 				"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
@@ -124,10 +103,10 @@ func _run():
 					{"center": Vector3(1, 0, 0), "radius": deg_to_rad(20)},
 					{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(20)},
 				],
-		#		"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
-		#		"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
-		#		"LeftUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
-		#		"RightUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
+				"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
+				"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
+				"LeftUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
+				"RightUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
 				"LeftLowerLeg":  [
 					{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
 					{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
@@ -137,39 +116,39 @@ func _run():
 					{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
 		
 				],
-		#		"LeftFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
-		#		"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
+				"LeftFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
+				"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
 			},
 
 		"bone_name_from_to_twist": {
-		# Spine
-		"Root": Vector2(deg_to_rad(371.3), deg_to_rad(33.4)),
-		"Hips": Vector2(deg_to_rad(340.1), deg_to_rad(25)),
-		"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
-		"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
-		"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
-		# Head
-		"Head": Vector2(deg_to_rad(0), deg_to_rad(10)),
-		"Neck": Vector2(deg_to_rad(356), deg_to_rad(10)),
-		# Arms
-		"LeftShoulder": Vector2(deg_to_rad(250), deg_to_rad(-40)),
-		"RightShoulder": Vector2(deg_to_rad(77), deg_to_rad(40)),
-		"LeftUpperArm": Vector2(deg_to_rad(-120), deg_to_rad(-60)),
-		"RightUpperArm": Vector2(deg_to_rad(120), deg_to_rad(60)),
-		"LeftLowerArm": Vector2(deg_to_rad(-75), deg_to_rad(-100)),
-		"RightLowerArm": Vector2(deg_to_rad(75), deg_to_rad(100)),
-		"LeftHand": Vector2(deg_to_rad(-275), deg_to_rad(-20)),
-		"RightHand": Vector2(deg_to_rad(275), deg_to_rad(20)),
-		# Legs
-		"LeftUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
-		"RightUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
-		"LeftLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(20)),
-		"RightLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(20)),
-		"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
-		"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
+			# Spine
+			"Root": Vector2(deg_to_rad(371.3), deg_to_rad(33.4)),
+			"Hips": Vector2(deg_to_rad(340.1), deg_to_rad(25)),
+			"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
+			"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
+			"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
+			# Head
+			"Head": Vector2(deg_to_rad(0), deg_to_rad(10)),
+			"Neck": Vector2(deg_to_rad(356), deg_to_rad(10)),
+			# Arms
+			"LeftShoulder": Vector2(deg_to_rad(250), deg_to_rad(-40)),
+			"RightShoulder": Vector2(deg_to_rad(77), deg_to_rad(40)),
+			"LeftUpperArm": Vector2(deg_to_rad(-120), deg_to_rad(-60)),
+			"RightUpperArm": Vector2(deg_to_rad(120), deg_to_rad(60)),
+			"LeftLowerArm": Vector2(deg_to_rad(-75), deg_to_rad(-100)),
+			"RightLowerArm": Vector2(deg_to_rad(75), deg_to_rad(100)),
+			"LeftHand": Vector2(deg_to_rad(-275), deg_to_rad(-20)),
+			"RightHand": Vector2(deg_to_rad(275), deg_to_rad(20)),
+			# Legs
+			"LeftUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
+			"RightUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
+			"LeftLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(20)),
+			"RightLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(20)),
+			"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
+			"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
+		}
 	}
-	}
-		
+		tune_bone(new_ik, skeleton, bone_name, bone_i, config["bone_name_cones"], config["bone_name_from_to_twist"])
 	new_ik.visible = true
 
 func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_name, bone_i, bone_name_cones, bone_name_from_to_twist):
