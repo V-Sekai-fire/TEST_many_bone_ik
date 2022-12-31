@@ -10,9 +10,7 @@ func _run():
 		if property["name"] == "update_in_editor":
 			root.set("update_in_editor", true)
 	var iks : Array[Node] = root.find_children("*", "ManyBoneIK3D")
-	var old_constraint_node = false
 	for ik in iks:
-		old_constraint_node = ik.constraint_mode or old_constraint_node
 		ik.free()
 	var new_ik : ManyBoneIK3D = ManyBoneIK3D.new()
 	var skeletons : Array[Node] = root.find_children("*", "Skeleton3D")
@@ -21,9 +19,9 @@ func _run():
 	new_ik.skeleton_node_path = ".."
 	new_ik.owner = root
 	new_ik.iterations_per_frame = 10
-	new_ik.default_damp = deg_to_rad(45)
+	new_ik.default_damp = deg_to_rad(10)
 	new_ik.visible = false
-	new_ik.constraint_mode = old_constraint_node
+	new_ik.constraint_mode = true
 	skeleton.reset_bone_poses()
 	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
 	var humanoid_bones : PackedStringArray = []
@@ -40,22 +38,13 @@ func _run():
 			new_ik.filter_bones.push_back(bone_name)
 	if is_filtering:
 		new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
-		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
-		"RightToes", "LeftToes",
+		"RightIndexProximal", "RightLittleProximal", "RightThumbMetacarpal",
+		"RightToes", "LeftToes","RightMiddleProximal", "RightRingProximal", 
 		"RightEye", "LeftEye"])
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if is_humanoid:
-			if bone_name in ["Hips", "Chest", "UpperChest"]:
-				new_ik.set_pin_weight(bone_i, 1)
-			if bone_name.begins_with("Spine"):
-				new_ik.set_pin_weight(bone_i, 0.2)
-			if bone_name in ["Hips"]:
-				new_ik.set_pin_passthrough_factor(bone_i, 1)
-				new_ik.set_pin_weight(bone_i, 1)
-			if bone_name in ["LeftFoot", "RightFoot"]:
-				new_ik.set_pin_passthrough_factor(bone_i, 0)
-			if not bone_name in ["Root", "Hips", "Head", "LeftFoot", "RightFoot", "RightLowerArm", "RightHand",]:
+			if not bone_name in ["Root", "Hips", "Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand",]:
 				continue
 		var node_3d : BoneAttachment3D = BoneAttachment3D.new()
 		node_3d.name = bone_name
@@ -121,7 +110,7 @@ func _run():
 		"Neck": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
 		"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
 		"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
-		"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
+		"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
 		"LeftShoulder": [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(15)}],
 		"RightShoulder": [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(15)}],
 		"LeftUpperArm":  [
