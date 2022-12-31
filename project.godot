@@ -22,7 +22,7 @@ _global_script_class_icons={
 
 config/name="Test ManyBoneIK3D Game Project"
 run/main_scene="res://frog/sub_viewport.tscn"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.0", "Double Precision")
 config/icon="res://icon.png"
 
 [debug]

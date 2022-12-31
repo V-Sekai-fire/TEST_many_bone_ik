@@ -1,11 +1,18 @@
 @tool
 extends EditorScript
 
+# The order of tuning human bodies.
+# 0. Root
+# 1. Root to Hips
+# 2. Root to Head
+# 3. UpperChest to Hands
+# 4. Hips to Legs
+
 func _run():
 	var root : Node3D = get_editor_interface().get_edited_scene_root()
 	if root == null:
 		return
-	var properties : Array[Dictionary] = root.get_property_list() 
+	var properties : Array[Dictionary] = root.get_property_list()
 	for property in properties:
 		if property["name"] == "update_in_editor":
 			root.set("update_in_editor", true)
@@ -20,8 +27,8 @@ func _run():
 	skeleton.add_child(new_ik, true)
 	new_ik.skeleton_node_path = ".."
 	new_ik.owner = root
-	new_ik.iterations_per_frame = 10
-	new_ik.default_damp = deg_to_rad(45)
+	new_ik.iterations_per_frame = 15
+	new_ik.default_damp = deg_to_rad(10)
 	new_ik.visible = false
 	new_ik.constraint_mode = old_constraint_node
 	skeleton.reset_bone_poses()
@@ -32,61 +39,107 @@ func _run():
 		humanoid_bones.push_back(bone_name)
 	var is_humanoid : bool = false
 	var is_filtering : bool = true
+
+	var config : Dictionary = {
+			"bone_name_cones": {
+					"Root": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(2)}],
+					"Hips": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
+					"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
+					"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
+					"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
+					"Neck": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
+					"Head": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
+			},
+
+			"bone_name_from_to_twist": {
+			# Spine
+			"Root": Vector2(deg_to_rad(371.3), deg_to_rad(33.4)),
+			"Hips": Vector2(deg_to_rad(340.1), deg_to_rad(25)),
+			"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
+			"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
+			"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
+			# Head
+			"Head": Vector2(deg_to_rad(0), deg_to_rad(10)),
+		}
+	}
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		if bone_name in humanoid_bones:
 			is_humanoid = true
 		elif is_filtering and is_humanoid:
 			new_ik.filter_bones.push_back(bone_name)
-	if is_filtering:
-		new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
-		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
-		"RightToes", "LeftToes",
-		"RightEye", "LeftEye"])
-	for bone_i in skeleton.get_bone_count():
-		var bone_name : String = skeleton.get_bone_name(bone_i)
+		if is_filtering:
+			new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
+			"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
+			"LeftShoulder", "RightShoulder",
+			"LeftUpperLeg", "LeftUpperLeg",
+			"RightToes", "LeftToes",
+			"RightEye", "LeftEye"])
 		if is_humanoid:
-			if bone_name in ["Hips", "Chest", "UpperChest"]:
-				new_ik.set_pin_weight(bone_i, 1)
-			if bone_name.begins_with("Spine"):
-				new_ik.set_pin_weight(bone_i, 0.2)
-			if bone_name in ["Hips"]:
-				new_ik.set_pin_passthrough_factor(bone_i, 1)
-				new_ik.set_pin_weight(bone_i, 1)
-			if bone_name in ["LeftFoot", "RightFoot"]:
+			if bone_name in ["Root", "Hips"]:
 				new_ik.set_pin_passthrough_factor(bone_i, 0)
-			if not bone_name in ["Root", "Hips", "Head", "LeftFoot", "RightFoot", "RightLowerArm", "RightHand",]:
-				continue
-		var node_3d : BoneAttachment3D = BoneAttachment3D.new()
-		node_3d.name = bone_name
-		node_3d.bone_name = bone_name
-		node_3d.bone_idx = bone_i
-		node_3d.set_use_external_skeleton (true)
-		node_3d.set_external_skeleton("../" + str(new_ik.get_path_to(skeleton)))
-		new_ik.add_child(node_3d, true)
-		if bone_name in ["Head"]:
-			# Move slightly higher to avoid the crunching into the body effect.
-			node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
-		if bone_name in ["LeftHand"]:
-			# Move slightly higher to avoid the crunching into the body effect.
-			node_3d.transform.origin = node_3d.transform.origin + Vector3(0.1, 0, 0)
-		if bone_name in ["RightHand"]:
-			# Move slightly higher to avoid the crunching into the body effect.
-			node_3d.transform.origin = node_3d.transform.origin - Vector3(0.1, 0, 0)
-		node_3d.owner = root
-		new_ik.set_pin_nodepath(bone_i, bone_name)
-		var node_global_transform = node_3d.global_transform
-		var marker_3d : Marker3D = Marker3D.new()
-		marker_3d.name = bone_name
-		marker_3d.global_transform = node_global_transform
-		node_3d.replace_by(marker_3d, true)
+			if not bone_name in [
+					"Root",
+					"Hips",
+					"Head"
+				]:
+					return
+			tune_bone(new_ik, skeleton, bone_name, bone_i, config["bone_name_cones"], config["bone_name_from_to_twist"])
 		
-	var bone_name_from_to_twist : Dictionary = {
+		config =  {
+		"bone_name_cones": {
+				"Root": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(2)}],
+				"Hips": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
+				"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
+				"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
+				"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
+				"Neck": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
+				"Head": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
+				"LeftShoulder": [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(15)}],
+				"RightShoulder": [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(15)}],
+				"LeftUpperArm":  [
+					{"center": Vector3(1, 1, 1), "radius": deg_to_rad(50)},
+					{"center": Vector3(2, 0.5, -2), "radius": deg_to_rad(65)},
+					{"center": Vector3(0, 1, -1), "radius": deg_to_rad(20)},
+				],
+				"RightUpperArm":  [
+				{"center": Vector3(0, 1, -0.5), "radius": deg_to_rad(50)},
+					{"center": Vector3(-2, 0.5, -0.2), "radius": deg_to_rad(65)},
+				{"center": Vector3(0, 0.2, 1), "radius": deg_to_rad(20)},
+				],
+				"LeftLowerArm":  [
+					{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)},
+					{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(20)},
+					{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(20)},
+				],
+				"RightLowerArm":  [
+					{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)},
+					{"center": Vector3(1, 0, 0), "radius": deg_to_rad(20)},
+					{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(20)},
+				],
+		#		"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
+		#		"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
+		#		"LeftUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
+		#		"RightUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
+				"LeftLowerLeg":  [
+					{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
+					{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
+				],
+				"RightLowerLeg":  [
+				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
+					{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
+		
+				],
+		#		"LeftFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
+		#		"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
+			},
+
+		"bone_name_from_to_twist": {
 		# Spine
 		"Root": Vector2(deg_to_rad(371.3), deg_to_rad(33.4)),
 		"Hips": Vector2(deg_to_rad(340.1), deg_to_rad(25)),
 		"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
-		"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),		
+		"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
 		"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
 		# Head
 		"Head": Vector2(deg_to_rad(0), deg_to_rad(10)),
@@ -108,70 +161,47 @@ func _run():
 		"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
 		"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
 	}
-	for bone_i in skeleton.get_bone_count():
-		var bone_name : String = skeleton.get_bone_name(bone_i)
-		var keys : Array = bone_name_from_to_twist.keys()
-		if keys.has(bone_name):
-			var twist : Vector2 = bone_name_from_to_twist[bone_name]
-			new_ik.set_kusudama_twist(bone_i, twist)
-
-	var bone_name_cones : Dictionary = {
-		"Head": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
-		"Root": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(2)}],
-		"Neck": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
-		"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
-		"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
-		"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
-		"LeftShoulder": [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(15)}],
-		"RightShoulder": [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(15)}],
-		"LeftUpperArm":  [
-			{"center": Vector3(1, 1, 1), "radius": deg_to_rad(50)},
-			{"center": Vector3(2, 0.5, -2), "radius": deg_to_rad(65)},
-			{"center": Vector3(0, 1, -1), "radius": deg_to_rad(20)},
-		],
-		"RightUpperArm":  [
-			{"center": Vector3(0, 1, -0.5), "radius": deg_to_rad(50)},
-			{"center": Vector3(-2, 0.5, -0.2), "radius": deg_to_rad(65)},
-			{"center": Vector3(0, 0.2, 1), "radius": deg_to_rad(20)},
-		],
-		"LeftLowerArm":  [
-			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)},
-			{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(20)},
-			{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(20)},
-		],
-		"RightLowerArm":  [
-			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)},
-			{"center": Vector3(1, 0, 0), "radius": deg_to_rad(20)},
-			{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(20)},
-		],
-		"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
-		"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
-		"LeftUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
-		"RightUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
-		"LeftLowerLeg":  [
-			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
-			{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
-		],
-		"RightLowerLeg":  [
-			{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
-			{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
-
-		],
-		"LeftFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
-		"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
 	}
-
-	for bone_i in skeleton.get_bone_count():
-		var bone_name : String = skeleton.get_bone_name(bone_i)
-		var keys : Array = bone_name_cones.keys()
-		if keys.has(bone_name):
-			var cones : Array = bone_name_cones[bone_name]
-			new_ik.set_kusudama_limit_cone_count(bone_i, cones.size())
-			for cone_i in range(cones.size()):
-				var cone : Dictionary = cones[cone_i]
-				if cone.keys().has("center"):
-					new_ik.set_kusudama_limit_cone_center(bone_i, cone_i, cone["center"])
-				if cone.keys().has("radius"):
-					new_ik.set_kusudama_limit_cone_radius(bone_i, cone_i, cone["radius"])
-
+		
 	new_ik.visible = true
+
+func tune_bone(new_ik, skeleton, bone_name, bone_i, bone_name_cones, bone_name_from_to_twist):
+	var node_3d : BoneAttachment3D = BoneAttachment3D.new()
+	node_3d.name = bone_name
+	node_3d.bone_name = bone_name
+	node_3d.bone_idx = bone_i
+	node_3d.set_use_external_skeleton (true)
+	node_3d.set_external_skeleton("../" + str(new_ik.get_path_to(skeleton)))
+	new_ik.add_child(node_3d, true)
+	if bone_name in ["Head"]:
+		# Move slightly higher to avoid the crunching into the body effect.
+		node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
+	if bone_name in ["LeftHand"]:
+		# Move slightly higher to avoid the crunching into the body effect.
+		node_3d.transform.origin = node_3d.transform.origin + Vector3(0.1, 0, 0)
+	if bone_name in ["RightHand"]:
+		# Move slightly higher to avoid the crunching into the body effect.
+		node_3d.transform.origin = node_3d.transform.origin - Vector3(0.1, 0, 0)
+	node_3d.owner = new_ik.owner
+	new_ik.set_pin_nodepath(bone_i, bone_name)
+	var node_global_transform = node_3d.global_transform
+	var marker_3d : Marker3D = Marker3D.new()
+	marker_3d.name = bone_name
+	marker_3d.global_transform = node_global_transform
+	node_3d.replace_by(marker_3d, true)
+
+	var keys : Array = bone_name_from_to_twist.keys()
+	if keys.has(bone_name):
+		var twist : Vector2 = bone_name_from_to_twist[bone_name]
+		new_ik.set_kusudama_twist(bone_i, twist)
+	keys = bone_name_cones.keys()
+	if keys.has(bone_name):
+		var cones : Array = bone_name_cones[bone_name]
+		new_ik.set_kusudama_limit_cone_count(bone_i, cones.size())
+		for cone_i in range(cones.size()):
+			var cone : Dictionary = cones[cone_i]
+			if cone.keys().has("center"):
+				new_ik.set_kusudama_limit_cone_center(bone_i, cone_i, cone["center"])
+			if cone.keys().has("radius"):
+				new_ik.set_kusudama_limit_cone_radius(bone_i, cone_i, cone["radius"])
+
