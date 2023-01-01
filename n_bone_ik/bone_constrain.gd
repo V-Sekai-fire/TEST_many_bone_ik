@@ -18,11 +18,13 @@ func _run():
 			root.set("update_in_editor", true)
 	var old_constraint_node = false
 	var skeletons : Array[Node] = root.find_children("*", "Skeleton3D")
-	for node  in skeletons:
-		var skeleton : Skeleton3D = node		
+	for node in skeletons:
+		var skeleton : Skeleton3D = node
+		skeleton.visible = false
 		var found_nodes : Array[Node] = skeleton.find_children("*", "Marker3D")
 		for node_markers in found_nodes:
-			node_markers.queue_free()
+			node_markers.get_parent().remove_child(node_markers)
+			node_markers.free()
 		var stack : SkeletonModificationStack3D = SkeletonModificationStack3D.new()
 		skeleton.set_modification_stack(stack)
 		skeleton.reset_bone_poses()
@@ -33,7 +35,7 @@ func _run():
 
 		new_ik.iterations_per_frame = 15
 		new_ik.default_damp = deg_to_rad(10)
-		new_ik.constraint_mode = old_constraint_node
+		new_ik.constraint_mode = true
 		var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
 		var humanoid_bones : PackedStringArray = []
 		for bone_i in humanoid_profile.bone_size:
@@ -49,7 +51,6 @@ func _run():
 				continue
 			if is_humanoid:
 				new_ik.filter_bones.push_back(bone_name)
-		
 		
 		for bone_i in skeleton.get_parentless_bones():
 			new_ik.set_pin_passthrough_factor(bone_i, 0)
@@ -140,6 +141,7 @@ func _run():
 			tune_bone(is_humanoid, new_ik, skeleton, bone_name, bone_i, config["bone_name_cones"], config["bone_name_from_to_twist"])
 		new_ik.enabled = true
 		stack.enabled = true
+		skeleton.visible = true
 		
 func tune_bone(is_humanoid, new_ik : SkeletonModification3DManyBoneIK, skeleton : Skeleton3D, bone_name, bone_i, bone_name_cones : Dictionary, bone_name_from_to_twist : Dictionary):	
 	if bone_name_from_to_twist.keys().has(bone_name):
