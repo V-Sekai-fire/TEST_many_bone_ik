@@ -46,8 +46,7 @@ func _run():
 		if bone_name in humanoid_bones:
 			is_humanoid = true
 			continue
-		if is_filtering:
-			new_ik.filter_bones.push_back(bone_name)
+		new_ik.filter_bones.push_back(bone_name)
 	if is_filtering and is_humanoid:
 		new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
 		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
@@ -112,9 +111,9 @@ func _run():
 					{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
 				],
 				"RightLowerLeg":  [
-				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
+					{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
 					{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
-		
+
 				],
 				"LeftFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
 				"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
