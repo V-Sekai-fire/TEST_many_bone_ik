@@ -70,8 +70,7 @@ func _run():
 
 		config =  {
 			"bone_name_cones": {
-				"Root": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(2)}],
-				"Hips": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
+				# Don't put constraints on root bones like root or hips.
 				"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
 				"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
 				"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
@@ -117,9 +116,8 @@ func _run():
 			},
 
 		"bone_name_from_to_twist": {
+			# Don't put constraints on root bones like root or hips.
 			# Spine
-			"Root": Vector2(deg_to_rad(371.3), deg_to_rad(33.4)),
-			"Hips": Vector2(deg_to_rad(340.1), deg_to_rad(25)),
 			"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
 			"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
 			"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
