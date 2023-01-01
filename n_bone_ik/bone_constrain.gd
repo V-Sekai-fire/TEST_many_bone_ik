@@ -67,9 +67,6 @@ func _run():
 				"RightHand",
 			]:
 				continue
-		if is_humanoid:
-			if bone_name in ["Root", "Hips"]:
-				new_ik.set_pin_passthrough_factor(bone_i, 0.2)
 
 		config =  {
 			"bone_name_cones": {
