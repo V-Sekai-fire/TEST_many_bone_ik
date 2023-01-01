@@ -46,7 +46,8 @@ func _run():
 		if bone_name in humanoid_bones:
 			is_humanoid = true
 			continue
-		new_ik.filter_bones.push_back(bone_name)
+		if is_humanoid:
+			new_ik.filter_bones.push_back(bone_name)
 	if is_filtering and is_humanoid:
 		new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
 		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
@@ -168,6 +169,7 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_name, bone_i, bone_name_con
 		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, PI, 0))
 	node_3d.owner = new_ik.owner
 	new_ik.set_pin_nodepath(bone_i, bone_name)
+	new_ik.set_pin_passthrough_factor(bone_i, 1)
 	var node_global_transform = node_3d.global_transform
 	var marker_3d : Marker3D = Marker3D.new()
 	marker_3d.name = bone_name
