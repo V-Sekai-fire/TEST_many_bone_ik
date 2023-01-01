@@ -16,60 +16,52 @@ func _run():
 	for property in properties:
 		if property["name"] == "update_in_editor":
 			root.set("update_in_editor", true)
-	var iks : Array[Node] = root.find_children("*", "ManyBoneIK3D")
 	var old_constraint_node = false
-	for ik in iks:
-		old_constraint_node = ik.constraint_mode or old_constraint_node
-		ik.free()
-	var new_ik : ManyBoneIK3D = ManyBoneIK3D.new()
 	var skeletons : Array[Node] = root.find_children("*", "Skeleton3D")
-	var skeleton : Skeleton3D = skeletons[0]
-	skeleton.add_child(new_ik, true)
-	new_ik.skeleton_node_path = ".."
-	new_ik.owner = root
-	new_ik.iterations_per_frame = 15
-	new_ik.default_damp = deg_to_rad(10)
-	new_ik.visible = false
-	new_ik.constraint_mode = old_constraint_node
-	skeleton.reset_bone_poses()
-	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
-	var humanoid_bones : PackedStringArray = []
-	for bone_i in humanoid_profile.bone_size:
-		var bone_name : String = humanoid_profile.get_bone_name(bone_i)
-		humanoid_bones.push_back(bone_name)
-	var is_humanoid : bool = false
-	var is_filtering : bool = true
+	for node  in skeletons:
+		var skeleton : Skeleton3D = node		
+		var found_nodes : Array[Node] = skeleton.find_children("*", "Marker3D")
+		for node_markers in found_nodes:
+			node_markers.queue_free()
+		var stack : SkeletonModificationStack3D = SkeletonModificationStack3D.new()
+		skeleton.set_modification_stack(stack)
+		skeleton.reset_bone_poses()
+		var new_ik : SkeletonModification3DManyBoneIK = SkeletonModification3DManyBoneIK.new()
+		stack.modification_count = 1
+		stack.set_modification(0, new_ik)
+		old_constraint_node = new_ik.constraint_mode or old_constraint_node
 
-	var config : Dictionary = {}
-	for bone_i in skeleton.get_bone_count():
-		var bone_name : String = skeleton.get_bone_name(bone_i)
-		if bone_name in humanoid_bones:
-			is_humanoid = true
-			continue
-		if is_humanoid:
-			new_ik.filter_bones.push_back(bone_name)
-	if is_filtering and is_humanoid:
-		new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
-		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
-#			"LeftShoulder", "RightShoulder",
-#			"LeftUpperLeg", "LeftUpperLeg",
-		"RightEye", "LeftEye",
-		"RightToes", "LeftToes",
-		])
-	for bone_i in skeleton.get_bone_count():
-		var bone_name : String = skeleton.get_bone_name(bone_i)
-		if is_humanoid and not bone_name in [
-				"Root",
-				"Hips",
-				"Head",
-				"LeftFoot",
-				"RightFoot",
-				"LeftHand",
-				"RightHand",
-			]:
+		new_ik.iterations_per_frame = 15
+		new_ik.default_damp = deg_to_rad(10)
+		new_ik.constraint_mode = old_constraint_node
+		var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
+		var humanoid_bones : PackedStringArray = []
+		for bone_i in humanoid_profile.bone_size:
+			var bone_name : String = humanoid_profile.get_bone_name(bone_i)
+			humanoid_bones.push_back(bone_name)
+		var is_humanoid : bool = false
+		var is_filtering : bool = true
+
+		for bone_i in skeleton.get_bone_count():
+			var bone_name : String = skeleton.get_bone_name(bone_i)
+			if bone_name in humanoid_bones:
+				is_humanoid = true
 				continue
-
-		config =  {
+			if is_humanoid:
+				new_ik.filter_bones.push_back(bone_name)
+		
+		
+		for bone_i in skeleton.get_parentless_bones():
+			new_ik.set_pin_passthrough_factor(bone_i, 0)
+		if is_filtering and is_humanoid:
+			new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
+			"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
+	#			"LeftShoulder", "RightShoulder",
+	#			"LeftUpperLeg", "LeftUpperLeg",
+			"RightEye", "LeftEye",
+			"RightToes", "LeftToes",
+			])
+		var config =  {
 			"bone_name_cones": {
 				# Don't put constraints on the root bone.
 				"Hips": [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(5)}],
@@ -80,16 +72,16 @@ func _run():
 				"Head": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(30)}],
 				"LeftShoulder": [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(15)}],
 				"RightShoulder": [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(15)}],
-				"LeftUpperArm":  [
-					{"center": Vector3(1, 1, 1), "radius": deg_to_rad(50)},
-					{"center": Vector3(2, 0.5, -2), "radius": deg_to_rad(65)},
-					{"center": Vector3(0, 1, -1), "radius": deg_to_rad(20)},
-				],
-				"RightUpperArm":  [
-				{"center": Vector3(0, 1, -0.5), "radius": deg_to_rad(50)},
-					{"center": Vector3(-2, 0.5, -0.2), "radius": deg_to_rad(65)},
-				{"center": Vector3(0, 0.2, 1), "radius": deg_to_rad(20)},
-				],
+	#			"LeftUpperArm":  [
+	#				{"center": Vector3(0, 1, -0.5), "radius": deg_to_rad(50)},
+	#				{"center": Vector3(1, 0.5, -0.2), "radius": deg_to_rad(65)},
+	#				{"center": Vector3(0, 0.2, 1), "radius": deg_to_rad(20)},
+	#			],
+	#			"RightUpperArm":  [
+	#				{"center": Vector3(0, 1, -0.5), "radius": deg_to_rad(50)},
+	#				{"center": Vector3(-1, 0.5, -0.2), "radius": deg_to_rad(65)},
+	#				{"center": Vector3(0, 0.2, 1), "radius": deg_to_rad(20)},
+	#			],
 				"LeftLowerArm":  [
 					{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)},
 					{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(20)},
@@ -111,12 +103,10 @@ func _run():
 				"RightLowerLeg":  [
 					{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
 					{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
-
 				],
 				"LeftFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
 				"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
 			},
-
 			"bone_name_from_to_twist": {
 				# Don't put constraints on the root bone.
 				# Spine
@@ -145,17 +135,42 @@ func _run():
 				"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
 			}
 		}
-		tune_bone(new_ik, skeleton, bone_name, bone_i, config["bone_name_cones"], config["bone_name_from_to_twist"])
-	new_ik.visible = true
-
-func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_name, bone_i, bone_name_cones, bone_name_from_to_twist):
-	var node_3d : BoneAttachment3D = BoneAttachment3D.new()
+		for bone_i in skeleton.get_bone_count():
+			var bone_name : String = skeleton.get_bone_name(bone_i)
+			tune_bone(is_humanoid, new_ik, skeleton, bone_name, bone_i, config["bone_name_cones"], config["bone_name_from_to_twist"])
+		new_ik.enabled = true
+		stack.enabled = true
+		
+func tune_bone(is_humanoid, new_ik : SkeletonModification3DManyBoneIK, skeleton : Skeleton3D, bone_name, bone_i, bone_name_cones : Dictionary, bone_name_from_to_twist : Dictionary):	
+	if bone_name_from_to_twist.keys().has(bone_name):
+		var twist : Vector2 = bone_name_from_to_twist[bone_name]
+		new_ik.set_kusudama_twist(bone_i, twist)
+	if bone_name_cones.keys().has(bone_name):
+		var cones : Array = bone_name_cones[bone_name]
+		new_ik.set_kusudama_limit_cone_count(bone_i, cones.size())
+		for cone_i in range(cones.size()):
+			var cone : Dictionary = cones[cone_i]
+			if cone.keys().has("center"):
+				new_ik.set_kusudama_limit_cone_center(bone_i, cone_i, cone["center"])
+			if cone.keys().has("radius"):
+				new_ik.set_kusudama_limit_cone_radius(bone_i, cone_i, cone["radius"])
+	if is_humanoid and not bone_name in [
+		"Root",
+		"Hips",
+		"Head",
+		"LeftFoot",
+		"RightFoot",
+		"LeftHand",
+		"RightHand",
+	]:
+		return
+	var node_3d : Marker3D = Marker3D.new()
+	skeleton.add_child(node_3d, true)
+	node_3d.owner = skeleton.owner
 	node_3d.name = bone_name
-	node_3d.bone_name = bone_name
-	node_3d.bone_idx = bone_i
-	node_3d.set_use_external_skeleton (true)
-	node_3d.set_external_skeleton("../" + str(new_ik.get_path_to(skeleton)))
-	new_ik.add_child(node_3d, true)
+
+	node_3d.global_transform = skeleton.get_bone_global_pose_no_override(bone_i)
+
 	if bone_name in ["Head"]:
 		# Move slightly higher to avoid the crunching into the body effect.
 		node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
@@ -167,26 +182,6 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_name, bone_i, bone_name_con
 		node_3d.transform.origin = node_3d.transform.origin - Vector3(0.1, 0, 0)
 	if bone_name in ["LeftFoot", "RightFoot"]:
 		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, PI, 0))
-	node_3d.owner = new_ik.owner
-	new_ik.set_pin_nodepath(bone_i, bone_name)
-	new_ik.set_pin_passthrough_factor(bone_i, 1)
-	var node_global_transform = node_3d.global_transform
-	var marker_3d : Marker3D = Marker3D.new()
-	marker_3d.name = bone_name
-	marker_3d.global_transform = node_global_transform
-	node_3d.replace_by(marker_3d, true)
-	var keys : Array = bone_name_from_to_twist.keys()
-	if keys.has(bone_name):
-		var twist : Vector2 = bone_name_from_to_twist[bone_name]
-		new_ik.set_kusudama_twist(bone_i, twist)
-	keys = bone_name_cones.keys()
-	if keys.has(bone_name):
-		var cones : Array = bone_name_cones[bone_name]
-		new_ik.set_kusudama_limit_cone_count(bone_i, cones.size())
-		for cone_i in range(cones.size()):
-			var cone : Dictionary = cones[cone_i]
-			if cone.keys().has("center"):
-				new_ik.set_kusudama_limit_cone_center(bone_i, cone_i, cone["center"])
-			if cone.keys().has("radius"):
-				new_ik.set_kusudama_limit_cone_radius(bone_i, cone_i, cone["radius"])
 
+	new_ik.set_pin_passthrough_factor(bone_i, 1)
+	new_ik.set_pin_nodepath(bone_i, NodePath(node_3d.name))
