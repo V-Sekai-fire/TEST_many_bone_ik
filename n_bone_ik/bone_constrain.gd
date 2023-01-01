@@ -53,15 +53,15 @@ func _run():
 			"RightShoulder": Vector2(deg_to_rad(250), deg_to_rad(-40)),
 			"LeftUpperArm": Vector2(deg_to_rad(-120), deg_to_rad(-60)),
 			"RightUpperArm": Vector2(deg_to_rad(120), deg_to_rad(60)),
-			"LeftLowerArm": Vector2(deg_to_rad(-75), deg_to_rad(-100)),
-			"RightLowerArm": Vector2(deg_to_rad(75), deg_to_rad(100)),
+			"LeftLowerArm": Vector2(deg_to_rad(-75), deg_to_rad(-60)),
+			"RightLowerArm": Vector2(deg_to_rad(75), deg_to_rad(60)),
 			"LeftHand": Vector2(deg_to_rad(-275), deg_to_rad(-20)),
 			"RightHand": Vector2(deg_to_rad(275), deg_to_rad(20)),
 			# Legs
 			"LeftUpperLeg": Vector2(deg_to_rad(00), deg_to_rad(350)),
 			"RightUpperLeg": Vector2(deg_to_rad(00), deg_to_rad(350)),
-			"LeftLowerLeg": Vector2(deg_to_rad(90), deg_to_rad(200)),
-			"RightLowerLeg": Vector2(deg_to_rad(90), deg_to_rad(200)),
+			"LeftLowerLeg": Vector2(deg_to_rad(90), deg_to_rad(20)),
+			"RightLowerLeg": Vector2(deg_to_rad(90), deg_to_rad(20)),
 			"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
 			"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
 		},
@@ -98,12 +98,12 @@ func _run():
 			"LeftUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
 			"RightUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
 			"LeftLowerLeg":  [
-				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
-				{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
+				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)},
+				{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(5)},
 			],
 			"RightLowerLeg":  [
-				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
-				{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(10)},
+				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)},
+				{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(5)},
 			],
 			"LeftFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
 			"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
@@ -145,11 +145,11 @@ func _run():
 		if is_humanoid and not bone_name in [
 				"Root",
 				"Hips",
-				"Head",
 				"LeftFoot",
 				"RightFoot",
-				"LeftHand",
-				"RightHand",
+				"Head",
+#				"LeftHand",
+#				"RightHand",
 			]:
 				continue
 
@@ -177,6 +177,7 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_name, bone_i):
 		node_3d.transform.origin = node_3d.transform.origin - Vector3(0.1, 0, 0)
 	if bone_name in ["LeftFoot", "RightFoot"]:
 		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, PI, 0))
+		new_ik.set_pin_passthrough_factor(bone_i, 0)
 	node_3d.owner = new_ik.owner
 	new_ik.set_pin_nodepath(bone_i, bone_name)
 	new_ik.set_pin_passthrough_factor(bone_i, 1)

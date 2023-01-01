@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bfc6nbf2x6c7o"
+uid="uid://dowjahpjiug6t"
 path="res://.godot/imported/Liqu.vrm-3df9eb274dc915e96d45ab525c9c2cd4.scn"
 
 [deps]
@@ -30,7 +30,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Armature/GeneralSkeleton": {
-"retarget/bone_map": null,
+"retarget/bone_map": Object(BoneMap,"resource_local_to_scene":false,"resource_name":"","profile":null,"bonemap":null,"script":null)
+,
 "retarget/realtime_retarget/profile": Object(RetargetProfileLocalFingersGlobalOthers,"resource_local_to_scene":false,"resource_name":"","label_for_animation_name":"Loc-Fingers Glb-Others","global_transform_target_size":26,"local_transform_target_size":30,"absolute_transform_target_size":0,"script":null)
 ,
 "retarget/remove_tracks/unmapped_bones": true,
