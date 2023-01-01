@@ -70,7 +70,8 @@ func _run():
 
 		config =  {
 			"bone_name_cones": {
-				# Don't put constraints on root bones like root or hips.
+				# Don't put constraints on the root bone.
+				"Hips": [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(30)}],
 				"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
 				"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
 				"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
@@ -115,33 +116,33 @@ func _run():
 				"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
 			},
 
-		"bone_name_from_to_twist": {
-			# Don't put constraints on root bones like root or hips.
-			# Spine
-			"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
-			"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
-			"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
-			# Head
-			"Head": Vector2(deg_to_rad(0), deg_to_rad(10)),
-			"Neck": Vector2(deg_to_rad(356), deg_to_rad(10)),
-			# Arms
-			"LeftShoulder": Vector2(deg_to_rad(250), deg_to_rad(-40)),
-			"RightShoulder": Vector2(deg_to_rad(77), deg_to_rad(40)),
-			"LeftUpperArm": Vector2(deg_to_rad(-120), deg_to_rad(-60)),
-			"RightUpperArm": Vector2(deg_to_rad(120), deg_to_rad(60)),
-			"LeftLowerArm": Vector2(deg_to_rad(-75), deg_to_rad(-100)),
-			"RightLowerArm": Vector2(deg_to_rad(75), deg_to_rad(100)),
-			"LeftHand": Vector2(deg_to_rad(-275), deg_to_rad(-20)),
-			"RightHand": Vector2(deg_to_rad(275), deg_to_rad(20)),
-			# Legs
-			"LeftUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
-			"RightUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
-			"LeftLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(20)),
-			"RightLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(20)),
-			"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
-			"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
+			"bone_name_from_to_twist": {
+				# Don't put constraints on the root bone.
+				# Spine
+				"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
+				"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
+				"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
+				# Head
+				"Head": Vector2(deg_to_rad(0), deg_to_rad(10)),
+				"Neck": Vector2(deg_to_rad(356), deg_to_rad(10)),
+				# Arms
+				"LeftShoulder": Vector2(deg_to_rad(250), deg_to_rad(-40)),
+				"RightShoulder": Vector2(deg_to_rad(77), deg_to_rad(40)),
+				"LeftUpperArm": Vector2(deg_to_rad(-120), deg_to_rad(-60)),
+				"RightUpperArm": Vector2(deg_to_rad(120), deg_to_rad(60)),
+				"LeftLowerArm": Vector2(deg_to_rad(-75), deg_to_rad(-100)),
+				"RightLowerArm": Vector2(deg_to_rad(75), deg_to_rad(100)),
+				"LeftHand": Vector2(deg_to_rad(-275), deg_to_rad(-20)),
+				"RightHand": Vector2(deg_to_rad(275), deg_to_rad(20)),
+				# Legs
+				"LeftUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
+				"RightUpperLeg": Vector2(deg_to_rad(0), deg_to_rad(358)),
+				"LeftLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(20)),
+				"RightLowerLeg": Vector2(deg_to_rad(180), deg_to_rad(20)),
+				"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
+				"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
+			}
 		}
-	}
 		tune_bone(new_ik, skeleton, bone_name, bone_i, config["bone_name_cones"], config["bone_name_from_to_twist"])
 	new_ik.visible = true
 
