@@ -96,8 +96,8 @@ func _run():
 			],
 			"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 			"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
-			"LeftUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
-			"RightUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
+			"LeftUpperLeg":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(160)}],
+			"RightUpperLeg":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(160)}],
 			"LeftLowerLeg":  [
 				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
 				{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(40)},
