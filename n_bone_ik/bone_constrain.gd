@@ -67,7 +67,7 @@ func _run():
 			"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(350)),
 		},
 		"bone_name_cones": {
-			# Don't put constraints on the root bone.
+			# Don't put constraints on the root bone.			
 			"Hips": [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(5)}],
 			"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
 			"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
@@ -96,8 +96,9 @@ func _run():
 			],
 			"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 			"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
+			# Legs
 			"LeftUpperLeg":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(160)}],
-			"RightUpperLeg":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(160)}],
+			"RightUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(160)}],
 			"LeftLowerLeg":  [
 				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
 				{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(40)},
@@ -163,6 +164,8 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_name, bone_i):
 	node_3d.set_use_external_skeleton (true)
 	node_3d.set_external_skeleton("../" + str(new_ik.get_path_to(skeleton)))
 	new_ik.add_child(node_3d, true)
+	if bone_name in ["Root"]:
+		new_ik.set_pin_passthrough_factor(bone_i, 0)
 	if bone_name in ["Head"]:
 		# Move slightly higher to avoid the crunching into the body effect.
 		node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
