@@ -28,6 +28,8 @@ func _run():
 	new_ik.iterations_per_frame = 15
 	new_ik.default_damp = deg_to_rad(10)
 	new_ik.visible = false
+	new_ik.queue_print_skeleton()
+#	new_ik.constraint_mode = true
 	skeleton.reset_bone_poses()
 	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
 	var humanoid_bones : PackedStringArray = []
@@ -41,7 +43,6 @@ func _run():
 		"bone_name_from_to_twist": {
 			# Don't put constraints on the root bone.
 			# Spine
-			"Hips": Vector2(deg_to_rad(200), deg_to_rad(5)),
 			"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
 			"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
 			"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
@@ -86,24 +87,24 @@ func _run():
 				{"center": Vector3(0, 0.2, 1), "radius": deg_to_rad(20)},
 			],
 			"LeftLowerArm":  [
-				{"center": Vector3(0, 0, 1), "radius": deg_to_rad(5)},
-				{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(5)},
+				{"center": Vector3(0, 0, 1), "radius": deg_to_rad(20)},
+				{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(20)},
 			],
 			"RightLowerArm":  [
-				{"center": Vector3(0, 0, 1), "radius": deg_to_rad(5)},
-				{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(5)},
+				{"center": Vector3(0, 0, 1), "radius": deg_to_rad(20)},
+				{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(20)},
 			],
 			"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 			"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 			"LeftUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
 			"RightUpperLeg":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(80)}],
 			"LeftLowerLeg":  [
-				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)},
-				{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(5)},
+				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
+				{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(40)},
 			],
 			"RightLowerLeg":  [
-				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)},
-				{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(5)},
+				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
+				{"center": Vector3(0, -0.8, -1), "radius": deg_to_rad(40)},
 			],
 			"LeftFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
 			"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
@@ -144,15 +145,13 @@ func _run():
 					new_ik.set_kusudama_limit_cone_radius(bone_i, cone_i, cone["radius"])
 		if is_humanoid and not bone_name in [
 				"Root",
-				"Hips",
 				"LeftFoot",
 				"RightFoot",
 				"Head",
-#				"LeftHand",
-#				"RightHand",
+				"LeftHand",
+				"RightHand",
 			]:
 				continue
-
 		tune_bone(new_ik, skeleton, bone_name, bone_i)
 	new_ik.visible = true
 
@@ -164,23 +163,23 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_name, bone_i):
 	node_3d.set_use_external_skeleton (true)
 	node_3d.set_external_skeleton("../" + str(new_ik.get_path_to(skeleton)))
 	new_ik.add_child(node_3d, true)
-	if bone_name in ["Root", "Hips"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
 	if bone_name in ["Head"]:
 		# Move slightly higher to avoid the crunching into the body effect.
 		node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
+		new_ik.set_pin_passthrough_factor(bone_i, 1)
 	if bone_name in ["LeftHand"]:
 		# Move slightly higher to avoid the crunching into the body effect.
 		node_3d.transform.origin = node_3d.transform.origin + Vector3(0.1, 0, 0)
+		new_ik.set_pin_passthrough_factor(bone_i, 1)
 	if bone_name in ["RightHand"]:
 		# Move slightly higher to avoid the crunching into the body effect.
 		node_3d.transform.origin = node_3d.transform.origin - Vector3(0.1, 0, 0)
+		new_ik.set_pin_passthrough_factor(bone_i, 1)
 	if bone_name in ["LeftFoot", "RightFoot"]:
 		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, PI, 0))
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
+		new_ik.set_pin_passthrough_factor(bone_i, 1)
 	node_3d.owner = new_ik.owner
 	new_ik.set_pin_nodepath(bone_i, bone_name)
-	new_ik.set_pin_passthrough_factor(bone_i, 1)
 	var node_global_transform = node_3d.global_transform
 	var marker_3d : Marker3D = Marker3D.new()
 	marker_3d.name = bone_name
