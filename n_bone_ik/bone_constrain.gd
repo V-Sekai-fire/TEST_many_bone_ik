@@ -172,15 +172,10 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_name, bone_i):
 		node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
 		new_ik.set_pin_passthrough_factor(bone_i, 1)
 	if bone_name in ["LeftHand"]:
-		# Move slightly higher to avoid the crunching into the body effect.
-		node_3d.transform.origin = node_3d.transform.origin + Vector3(0.1, 0, 0)
 		new_ik.set_pin_passthrough_factor(bone_i, 1)
 	if bone_name in ["RightHand"]:
-		# Move slightly higher to avoid the crunching into the body effect.
-		node_3d.transform.origin = node_3d.transform.origin - Vector3(0.1, 0, 0)
 		new_ik.set_pin_passthrough_factor(bone_i, 1)
 	if bone_name in ["LeftFoot", "RightFoot"]:
-		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, PI, 0))
 		new_ik.set_pin_passthrough_factor(bone_i, 1)
 	node_3d.owner = new_ik.owner
 	new_ik.set_pin_nodepath(bone_i, bone_name)
