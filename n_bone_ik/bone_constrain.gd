@@ -43,6 +43,7 @@ func _run():
 		"bone_name_from_to_twist": {
 			# Don't put constraints on the root bone.
 			# Spine
+			"Hips": Vector2(deg_to_rad(0), deg_to_rad(350)),
 			"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
 			"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
 			"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),

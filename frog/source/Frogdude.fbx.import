@@ -4,13 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dp0vwibb2574b"
-path="res://.godot/imported/Frogdude.fbx-599ac51ee11cfa86ec6f7074cd637c7d.scn"
+valid=false
 
 [deps]
 
 source_file="res://frog/source/Frogdude.fbx"
-dest_files=["res://.godot/imported/Frogdude.fbx-599ac51ee11cfa86ec6f7074cd637c7d.scn"]
-
 [params]
 
 nodes/root_type="Node3D"
