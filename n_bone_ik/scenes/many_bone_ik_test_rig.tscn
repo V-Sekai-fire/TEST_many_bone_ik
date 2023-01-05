@@ -1,20 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1y57vgeayw7n"]
+[gd_scene load_steps=3 format=3 uid="uid://d1y57vgeayw7n"]
 
 [ext_resource type="PackedScene" uid="uid://cvgxae3bl2gfw" path="res://n_bone_ik/art/many_bone_ik_test_rig.glb" id="1_r3e6p"]
+[ext_resource type="Script" path="res://SK_black_cat_christmas/scenes/GeneralSkeleton.gd" id="2_oexp2"]
 
 [node name="many_bone_ik_test_rig" instance=ExtResource("1_r3e6p")]
 
 [node name="Skeleton3D" parent="Simple_Test_Rig_Armature" index="0"]
-bones/0/position = Vector3(6.65443e-15, 0, 1.65569e-09)
-bones/0/rotation = Quaternion(7.34873e-07, 6.37386e-08, -5.21537e-07, 1)
-bones/1/position = Vector3(6.25849e-07, 0.600004, 5.98749e-07)
-bones/1/rotation = Quaternion(-0.3561, 0.436242, -0.171791, 0.808315)
-bones/2/position = Vector3(-3.30806e-06, 0.600561, 2.79844e-05)
-bones/2/rotation = Quaternion(-0.26153, 0.943523, 0.185333, 0.0837731)
+bones/0/rotation = Quaternion(2.37093e-07, 6.37384e-08, 1.90203e-14, 1)
+bones/1/position = Vector3(-5.12963e-18, 0.600001, -2.84217e-14)
+bones/1/rotation = Quaternion(1.32585e-09, -4.0847e-10, 5.7742e-08, 1)
+bones/2/position = Vector3(8.93863e-12, 0.600001, 2.84217e-14)
+bones/2/rotation = Quaternion(-1.25408e-07, -0.307767, 3.33392e-08, 0.951462)
+script = ExtResource("2_oexp2")
 
 [node name="ManyBoneIK3D" type="ManyBoneIK3D" parent="Simple_Test_Rig_Armature/Skeleton3D" index="1"]
 iterations_per_frame = 15.0
-default_damp = 0.0174533
+default_damp = 0.174533
 pin_count = 3
 pins/0/bone_name = "Bone_01"
 pins/0/target_node = NodePath("Bone_01")
@@ -22,39 +23,51 @@ pins/0/passthrough_factor = 0.0
 pins/0/weight = 1.0
 pins/0/direction_priorities = Vector3(0.2, 0, 0.2)
 pins/1/bone_name = "Bone_02"
-pins/1/target_node = NodePath("")
+pins/1/target_node = NodePath("Bone_02")
 pins/1/passthrough_factor = 0.0
 pins/1/weight = 1.0
 pins/1/direction_priorities = Vector3(0.2, 0, 0.2)
 pins/2/bone_name = "Bone_03"
 pins/2/target_node = NodePath("Bone_03")
-pins/2/passthrough_factor = 1.0
+pins/2/passthrough_factor = 0.0
 pins/2/weight = 1.0
 pins/2/direction_priorities = Vector3(0.2, 0, 0.2)
 constraint_count = 3
 constraints/0/bone_name = &"Bone_01"
-constraints/0/twist_from = 0.0
-constraints/0/twist_range = 6.28318
+constraints/0/twist_from = 5.07538
+constraints/0/twist_range = 3.7039
 constraints/0/twist_current = null
-constraints/0/kusudama_limit_cone_count = 0
+constraints/0/kusudama_limit_cone_count = 2
+constraints/0/kusudama_limit_cone/0/center = Vector3(-0.748856, 0.535077, 0.248069)
+constraints/0/kusudama_limit_cone/0/radius = 0.949619
+constraints/0/kusudama_limit_cone/1/center = Vector3(-0.629046, -0.357364, 0.179329)
+constraints/0/kusudama_limit_cone/1/radius = 2.09437
 constraints/0/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/0/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.65443e-15, 0, 1.65569e-09)
-constraints/0/bone_direction = Transform3D(1, -1.04307e-06, -5.25802e-13, 1.04307e-06, 1, 9.95561e-07, -5.25802e-13, -9.95561e-07, 1, 0, 0, 0)
+constraints/0/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/0/bone_direction = Transform3D(1, 6.77626e-21, 0, -6.77626e-21, 1, -5.68434e-14, 0, 5.68434e-14, 1, 0, 0, 0)
 constraints/1/bone_name = &"Bone_02"
-constraints/1/twist_from = 0.0
-constraints/1/twist_range = 6.28319
+constraints/1/twist_from = 3.50564
+constraints/1/twist_range = 5.2143
 constraints/1/twist_current = null
-constraints/1/kusudama_limit_cone_count = 0
-constraints/1/kusudama_twist = Transform3D(0.999356, -0.0329727, -0.0141724, 0.0329727, 0.687581, 0.725358, -0.0141724, -0.725358, 0.688226, 6.25849e-07, 0.600004, 5.97341e-07)
-constraints/1/kusudama_orientation = Transform3D(1, 4.02883e-14, 0, 4.02883e-14, 1, 0, 0, 0, 1, 6.25849e-07, 0.600004, 5.98749e-07)
-constraints/1/bone_direction = Transform3D(1, -0.000127286, 0, 0.000127256, 1, -5.60284e-05, 0, 5.60135e-05, 1, 0, 0, 0)
+constraints/1/kusudama_limit_cone_count = 2
+constraints/1/kusudama_limit_cone/0/center = Vector3(0.306325, -0.0721845, -0.178825)
+constraints/1/kusudama_limit_cone/0/radius = 2.92856
+constraints/1/kusudama_limit_cone/1/center = Vector3(-0.0839718, 0.672513, 0.349635)
+constraints/1/kusudama_limit_cone/1/radius = 2.03218
+constraints/1/kusudama_twist = Transform3D(0.48965, 0.864088, 0.116598, -0.864088, 0.463011, 0.197415, 0.116598, -0.197415, 0.973361, -1.01644e-20, 0.600001, -2.84217e-14)
+constraints/1/kusudama_orientation = Transform3D(1, -6.77626e-21, 0, 0, 1, 0, 0, 0, 1, -5.12963e-18, 0.600001, -2.84217e-14)
+constraints/1/bone_direction = Transform3D(1, -6.77626e-21, 0, 6.77626e-21, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/2/bone_name = &"Bone_03"
-constraints/2/twist_from = 0.0
-constraints/2/twist_range = 6.28319
+constraints/2/twist_from = 5.02852
+constraints/2/twist_range = 3.76728
 constraints/2/twist_current = null
-constraints/2/kusudama_limit_cone_count = 0
-constraints/2/kusudama_twist = Transform3D(0.818625, -0.548972, 0.168771, 0.548972, 0.661583, -0.510821, 0.168771, 0.510821, 0.842958, 7.63834e-05, 0.600661, -3.35872e-05)
-constraints/2/kusudama_orientation = Transform3D(1, 0, 0, -2.98023e-08, 1, 0, 1.49012e-08, 1.49012e-08, 1, -3.30806e-06, 0.600561, 2.79844e-05)
+constraints/2/kusudama_limit_cone_count = 2
+constraints/2/kusudama_limit_cone/0/center = Vector3(-0.207857, -0.0606869, 0.591875)
+constraints/2/kusudama_limit_cone/0/radius = 2.43913
+constraints/2/kusudama_limit_cone/1/center = Vector3(0.768542, -0.0294157, -0.367006)
+constraints/2/kusudama_limit_cone/1/radius = 1.64382
+constraints/2/kusudama_twist = Transform3D(0.819035, 0.388262, -0.422415, -0.388262, -0.166982, -0.906295, -0.422415, 0.906295, 0.0139831, 3.38813e-21, 0.600001, 0)
+constraints/2/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93863e-12, 0.600001, 2.84217e-14)
 constraints/2/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bone_count = 3
 bone/0/bone_name = "Bone_01"
@@ -67,5 +80,8 @@ bone/2/damp = 3.14159
 [node name="Bone_01" type="Marker3D" parent="Simple_Test_Rig_Armature/Skeleton3D/ManyBoneIK3D" index="0"]
 transform = Transform3D(1, -7.81678e-15, 1.27477e-07, 6.82644e-14, 1, -4.74185e-07, -1.27477e-07, 4.74185e-07, 1, 0, 0, 0)
 
-[node name="Bone_03" type="Marker3D" parent="Simple_Test_Rig_Armature/Skeleton3D/ManyBoneIK3D" index="1"]
-transform = Transform3D(-0.67165, -0.0669711, -0.737834, 0.0731919, 0.985036, -0.156036, 0.737244, -0.158804, -0.656697, -0.0226902, 1.07363, -0.499918)
+[node name="Bone_02" type="Marker3D" parent="Simple_Test_Rig_Armature/Skeleton3D/ManyBoneIK3D" index="1"]
+transform = Transform3D(1, -7.81678e-15, 1.27477e-07, 6.82645e-14, 1, -4.74185e-07, -1.27477e-07, 4.74185e-07, 1, -4.69008e-15, 0.600001, 2.84512e-07)
+
+[node name="Bone_03" type="Marker3D" parent="Simple_Test_Rig_Armature/Skeleton3D/ManyBoneIK3D" index="2"]
+transform = Transform3D(1, -7.81678e-15, 1.27477e-07, 6.82644e-14, 1, -4.74185e-07, -1.27477e-07, 4.74185e-07, 1, -9.38015e-15, 1.2, 5.69023e-07)

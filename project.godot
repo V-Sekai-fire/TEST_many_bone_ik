@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Test ManyBoneIK3D Game Project"
-run/main_scene="res://n_bone_ik/scenes/many_bone_ik_test_rig.tscn"
+run/main_scene="res://SK_black_cat_christmas/scenes/Black Cat Fire Christmas 2022.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
