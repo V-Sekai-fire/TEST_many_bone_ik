@@ -55,16 +55,6 @@ func _run():
 		if bone_name in humanoid_bones:
 			is_humanoid = true
 			continue
-		if is_humanoid:
-			new_ik.filter_bones.push_back(bone_name)
-	if is_filtering and is_humanoid:
-		new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
-		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
-#			"LeftShoulder", "RightShoulder",
-#			"LeftUpperLeg", "LeftUpperLeg",
-		"RightEye", "LeftEye",
-		"RightToes", "LeftToes",
-		])
 	var json : JSON = JSON.new()
 	var config : Dictionary = str_to_var(FileAccess.open("res://data.txt", FileAccess.READ).get_as_text())
 	var bone_name_from_to_twist = config.get("bone_name_from_to_twist")
