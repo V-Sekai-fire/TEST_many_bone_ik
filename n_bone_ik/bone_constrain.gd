@@ -2,13 +2,6 @@
 extends EditorScript
 
 
-# The order of tuning human bodies.
-# 0. Root
-# 1. Root to Hips
-# 2. Root to Head
-# 3. UpperChest to Hands
-# 4. Hips to Legs
-
 class ManyboneIKResource extends Resource:
 	@export var bone_position: Dictionary
 	@export var bone_rotation: Dictionary
@@ -40,8 +33,6 @@ func _run():
 	new_ik.iterations_per_frame = 15
 	new_ik.default_damp = deg_to_rad(10)
 	new_ik.visible = false
-#	new_ik.queue_print_skeleton()
-#	new_ik.constraint_mode = true
 	skeleton.reset_bone_poses()
 	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
 	var humanoid_bones : PackedStringArray = []
