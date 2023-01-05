@@ -40,7 +40,7 @@ func _run():
 	new_ik.iterations_per_frame = 15
 	new_ik.default_damp = deg_to_rad(10)
 	new_ik.visible = false
-	new_ik.queue_print_skeleton()
+#	new_ik.queue_print_skeleton()
 #	new_ik.constraint_mode = true
 	skeleton.reset_bone_poses()
 	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
@@ -161,7 +161,7 @@ func _run():
 					new_ik.set_kusudama_limit_cone_radius(bone_i, cone_i, cone["radius"])
 			var skeleton_bone_name = humanoid_profile.get_bone_name(bone_i)
 		var skeleton_bone_name = humanoid_profile.get_bone_name(bone_i)
-		if not skeleton_bone_name in ["Hips", "Root", "Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand"]:
+		if not skeleton_bone_name in ["Root", "Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand"]:
 			continue
 		tune_bone(new_ik, skeleton, skeleton_bone_name, skeleton.find_bone(skeleton_bone_name))
 	new_ik.visible = true

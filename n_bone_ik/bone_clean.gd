@@ -40,7 +40,7 @@ func _run():
 	new_ik.iterations_per_frame = 15
 	new_ik.default_damp = deg_to_rad(10)
 	new_ik.visible = false
-	new_ik.queue_print_skeleton()
+#	new_ik.queue_print_skeleton()
 #	new_ik.constraint_mode = true
 	skeleton.reset_bone_poses()
 	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
@@ -58,14 +58,6 @@ func _run():
 			continue
 		if is_humanoid:
 			new_ik.filter_bones.push_back(bone_name)
-	if is_filtering and is_humanoid:
-		new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
-		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
-#			"LeftShoulder", "RightShoulder",
-#			"LeftUpperLeg", "LeftUpperLeg",
-		"RightEye", "LeftEye",
-		"RightToes", "LeftToes",
-		])
 	for bone_i in humanoid_profile.bone_size:
 		var skeleton_bone_name = humanoid_profile.get_bone_name(bone_i)
 		if skeleton_bone_name.ends_with("Eye"):
@@ -80,7 +72,12 @@ func _run():
 			continue
 		if skeleton_bone_name.find("Middle") != -1:
 			continue
-		tune_bone(new_ik, skeleton, skeleton_bone_name, skeleton.find_bone(skeleton_bone_name))
+		var bone_id = skeleton.find_bone(skeleton_bone_name)
+		if bone_id == -1:
+			continue
+		if not skeleton_bone_name in ["Hips", "Root", "Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand"]:
+			continue
+		tune_bone(new_ik, skeleton, skeleton_bone_name, bone_id)
 	new_ik.visible = true
 
 func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_name, bone_i):
