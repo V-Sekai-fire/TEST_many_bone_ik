@@ -2,17 +2,6 @@
 extends EditorScript
 
 
-class ManyboneIKResource extends Resource:
-	@export var bone_position: Dictionary
-	@export var bone_rotation: Dictionary
-	@export var bone_rest_position: Dictionary
-	@export var bone_rest_rotation: Dictionary
-	@export var skeleton : Skeleton3D
-	@export var many_bone_ik : ManyBoneIK3D
-	@export var bone_name_from_to_twist : Dictionary
-	@export var bone_name_cones : Dictionary
-
-
 func _run():
 	var root : Node3D = get_editor_interface().get_edited_scene_root()
 	if root == null:
