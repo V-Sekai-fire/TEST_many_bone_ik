@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cj4kgy27mmugv"
-path.s3tc="res://.godot/imported/Frogdude_low_Frogdude_BaseColor.png-dd4cc156df03895f57f3c2e3ae713c14.s3tc.ctex"
-path.etc2="res://.godot/imported/Frogdude_low_Frogdude_BaseColor.png-dd4cc156df03895f57f3c2e3ae713c14.etc2.ctex"
+path.s3tc="res://.godot/imported/Frogdude_low_Frogdude_BaseColor.png-451ff63a0568120cc828400bff115013.s3tc.ctex"
+path.etc2="res://.godot/imported/Frogdude_low_Frogdude_BaseColor.png-451ff63a0568120cc828400bff115013.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://frog/textures/Frogdude_low_Frogdude_BaseColor.png"
-dest_files=["res://.godot/imported/Frogdude_low_Frogdude_BaseColor.png-dd4cc156df03895f57f3c2e3ae713c14.s3tc.ctex", "res://.godot/imported/Frogdude_low_Frogdude_BaseColor.png-dd4cc156df03895f57f3c2e3ae713c14.etc2.ctex"]
+source_file="res://frog/art/textures/Frogdude_low_Frogdude_BaseColor.png"
+dest_files=["res://.godot/imported/Frogdude_low_Frogdude_BaseColor.png-451ff63a0568120cc828400bff115013.s3tc.ctex", "res://.godot/imported/Frogdude_low_Frogdude_BaseColor.png-451ff63a0568120cc828400bff115013.etc2.ctex"]
 
 [params]
 

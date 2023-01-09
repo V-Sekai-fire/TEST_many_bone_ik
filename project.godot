@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Test ManyBoneIK3D Game Project"
-run/main_scene="res://SK_black_cat_christmas/scenes/Black Cat Fire Christmas 2022.tscn"
+run/main_scene="res://frog/scenes/sub_viewport.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
@@ -31,13 +31,15 @@ file_logging/enable_file_logging=true
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/resizable=false
 window/size/borderless=true
 window/size/always_on_top=true
 window/size/transparent=true
 window/size/extend_to_title=true
 window/per_pixel_transparency/allowed=true
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_height"
 
 [editor]
 

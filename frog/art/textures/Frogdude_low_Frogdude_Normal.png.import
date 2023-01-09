@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8rc3lducc5ol"
-path.s3tc="res://.godot/imported/Frogdude_low_Frogdude_Normal.png-9440a86a4cf27f3cb21d6c53b326882e.s3tc.ctex"
-path.etc2="res://.godot/imported/Frogdude_low_Frogdude_Normal.png-9440a86a4cf27f3cb21d6c53b326882e.etc2.ctex"
+path.s3tc="res://.godot/imported/Frogdude_low_Frogdude_Normal.png-8b08082c65f5d54b9d54097f7c4a9b3a.s3tc.ctex"
+path.etc2="res://.godot/imported/Frogdude_low_Frogdude_Normal.png-8b08082c65f5d54b9d54097f7c4a9b3a.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://frog/textures/Frogdude_low_Frogdude_Normal.png"
-dest_files=["res://.godot/imported/Frogdude_low_Frogdude_Normal.png-9440a86a4cf27f3cb21d6c53b326882e.s3tc.ctex", "res://.godot/imported/Frogdude_low_Frogdude_Normal.png-9440a86a4cf27f3cb21d6c53b326882e.etc2.ctex"]
+source_file="res://frog/art/textures/Frogdude_low_Frogdude_Normal.png"
+dest_files=["res://.godot/imported/Frogdude_low_Frogdude_Normal.png-8b08082c65f5d54b9d54097f7c4a9b3a.s3tc.ctex", "res://.godot/imported/Frogdude_low_Frogdude_Normal.png-8b08082c65f5d54b9d54097f7c4a9b3a.etc2.ctex"]
 
 [params]
 
