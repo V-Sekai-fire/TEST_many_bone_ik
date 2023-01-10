@@ -9,49 +9,8 @@ extends EditorScript
 # 3. UpperChest to Hands
 # 4. Hips to Legs
 
-class ManyboneIKResource extends Resource:
-	@export var bone_position: Dictionary
-	@export var bone_rotation: Dictionary
-	@export var bone_rest_position: Dictionary
-	@export var bone_rest_rotation: Dictionary
-	@export var skeleton : Skeleton3D
-	@export var many_bone_ik : ManyBoneIK3D
-	@export var bone_name_from_to_twist : Dictionary
-	@export var bone_name_cones : Dictionary
-
-
-func _run():
-	var root : Node3D = get_editor_interface().get_edited_scene_root()
-	if root == null:
-		return
-	var properties : Array[Dictionary] = root.get_property_list()
-	for property in properties:
-		if property["name"] == "update_in_editor":
-			root.set("update_in_editor", true)
-	var iks : Array[Node] = root.find_children("*", "ManyBoneIK3D")
-	for ik in iks:
-		ik.free()
-	var new_ik : ManyBoneIK3D = ManyBoneIK3D.new()
-	var skeletons : Array[Node] = root.find_children("*", "Skeleton3D")
-	var skeleton : Skeleton3D = skeletons[0]
-	skeleton.add_child(new_ik, true)
-	new_ik.skeleton_node_path = ".."
-	new_ik.owner = root
-	new_ik.iterations_per_frame = 15
-	new_ik.default_damp = deg_to_rad(10)
-	new_ik.visible = false
-	new_ik.queue_print_skeleton()
-#	new_ik.constraint_mode = true
-	skeleton.reset_bone_poses()
-	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
-	var humanoid_bones : PackedStringArray = []
-	for profile_i in humanoid_profile.bone_size:
-		var bone_name : String = humanoid_profile.get_bone_name(profile_i)
-		humanoid_bones.push_back(bone_name)
-	var is_humanoid : bool = false
-	var is_filtering : bool = true
-
-	var config =  {
+@export var targets : PackedStringArray = ["Root", "Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand"]
+@export	var config : Dictionary = {
 		"bone_name_from_to_twist": {
 			# Don't put constraints on the root bone.
 			# Spine
@@ -81,7 +40,10 @@ func _run():
 		},
 		"bone_name_cones": {
 			# Don't put constraints on the root bone.			
-			"Hips": [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(5)}],
+			"Hips": [
+				{"center": Vector3(0, -1, 0), "radius": deg_to_rad(5)},
+				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}
+			],
 			"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
 			"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
 			"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
@@ -124,15 +86,48 @@ func _run():
 			"RightFoot":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
 		},
 	}
-	for bone_i in skeleton.get_bone_count():
-		var bone_name : String = skeleton.get_bone_name(bone_i)
-		new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
-		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
-	#			"LeftShoulder", "RightShoulder",
-	#			"LeftUpperLeg", "LeftUpperLeg",
-		"RightEye", "LeftEye",
-		"RightToes", "LeftToes",
-		])
+
+func _run():
+	var root : Node3D = get_editor_interface().get_edited_scene_root()
+	if root == null:
+		return
+	var properties : Array[Dictionary] = root.get_property_list()
+	for property in properties:
+		if property["name"] == "update_in_editor":
+			root.set("update_in_editor", true)
+	var iks : Array[Node] = root.find_children("*", "ManyBoneIK3D")
+	for ik in iks:
+		for node in ik.get_node(ik.skeleton_node_path).get_children():
+			if node.name in targets:
+				node.free()
+		ik.free()
+	var new_ik : ManyBoneIK3D = ManyBoneIK3D.new()
+	var skeletons : Array[Node] = root.find_children("*", "Skeleton3D")
+	var skeleton : Skeleton3D = skeletons[0]
+	skeleton.add_child(new_ik, true)
+	new_ik.skeleton_node_path = ".."
+	new_ik.owner = root
+	new_ik.iterations_per_frame = 15
+	new_ik.default_damp = deg_to_rad(10)
+	new_ik.filter_bones = []
+	new_ik.queue_print_skeleton()
+#	new_ik.constraint_mode = true
+	skeleton.reset_bone_poses()
+	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
+	var humanoid_bones : PackedStringArray = []
+	for profile_i in humanoid_profile.bone_size:
+		var bone_name : String = humanoid_profile.get_bone_name(profile_i)
+		humanoid_bones.push_back(bone_name)
+	var is_humanoid : bool = false
+	var is_filtering : bool = true
+
+	new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
+	"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
+#			"LeftShoulder", "RightShoulder",
+#			"LeftUpperLeg", "LeftUpperLeg",
+	"RightEye", "LeftEye",
+	"RightToes", "LeftToes",
+	])
 	var bone_name_from_to_twist = config["bone_name_from_to_twist"]
 	var bone_name_cones = config["bone_name_cones"]
 	for bone_i in skeleton.get_bone_count():
@@ -151,10 +146,9 @@ func _run():
 					new_ik.set_kusudama_limit_cone_center(bone_i, cone_i, cone["center"])
 				if cone.keys().has("radius"):
 					new_ik.set_kusudama_limit_cone_radius(bone_i, cone_i, cone["radius"])
-		if not bone_name in ["Root", "Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand"]:
+		if not bone_name in targets:
 			continue
 		tune_bone(new_ik, skeleton, bone_i)
-	new_ik.visible = true
 
 func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_i):
 	var node_3d : BoneAttachment3D = BoneAttachment3D.new()
@@ -178,10 +172,10 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_i):
 		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, PI, 0))
 		new_ik.set_pin_passthrough_factor(bone_i, 1)
 	node_3d.owner = new_ik.owner
-	new_ik.set_pin_nodepath(bone_i, NodePath(node_3d.name))
-	var node_global_transform = node_3d.global_transform
+	new_ik.set_pin_nodepath(bone_i, str(NodePath(node_3d.name)))
+	var node_transform =  node_3d.global_transform
 	var marker_3d : Marker3D = Marker3D.new()
 	marker_3d.name = node_3d.name
-	marker_3d.global_transform = node_global_transform
+	marker_3d.global_transform = node_transform
 	node_3d.replace_by(marker_3d, true)
 
