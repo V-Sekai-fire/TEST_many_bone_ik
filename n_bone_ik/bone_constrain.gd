@@ -140,7 +140,7 @@ func _run():
 		"RightToes", "LeftToes",
 		])
 	var json : JSON = JSON.new()
-	var config : Dictionary = str_to_var(FileAccess.open("res://data.txt", FileAccess.READ).get_as_text())
+#	var config : Dictionary = str_to_var(FileAccess.open("res://data.txt", FileAccess.READ).get_as_text())
 	var bone_name_from_to_twist = config.get("bone_name_from_to_twist")
 	var bone_name_cones = config.get("bone_name_cones")
 	for bone_i in humanoid_profile.bone_size:
