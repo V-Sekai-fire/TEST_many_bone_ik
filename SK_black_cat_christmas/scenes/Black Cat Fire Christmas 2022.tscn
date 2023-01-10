@@ -1,350 +1,6 @@
-[gd_scene load_steps=70 format=3 uid="uid://bj7wqbsw3t7ny"]
+[gd_scene load_steps=2 format=3 uid="uid://bj7wqbsw3t7ny"]
 
 [ext_resource type="PackedScene" uid="uid://b56itd1mp2pur" path="res://SK_black_cat_christmas/Black Cat Fire Christmas 2022.vrm" id="1_awwiq"]
-[ext_resource type="Script" path="res://SK_black_cat_christmas/scenes/GeneralSkeleton.gd" id="2_hy48t"]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_hesor"]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_nseo5"]
-resource_name = "Root"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"global_transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"global_transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"script":null)
-
-constraint = SubResource("IKKusudama3D_hesor")
-
-[sub_resource type="IKLimitCone3D" id="IKLimitCone3D_widou"]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_gc3ua"]
-limit_cones = [SubResource("IKLimitCone3D_widou")]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_46t6d"]
-resource_name = "Hips"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000231911, 0.896172, 0.0120455),"global_transform":Transform3D(1, -0.000258756, 1.7389e-06, 0.000258756, 0.99991, -0.0134398, 1.7389e-06, 0.0134398, 0.99991, -0.00046378, 0.89593, 0.0240888),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.000231911, 0.896172, 0.0120455),"global_transform":Transform3D(-1, -0.000258756, -1.7389e-06, -0.000258756, 0.99991, 0.0134398, -1.7389e-06, 0.0134398, -0.99991, -0.00046378, 0.89593, 0.0240888),"script":null)
-
-constraint = SubResource("IKKusudama3D_gc3ua")
-
-[sub_resource type="IKLimitCone3D" id="IKLimitCone3D_stm5f"]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_vm30r"]
-limit_cones = [SubResource("IKLimitCone3D_stm5f")]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_0dgq1"]
-resource_name = "UpperChest"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40923e-09, 0.106594, -0.0145038),"global_transform":Transform3D(0.996216, -0.00937108, -0.08641, 0.0019931, 0.996372, -0.0850773, 0.0868938, 0.0845831, 0.99262, -0.0014348, 1.16747, 0.034701),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40923e-09, 0.106594, -0.0145038),"global_transform":Transform3D(0.996216, -0.00937108, -0.08641, 0.0019931, 0.996372, -0.0850773, 0.0868938, 0.0845831, 0.99262, -0.0014348, 1.16747, 0.034701),"script":null)
-
-constraint = SubResource("IKKusudama3D_vm30r")
-
-[sub_resource type="IKLimitCone3D" id="IKLimitCone3D_or2ys"]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_q1hqa"]
-limit_cones = [SubResource("IKLimitCone3D_or2ys")]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_2lbyr"]
-resource_name = "Chest"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.70613e-09, 0.111911, 0.00302007),"global_transform":Transform3D(0.996219, -0.00466231, -0.0867561, 0.000680355, 0.998947, -0.0458713, 0.0868787, 0.0456389, 0.995173, -0.00168916, 1.06003, 0.0400817),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.70613e-09, 0.111911, 0.00302007),"global_transform":Transform3D(0.996219, -0.00466231, -0.0867561, 0.000680355, 0.998947, -0.0458713, 0.0868787, 0.0456389, 0.995173, -0.00168916, 1.06003, 0.0400817),"script":null)
-
-constraint = SubResource("IKKusudama3D_q1hqa")
-
-[sub_resource type="IKLimitCone3D" id="IKLimitCone3D_op35n"]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_i207v"]
-limit_cones = [SubResource("IKLimitCone3D_op35n")]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_574kq"]
-resource_name = "Spine"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06407e-09, 0.051563, 0.0123953),"global_transform":Transform3D(0.996172, 0.0122421, -0.0865542, -0.00472692, 0.99624, 0.086504, 0.0872878, -0.0857637, 0.992484, -0.0009054, 0.948371, 0.0319688),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06407e-09, 0.051563, 0.0123953),"global_transform":Transform3D(0.996172, 0.0122421, -0.0865542, -0.00472692, 0.99624, 0.086504, 0.0872878, -0.0857637, 0.992484, -0.0009054, 0.948371, 0.0319688),"script":null)
-
-constraint = SubResource("IKKusudama3D_i207v")
-
-[sub_resource type="IKLimitCone3D" id="IKLimitCone3D_ytgk1"]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_ntvco"]
-limit_cones = [SubResource("IKLimitCone3D_ytgk1")]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_qdmab"]
-resource_name = "Head"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2087e-08, 0.0722129, 0.00903509),"global_transform":Transform3D(0.998265, -0.00211735, -0.058848, 0.00836426, 0.994319, 0.106111, 0.058289, -0.106419, 0.992611, -0.000161562, 1.36645, -0.0156577),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2087e-08, 0.0722129, 0.00903509),"global_transform":Transform3D(0.998265, -0.00211735, -0.058848, 0.00836426, 0.994319, 0.106111, 0.058289, -0.106419, 0.992611, -0.000161562, 1.36645, -0.0156577),"script":null)
-
-constraint = SubResource("IKKusudama3D_ntvco")
-
-[sub_resource type="IKLimitCone3D" id="IKLimitCone3D_nyudm"]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_yui20"]
-limit_cones = [SubResource("IKLimitCone3D_nyudm")]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_ylqjs"]
-resource_name = "Neck"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51926e-09, 0.130998, -0.0379822),"global_transform":Transform3D(0.998265, -0.00211735, -0.058848, 0.00836426, 0.994319, 0.106111, 0.058289, -0.106419, 0.992611, 0.000523003, 1.29369, -0.0169412),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51926e-09, 0.130998, -0.0379822),"global_transform":Transform3D(0.998265, -0.00211735, -0.058848, 0.00836426, 0.994319, 0.106111, 0.058289, -0.106419, 0.992611, 0.000523003, 1.29369, -0.0169412),"script":null)
-
-constraint = SubResource("IKKusudama3D_yui20")
-
-[sub_resource type="IKBoneSegment3D" id="IKBoneSegment3D_wcsbi"]
-resource_name = "IKBoneSegmentNeckRootHeadTip"
-bones = [SubResource("IKBone3D_qdmab"), SubResource("IKBone3D_ylqjs")]
-
-[sub_resource type="IKLimitCone3D" id="IKLimitCone3D_32r46"]
-
-[sub_resource type="IKLimitCone3D" id="IKLimitCone3D_loppp"]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_uv56x"]
-limit_cones = [SubResource("IKLimitCone3D_32r46"), SubResource("IKLimitCone3D_loppp")]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_v0n5u"]
-resource_name = "LeftLowerArm"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000147959, 0.217661, 0.0006212),"global_transform":Transform3D(-0.0243659, 0.999455, 0.0222846, -0.59055, 0.00359623, -0.806993, -0.806633, -0.0328233, 0.590141, 0.324459, 1.25746, -0.0052701),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0.000147959, 0.217661, 0.0006212),"global_transform":Transform3D(-0.0243659, 0.722479, -0.690964, -0.59055, -0.568087, -0.573173, -0.806633, 0.394083, 0.440502, 0.324459, 1.25746, -0.0052701),"script":null)
-
-constraint = SubResource("IKKusudama3D_uv56x")
-
-[sub_resource type="IKLimitCone3D" id="IKLimitCone3D_5q0a2"]
-
-[sub_resource type="IKLimitCone3D" id="IKLimitCone3D_725hn"]
-
-[sub_resource type="IKLimitCone3D" id="IKLimitCone3D_lcrkw"]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_6uv7x"]
-limit_cones = [SubResource("IKLimitCone3D_5q0a2"), SubResource("IKLimitCone3D_725hn"), SubResource("IKLimitCone3D_lcrkw")]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_q3kiu"]
-resource_name = "LeftUpperArm"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.86265e-09, 0.0848126, -0.0120752),"global_transform":Transform3D(-0.058848, 0.998265, -0.00211735, 0.106111, 0.00836426, 0.994319, 0.992611, 0.058289, -0.106419, 0.106907, 1.25727, 0.00162699),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(0.718037, 0.694823, 0.0405462, -0.694823, 0.712206, 0.0999153, 0.0405462, -0.0999153, 0.994169, 1.86265e-09, 0.0848126, -0.0120752),"global_transform":Transform3D(-0.735958, 0.670293, 0.0952509, 0.110696, -0.0196622, 0.99366, 0.667916, 0.741836, -0.0597282, 0.106907, 1.25727, 0.00162699),"script":null)
-
-constraint = SubResource("IKKusudama3D_6uv7x")
-
-[sub_resource type="IKLimitCone3D" id="IKLimitCone3D_i384j"]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_vky7y"]
-limit_cones = [SubResource("IKLimitCone3D_i384j")]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_xnmro"]
-resource_name = "LeftShoulder"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0221645, 0.104655, -0.0296766),"global_transform":Transform3D(0.998265, -0.00211735, -0.058848, 0.00836426, 0.994319, 0.106111, 0.058289, -0.106419, 0.992611, 0.0222161, 1.26856, -0.00460168),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(2.22045e-16, 1, 0, -1, 2.22045e-16, 0, 0, 0, 1, 0.0221645, 0.104655, -0.0296766),"global_transform":Transform3D(0.00211735, 0.998265, -0.058848, -0.994319, 0.00836426, 0.106111, 0.106419, 0.058289, 0.992611, 0.0222161, 1.26856, -0.00460168),"script":null)
-
-constraint = SubResource("IKKusudama3D_vky7y")
-
-[sub_resource type="IKLimitCone3D" id="IKLimitCone3D_jbgfg"]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_o4tpk"]
-limit_cones = [SubResource("IKLimitCone3D_jbgfg")]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_5ji4r"]
-resource_name = "LeftHand"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000624299, 0.211906, 0.000261864),"global_transform":Transform3D(0.0533586, 0.998394, 0.0190132, -0.34201, 0.000383182, 0.939696, 0.93818, -0.0566435, 0.341481, 0.536064, 1.25757, -0.0165981),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000624299, 0.211906, 0.000261864),"global_transform":Transform3D(0.0533586, 0.998394, 0.0190132, -0.34201, 0.000383182, 0.939696, 0.93818, -0.0566435, 0.341481, 0.536064, 1.25757, -0.0165981),"script":null)
-
-constraint = SubResource("IKKusudama3D_o4tpk")
-
-[sub_resource type="IKBoneSegment3D" id="IKBoneSegment3D_bfd8w"]
-resource_name = "IKBoneSegmentLeftHandRootLeftHandTip"
-bones = [SubResource("IKBone3D_5ji4r")]
-
-[sub_resource type="IKBoneSegment3D" id="IKBoneSegment3D_uctkk"]
-resource_name = "IKBoneSegmentLeftShoulderRootLeftLowerArmTip"
-bones = [SubResource("IKBone3D_v0n5u"), SubResource("IKBone3D_q3kiu"), SubResource("IKBone3D_xnmro")]
-child_segments = [SubResource("IKBoneSegment3D_bfd8w")]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_fm3sy"]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_7qb5r"]
-resource_name = "RightLowerArm"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000148172, 0.217661, 0.000620842),"global_transform":Transform3D(-0.0169001, -0.999775, -0.0128531, 0.107705, 0.0109598, -0.994122, 0.994039, -0.0181851, 0.107496, -0.324768, 1.26059, -0.0138512),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(0.999999, -0.00123353, -1.81636e-06, 0.00123353, 0.999995, 0.00294497, -1.81636e-06, -0.00294497, 0.999996, -0.000148172, 0.217661, 0.000620842),"global_transform":Transform3D(-0.0181333, -0.999711, -0.0157974, 0.10772, 0.0137546, -0.994086, 0.994016, -0.0197278, 0.10744, -0.324768, 1.26059, -0.0138512),"script":null)
-
-constraint = SubResource("IKKusudama3D_fm3sy")
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_otr8m"]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_himf6"]
-resource_name = "RightUpperArm"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86265e-09, 0.0848125, -0.0120753),"global_transform":Transform3D(0.0425598, -0.998448, 0.035913, -0.108285, 0.031124, 0.993633, -0.993208, -0.0461777, -0.106792, -0.107151, 1.25883, -0.00981247),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(1, -0.000680742, 9.70851e-07, 0.000680742, 0.999996, -0.00285232, 9.70851e-07, 0.00285232, 0.999996, -1.86265e-09, 0.0848125, -0.0120753),"global_transform":Transform3D(0.0418802, -0.99837, 0.0387607, -0.108263, 0.0340317, 0.99354, -0.99324, -0.045806, -0.106661, -0.107151, 1.25883, -0.00981247),"script":null)
-
-constraint = SubResource("IKKusudama3D_otr8m")
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_c4uch"]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_vmypo"]
-resource_name = "RightShoulder"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0221645, 0.104655, -0.0296766),"global_transform":Transform3D(0.998265, -0.00211735, -0.058848, 0.00836426, 0.994319, 0.106111, 0.058289, -0.106419, 0.992611, -0.022036, 1.26819, -0.00718557),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(0.140955, -0.990016, -1.88663e-08, 0.990016, 0.140955, 2.17426e-08, -1.88663e-08, -2.17426e-08, 1, -0.0221645, 0.104655, -0.0296766),"global_transform":Transform3D(0.138614, -0.988597, -0.058848, 0.985571, 0.131873, 0.106111, -0.0971407, -0.0727074, 0.992611, -0.022036, 1.26819, -0.00718557),"script":null)
-
-constraint = SubResource("IKKusudama3D_c4uch")
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_ckb8s"]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_mlss4"]
-resource_name = "RightHand"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000624061, 0.211906, 0.000261394),"global_transform":Transform3D(-0.00992719, -0.99983, -0.0155236, 0.995258, -0.0113817, 0.0966065, -0.0967667, -0.014491, 0.995202, -0.536636, 1.25758, -0.0166014),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000624061, 0.211906, 0.000261394),"global_transform":Transform3D(-0.00992719, -0.99983, -0.0155236, 0.995258, -0.0113817, 0.0966065, -0.0967667, -0.014491, 0.995202, -0.536636, 1.25758, -0.0166014),"script":null)
-
-constraint = SubResource("IKKusudama3D_ckb8s")
-
-[sub_resource type="IKBoneSegment3D" id="IKBoneSegment3D_1nct0"]
-resource_name = "IKBoneSegmentRightHandRootRightHandTip"
-bones = [SubResource("IKBone3D_mlss4")]
-
-[sub_resource type="IKBoneSegment3D" id="IKBoneSegment3D_h2wi2"]
-resource_name = "IKBoneSegmentRightShoulderRootRightLowerArmTip"
-bones = [SubResource("IKBone3D_7qb5r"), SubResource("IKBone3D_himf6"), SubResource("IKBone3D_vmypo")]
-child_segments = [SubResource("IKBoneSegment3D_1nct0")]
-
-[sub_resource type="IKBoneSegment3D" id="IKBoneSegment3D_n8txd"]
-resource_name = "IKBoneSegmentSpineRootUpperChestTip"
-bones = [SubResource("IKBone3D_0dgq1"), SubResource("IKBone3D_2lbyr"), SubResource("IKBone3D_574kq")]
-child_segments = [SubResource("IKBoneSegment3D_wcsbi"), SubResource("IKBoneSegment3D_uctkk"), SubResource("IKBoneSegment3D_h2wi2")]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_q5a1w"]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_p2ocv"]
-resource_name = "LeftUpperLeg"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0763605, -0.0393862, -0.00362056),"global_transform":Transform3D(0.996172, 0.0122421, -0.0865542, -0.00472692, 0.99624, 0.086504, 0.0872878, -0.0857637, 0.992484, 0.0754357, 0.856017, 0.0305387),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(-0.0742152, 0.0185069, -0.997071, -0.0185069, -0.999681, -0.0171778, -0.997071, 0.0171778, 0.0745341, 0.0763605, -0.0393862, -0.00362056),"global_transform":Transform3D(0.0121429, 0.00471098, -0.999915, -0.104337, -0.994524, -0.00595265, -0.994468, 0.1044, -0.0115849, 0.0754357, 0.856017, 0.0305387),"script":null)
-
-constraint = SubResource("IKKusudama3D_q5a1w")
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_o5dvs"]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_wkwsx"]
-resource_name = "LeftFoot"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0106744, 0.408933, 0.0211781),"global_transform":Transform3D(0.999936, 0.00441424, -0.0104047, 0.00468597, -0.999645, 0.0262384, -0.0102852, -0.0262855, -0.999602, 0.0590035, 0.0993554, -0.0187284),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.0106744, 0.408933, 0.0211781),"global_transform":Transform3D(-0.999936, 0.00441424, 0.0104047, -0.00468597, -0.999645, -0.0262384, 0.0102852, -0.0262855, 0.999602, 0.0590035, 0.0993554, -0.0187284),"script":null)
-
-constraint = SubResource("IKKusudama3D_o5dvs")
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_8nkkw"]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_6fdr8"]
-resource_name = "LeftLowerLeg"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00645694, 0.348783, -0.00599324),"global_transform":Transform3D(-0.999332, -0.00317906, -0.0364033, 0.00434823, -0.999476, -0.0320832, -0.0362822, -0.0322201, 0.998822, 0.0680924, 0.507637, 0.0130805),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(0.99966, -0.0260592, 0.000674219, 0.0260592, 0.998323, -0.0517019, 0.000674219, 0.0517019, 0.998662, 0.00645694, 0.348783, -0.00599324),"global_transform":Transform3D(-0.9991, 0.0209859, -0.036864, -0.0217204, -0.999571, 0.0196374, -0.0364361, 0.0204204, 0.999127, 0.0680924, 0.507637, 0.0130805),"script":null)
-
-constraint = SubResource("IKKusudama3D_8nkkw")
-
-[sub_resource type="IKBoneSegment3D" id="IKBoneSegment3D_h5sl2"]
-resource_name = "IKBoneSegmentLeftLowerLegRootLeftFootTip"
-bones = [SubResource("IKBone3D_wkwsx"), SubResource("IKBone3D_6fdr8")]
-
-[sub_resource type="IKBoneSegment3D" id="IKBoneSegment3D_r8ta5"]
-resource_name = "IKBoneSegmentLeftUpperLegRootLeftUpperLegTip"
-bones = [SubResource("IKBone3D_p2ocv")]
-child_segments = [SubResource("IKBoneSegment3D_h5sl2")]
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_uyqog"]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_3d4dm"]
-resource_name = "RightUpperLeg"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0763606, -0.0393862, -0.00362056),"global_transform":Transform3D(0.996172, 0.0122421, -0.0865542, -0.00472692, 0.99624, 0.086504, 0.0872878, -0.0857637, 0.992484, -0.0767008, 0.856739, 0.0172081),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(-0.0743054, -0.0185082, 0.997064, 0.0185082, -0.999681, -0.0171775, 0.997064, 0.0171775, 0.0746242, -0.0763606, -0.0393862, -0.00362056),"global_transform":Transform3D(-0.160094, -0.0321623, 0.986578, 0.10504, -0.994349, -0.0153706, 0.981497, 0.101169, 0.162568, -0.0767008, 0.856739, 0.0172081),"script":null)
-
-constraint = SubResource("IKKusudama3D_uyqog")
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_541km"]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_dqcwp"]
-resource_name = "RightFoot"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0106752, 0.408933, 0.021178),"global_transform":Transform3D(0.999024, -0.00388052, 0.0440095, -0.00430869, -0.999944, 0.00963844, 0.0439696, -0.00981865, -0.998985, -0.0594661, 0.0993487, -0.0187335),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.0106752, 0.408933, 0.021178),"global_transform":Transform3D(-0.999024, -0.00388052, -0.0440095, 0.00430869, -0.999944, -0.00963844, -0.0439696, -0.00981865, 0.998985, -0.0594661, 0.0993487, -0.0187335),"script":null)
-
-constraint = SubResource("IKKusudama3D_541km")
-
-[sub_resource type="IKKusudama3D" id="IKKusudama3D_v6rn2"]
-axially_constrained = true
-orientationally_constrained = true
-
-[sub_resource type="IKBone3D" id="IKBone3D_lk224"]
-resource_name = "RightLowerLeg"
-constraint_orientation_transform = Object(IKNode3D,"transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0064574, 0.348783, -0.00599312),"global_transform":Transform3D(-0.998167, 0.00119452, -0.0605011, -0.000212324, -0.999868, -0.0162381, -0.0605125, -0.0161955, 0.998036, -0.069476, 0.508101, 0.00596873),"script":null)
-
-constraint_twist_transform = Object(IKNode3D,"transform":Transform3D(0.99966, 0.0260612, -0.000674267, -0.0260612, 0.998322, -0.0517015, -0.000674267, 0.0517015, 0.998662, -0.0064574, 0.348783, -0.00599312),"global_transform":Transform3D(-0.997818, -0.0279489, -0.0598089, 0.0258564, -0.999036, 0.0354784, -0.0607428, 0.0338546, 0.997579, -0.069476, 0.508101, 0.00596873),"script":null)
-
-constraint = SubResource("IKKusudama3D_v6rn2")
-
-[sub_resource type="IKBoneSegment3D" id="IKBoneSegment3D_tv86i"]
-resource_name = "IKBoneSegmentRightLowerLegRootRightFootTip"
-bones = [SubResource("IKBone3D_dqcwp"), SubResource("IKBone3D_lk224")]
-
-[sub_resource type="IKBoneSegment3D" id="IKBoneSegment3D_ma256"]
-resource_name = "IKBoneSegmentRightUpperLegRootRightUpperLegTip"
-bones = [SubResource("IKBone3D_3d4dm")]
-child_segments = [SubResource("IKBoneSegment3D_tv86i")]
-
-[sub_resource type="IKBoneSegment3D" id="IKBoneSegment3D_b31hs"]
-resource_name = "IKBoneSegmentHipsRootHipsTip"
-bones = [SubResource("IKBone3D_46t6d")]
-child_segments = [SubResource("IKBoneSegment3D_n8txd"), SubResource("IKBoneSegment3D_r8ta5"), SubResource("IKBoneSegment3D_ma256")]
-
-[sub_resource type="IKBoneSegment3D" id="IKBoneSegment3D_c5bxu"]
-resource_name = "IKBoneSegmentRootRootRootTip"
-bones = [SubResource("IKBone3D_nseo5")]
-child_segments = [SubResource("IKBoneSegment3D_b31hs")]
 
 [node name="Black Cat Fire Christmas 2022" instance=ExtResource("1_awwiq")]
 update_in_editor = true
@@ -352,72 +8,63 @@ update_in_editor = true
 [node name="GeneralSkeleton" parent="." index="0"]
 bones/0/rotation = Quaternion(0.00672007, -2.64704e-22, 0.000129381, 0.999977)
 bones/1/position = Vector3(-0.000231911, 0.896172, 0.0120455)
-bones/1/rotation = Quaternion(-0.0498605, -0.0435648, -0.00408672, 0.997797)
+bones/1/rotation = Quaternion(-0.0709921, 0.0434848, -0.0335146, 0.995965)
 bones/10/position = Vector3(5.06407e-09, 0.051563, 0.0123953)
-bones/10/rotation = Quaternion(0.0662012, 0.000150717, 0.00270727, 0.997803)
+bones/10/rotation = Quaternion(0.0996267, 0.0242086, -0.0131968, 0.994643)
 bones/11/position = Vector3(9.70613e-09, 0.111911, 0.00302007)
-bones/11/rotation = Quaternion(0.0196452, 3.533e-05, 0.000655469, 0.999807)
+bones/11/rotation = Quaternion(0.0193064, -0.0971678, 0.00415307, 0.995072)
 bones/12/position = Vector3(-4.40923e-09, 0.106594, -0.0145038)
-bones/12/rotation = Quaternion(-0.0955173, 0.0143047, 0.00333664, 0.995319)
+bones/12/rotation = Quaternion(-0.096845, 0.0434076, 0.0175152, 0.994198)
+bones/17/position = Vector3(-6.51926e-09, 0.130998, -0.0379822)
+bones/17/rotation = Quaternion(-0.00803283, -0.0619373, 0.114444, 0.991465)
 bones/18/position = Vector3(3.2087e-08, 0.0722129, 0.00903509)
-bones/18/rotation = Quaternion(0.0532312, 0.0293394, -0.00262532, 0.998148)
+bones/18/rotation = Quaternion(0.0537158, 0.0434101, -0.0817646, 0.994256)
 bones/19/rotation = Quaternion(0.707107, 0, 0, 0.707107)
 bones/20/rotation = Quaternion(0.707107, 0, 0, 0.707107)
 bones/40/position = Vector3(1.86265e-09, 0.0848126, -0.0120752)
-bones/40/rotation = Quaternion(-0.043352, 0.964754, 0.0142128, 0.25917)
+bones/40/rotation = Quaternion(0.0157345, 0.958864, 0.0445884, 0.279901)
 bones/41/position = Vector3(0.000147959, 0.217661, 0.0006212)
-bones/41/rotation = Quaternion(0.0120294, 0.882069, -8.91139e-05, -0.470966)
+bones/41/rotation = Quaternion(0.00120799, 0.878315, 0.00125487, -0.478078)
 bones/42/position = Vector3(0.000624299, 0.211906, 0.000261864)
-bones/42/rotation = Quaternion(0.0279373, 0.984412, 0.00473158, 0.173578)
+bones/42/rotation = Quaternion(0.0152986, 0.985512, -0.00710256, 0.168766)
 bones/55/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
 bones/55/scale = Vector3(1, 0.999392, 0.999392)
 bones/56/rotation = Quaternion(-1.49012e-08, 0, 0, 1)
 bones/56/scale = Vector3(1, 1, 1)
-bones/62/position = Vector3(-0.0221645, 0.104655, -0.0296766)
-bones/62/rotation = Quaternion(-0.486927, 0.514045, 0.493877, 0.504723)
-bones/63/position = Vector3(-1.86265e-09, 0.0848125, -0.0120753)
-bones/63/rotation = Quaternion(-0.0128398, 0.999851, -0.0115378, 1.97393e-05)
+bones/63/position = Vector3(-1.86264e-09, 0.0848125, -0.0120753)
+bones/63/rotation = Quaternion(0.0427128, 0.964566, -0.0278996, -0.258864)
 bones/64/position = Vector3(-0.000148172, 0.217661, 0.000620842)
-bones/64/rotation = Quaternion(0.00848355, 0.703106, 0.00749856, 0.710995)
+bones/64/rotation = Quaternion(-0.00124453, 0.887569, 0.00128716, 0.460672)
 bones/65/position = Vector3(-0.000624061, 0.211906, 0.000261394)
-bones/65/rotation = Quaternion(0.00154062, -0.740473, -0.00908287, 0.672023)
+bones/65/rotation = Quaternion(-0.0189138, 0.985282, 0.00951521, -0.16962)
 bones/78/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
 bones/78/scale = Vector3(1, 0.999392, 0.999392)
 bones/79/rotation = Quaternion(-1.49012e-08, 0, 0, 1)
 bones/79/scale = Vector3(1, 1, 1)
 bones/85/position = Vector3(0.0763605, -0.0393862, -0.00362056)
-bones/85/rotation = Quaternion(0.025537, -0.0591812, 0.99792, -0.000885718)
+bones/85/rotation = Quaternion(0.346126, -0.0560498, 0.9237, -0.154384)
 bones/86/position = Vector3(0.00645694, 0.348783, -0.00599324)
-bones/86/rotation = Quaternion(-0.00383491, 0.999714, 0.00291888, 0.0234077)
+bones/86/rotation = Quaternion(0.100036, 0.956421, -0.0979229, 0.256247)
 bones/87/position = Vector3(-0.0106744, 0.408933, 0.0211781)
-bones/87/rotation = Quaternion(-0.00227526, 0.999898, -0.0131334, -0.00517298)
+bones/87/rotation = Quaternion(0.41732, -0.524946, 0.580673, 0.461621)
 bones/97/position = Vector3(-0.0763606, -0.0393862, -0.00362056)
-bones/97/rotation = Quaternion(0.0133296, -0.0513683, 0.998586, -0.00294016)
+bones/97/rotation = Quaternion(0.00419418, -0.0859402, 0.995374, -0.0427365)
 bones/98/position = Vector3(-0.0064574, 0.348783, -0.00599312)
-bones/98/rotation = Quaternion(0.00236741, 0.999958, 0.00331692, 0.0082526)
+bones/98/rotation = Quaternion(0.0039304, 0.99984, 0.0174378, -0.000836906)
 bones/99/position = Vector3(0.0106752, 0.408933, 0.021178)
-bones/99/rotation = Quaternion(0.00204776, 0.999744, -0.00486654, 0.0220004)
-script = ExtResource("2_hy48t")
-
-[node name="Face" parent="GeneralSkeleton" index="0"]
-visible = false
-
-[node name="Body" parent="GeneralSkeleton" index="1"]
-visible = false
+bones/99/rotation = Quaternion(0.0377399, -0.628256, 0.776598, 0.0276748)
 
 [node name="ManyBoneIK3D" type="ManyBoneIK3D" parent="GeneralSkeleton" index="2"]
-child_segments = [SubResource("IKBoneSegment3D_c5bxu")]
 iterations_per_frame = 15.0
 default_damp = 0.174533
-filter_bones = [&"J_Sec_L_SkirtSide0_01", &"J_Sec_L_SkirtSide1_01", &"J_Sec_L_SkirtSide2_01", &"J_Sec_L_SkirtSide2_end_01", &"J_Sec_R_SkirtSide0_01", &"J_Sec_R_SkirtSide1_01", &"J_Sec_R_SkirtSide2_01", &"J_Sec_R_SkirtSide2_end_01", &"J_Sec_L_Bust1", &"J_Sec_L_Bust2", &"J_Sec_R_Bust1", &"J_Sec_R_Bust2", &"J_Sec_Hair1_01", &"J_Sec_Hair1_02", &"J_Sec_Hair1_03", &"J_Sec_Hair1_04", &"J_Sec_Hair1_05", &"J_Sec_Hair1_06", &"J_Sec_Hair1_07", &"J_Sec_Hair1_08", &"J_Sec_Hair1_09", &"J_Sec_Hair1_10", &"J_Sec_Hair1_11", &"J_Opt_L_CatEar1_01", &"J_Opt_L_CatEar2_01", &"J_Opt_L_CatEar2_end_01", &"J_Opt_R_CatEar1_01", &"J_Opt_R_CatEar2_01", &"J_Opt_R_CatEar2_end_01", &"J_Sec_Hair1_12", &"J_Sec_L_TipSleeve_01", &"J_Sec_L_TipSleeve_end_01", &"J_Sec_L_LowerSleeve_01", &"J_Sec_L_LowerSleeve_end_01", &"J_Sec_R_TipSleeve_01", &"J_Sec_R_TipSleeve_end_01", &"J_Sec_R_LowerSleeve_01", &"J_Sec_R_LowerSleeve_end_01", &"J_Sec_L_SkirtBack0_01", &"J_Sec_L_SkirtBack1_01", &"J_Sec_L_SkirtBack2_01", &"J_Sec_L_SkirtBack2_end_01", &"J_Sec_L_SkirtFront0_01", &"J_Sec_L_SkirtFront1_01", &"J_Sec_L_SkirtFront2_01", &"J_Sec_L_SkirtFront2_end_01", &"J_Sec_R_SkirtBack0_01", &"J_Sec_R_SkirtBack1_01", &"J_Sec_R_SkirtBack2_01", &"J_Sec_R_SkirtBack2_end_01", &"J_Sec_R_SkirtFront0_01", &"J_Sec_R_SkirtFront1_01", &"J_Sec_R_SkirtFront2_01", &"J_Sec_R_SkirtFront2_end_01", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes"]
-pin_count = 109
+filter_bones = [&"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes", &"LeftIndexProximal", &"LeftLittleProximal", &"LeftMiddleProximal", &"LeftRingProximal", &"LeftThumbMetacarpal", &"RightIndexProximal", &"RightLittleProximal", &"RightMiddleProximal", &"RightRingProximal", &"RightThumbMetacarpal", &"RightEye", &"LeftEye", &"RightToes", &"LeftToes"]
 pins/0/bone_name = "Root"
 pins/0/target_node = NodePath("Root")
 pins/0/passthrough_factor = 0.0
 pins/0/weight = 1.0
 pins/0/direction_priorities = Vector3(0.2, 0, 0.2)
 pins/1/bone_name = "Hips"
-pins/1/target_node = NodePath("Hips")
+pins/1/target_node = NodePath("")
 pins/1/passthrough_factor = 0.0
 pins/1/weight = 1.0
 pins/1/direction_priorities = Vector3(0.2, 0, 0.2)
@@ -503,7 +150,7 @@ pins/17/weight = 1.0
 pins/17/direction_priorities = Vector3(0.2, 0, 0.2)
 pins/18/bone_name = "Head"
 pins/18/target_node = NodePath("Head")
-pins/18/passthrough_factor = 0.0
+pins/18/passthrough_factor = 1.0
 pins/18/weight = 1.0
 pins/18/direction_priorities = Vector3(0.2, 0, 0.2)
 pins/19/bone_name = "LeftEye"
@@ -623,7 +270,7 @@ pins/41/weight = 1.0
 pins/41/direction_priorities = Vector3(0.2, 0, 0.2)
 pins/42/bone_name = "LeftHand"
 pins/42/target_node = NodePath("LeftHand")
-pins/42/passthrough_factor = 0.0
+pins/42/passthrough_factor = 1.0
 pins/42/weight = 1.0
 pins/42/direction_priorities = Vector3(0.2, 0, 0.2)
 pins/43/bone_name = "LeftIndexProximal"
@@ -738,7 +385,7 @@ pins/64/weight = 1.0
 pins/64/direction_priorities = Vector3(0.2, 0, 0.2)
 pins/65/bone_name = "RightHand"
 pins/65/target_node = NodePath("RightHand")
-pins/65/passthrough_factor = 0.0
+pins/65/passthrough_factor = 1.0
 pins/65/weight = 1.0
 pins/65/direction_priorities = Vector3(0.2, 0, 0.2)
 pins/66/bone_name = "RightIndexProximal"
@@ -848,7 +495,7 @@ pins/86/weight = 1.0
 pins/86/direction_priorities = Vector3(0.2, 0, 0.2)
 pins/87/bone_name = "LeftFoot"
 pins/87/target_node = NodePath("LeftFoot")
-pins/87/passthrough_factor = 0.0
+pins/87/passthrough_factor = 1.0
 pins/87/weight = 1.0
 pins/87/direction_priorities = Vector3(0.2, 0, 0.2)
 pins/88/bone_name = "LeftToes"
@@ -908,7 +555,7 @@ pins/98/weight = 1.0
 pins/98/direction_priorities = Vector3(0.2, 0, 0.2)
 pins/99/bone_name = "RightFoot"
 pins/99/target_node = NodePath("RightFoot")
-pins/99/passthrough_factor = 0.0
+pins/99/passthrough_factor = 1.0
 pins/99/weight = 1.0
 pins/99/direction_priorities = Vector3(0.2, 0, 0.2)
 pins/100/bone_name = "RightToes"
@@ -956,7 +603,6 @@ pins/108/target_node = NodePath("")
 pins/108/passthrough_factor = 0.0
 pins/108/weight = 1.0
 pins/108/direction_priorities = Vector3(0.2, 0, 0.2)
-constraint_count = 109
 constraints/0/bone_name = &"Root"
 constraints/0/twist_from = 0.0
 constraints/0/twist_range = 6.28318
@@ -972,9 +618,9 @@ constraints/1/twist_current = null
 constraints/1/kusudama_limit_cone_count = 1
 constraints/1/kusudama_limit_cone/0/center = Vector3(0, -1, 0)
 constraints/1/kusudama_limit_cone/0/radius = 0.0872665
-constraints/1/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/1/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/1/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/1/kusudama_twist = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.000231911, 0.896172, 0.0120455)
+constraints/1/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000231911, 0.896172, 0.0120455)
+constraints/1/bone_direction = Transform3D(1, 3.55215e-07, 3.78378e-06, -3.55215e-07, -0.982528, 0.186116, 3.78378e-06, -0.186116, -0.982528, 0, 0, 0)
 constraints/2/bone_name = &"J_Sec_L_SkirtSide0_01"
 constraints/2/twist_from = 0.0
 constraints/2/twist_range = 6.28318
@@ -1046,9 +692,9 @@ constraints/10/twist_current = null
 constraints/10/kusudama_limit_cone_count = 1
 constraints/10/kusudama_limit_cone/0/center = Vector3(0, 1, 0)
 constraints/10/kusudama_limit_cone/0/radius = 0.174533
-constraints/10/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/10/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/10/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/10/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06407e-09, 0.051563, 0.0123953)
+constraints/10/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06407e-09, 0.051563, 0.0123953)
+constraints/10/bone_direction = Transform3D(1, -8.66994e-08, -1.16964e-09, 8.66994e-08, 0.999636, 0.0269766, -1.16964e-09, -0.0269766, 0.999636, 0, 0, 0)
 constraints/11/bone_name = &"Chest"
 constraints/11/twist_from = 6.19592
 constraints/11/twist_range = 0.523599
@@ -1056,9 +702,9 @@ constraints/11/twist_current = null
 constraints/11/kusudama_limit_cone_count = 1
 constraints/11/kusudama_limit_cone/0/center = Vector3(0, 1, 0)
 constraints/11/kusudama_limit_cone/0/radius = 0.174533
-constraints/11/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/11/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/11/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/11/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.70613e-09, 0.111911, 0.00302007)
+constraints/11/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.70613e-09, 0.111911, 0.00302007)
+constraints/11/bone_direction = Transform3D(1, 4.09871e-08, -2.77568e-09, -4.09871e-08, 0.99087, -0.134823, -2.77568e-09, 0.134823, 0.99087, 0, 0, 0)
 constraints/12/bone_name = &"UpperChest"
 constraints/12/twist_from = 6.19592
 constraints/12/twist_range = 0.523599
@@ -1066,9 +712,9 @@ constraints/12/twist_current = null
 constraints/12/kusudama_limit_cone_count = 1
 constraints/12/kusudama_limit_cone/0/center = Vector3(0, 1, 0)
 constraints/12/kusudama_limit_cone/0/radius = 0.0872665
-constraints/12/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/12/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/12/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/12/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40923e-09, 0.106594, -0.0145038)
+constraints/12/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40923e-09, 0.106594, -0.0145038)
+constraints/12/bone_direction = Transform3D(1, 5.5255e-08, -7.74671e-09, -5.5255e-08, 0.961446, -0.274993, -7.74671e-09, 0.274993, 0.961446, 0, 0, 0)
 constraints/13/bone_name = &"J_Sec_L_Bust1"
 constraints/13/twist_from = 0.0
 constraints/13/twist_range = 6.28318
@@ -1108,9 +754,9 @@ constraints/17/twist_current = null
 constraints/17/kusudama_limit_cone_count = 1
 constraints/17/kusudama_limit_cone/0/center = Vector3(0, 1, 0)
 constraints/17/kusudama_limit_cone/0/radius = 0.261799
-constraints/17/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/17/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/17/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/17/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51926e-09, 0.130998, -0.0379822)
+constraints/17/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51926e-09, 0.130998, -0.0379822)
+constraints/17/bone_direction = Transform3D(1, -4.40901e-07, -2.7475e-08, 4.40901e-07, 0.992264, 0.124149, -2.7475e-08, -0.124149, 0.992264, 0, 0, 0)
 constraints/18/bone_name = &"Head"
 constraints/18/twist_from = 0.0
 constraints/18/twist_range = 0.174533
@@ -1118,8 +764,8 @@ constraints/18/twist_current = null
 constraints/18/kusudama_limit_cone_count = 1
 constraints/18/kusudama_limit_cone/0/center = Vector3(0, 1, 0)
 constraints/18/kusudama_limit_cone/0/radius = 0.261799
-constraints/18/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/18/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/18/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2087e-08, 0.0722129, 0.00903509)
+constraints/18/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2087e-08, 0.0722129, 0.00903509)
 constraints/18/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/19/bone_name = &"LeftEye"
 constraints/19/twist_from = 0.0
@@ -1288,9 +934,9 @@ constraints/39/twist_current = null
 constraints/39/kusudama_limit_cone_count = 1
 constraints/39/kusudama_limit_cone/0/center = Vector3(1, 0, 0)
 constraints/39/kusudama_limit_cone/0/radius = 0.261799
-constraints/39/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/39/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/39/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/39/kusudama_twist = Transform3D(2.22045e-16, 1, 0, -1, 2.22045e-16, 0, 0, 0, 1, 0.0221645, 0.104655, -0.0296766)
+constraints/39/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0221645, 0.104655, -0.0296766)
+constraints/39/bone_direction = Transform3D(1, -2.17426e-08, 1.54004e-09, 2.17426e-08, 0.990016, -0.140954, 1.54004e-09, 0.140954, 0.990016, 0, 0, 0)
 constraints/40/bone_name = &"LeftUpperArm"
 constraints/40/twist_from = -2.0944
 constraints/40/twist_range = -1.0472
@@ -1302,9 +948,9 @@ constraints/40/kusudama_limit_cone/1/center = Vector3(2, 0.5, -0.2)
 constraints/40/kusudama_limit_cone/1/radius = 1.13446
 constraints/40/kusudama_limit_cone/2/center = Vector3(0, 0.2, 1)
 constraints/40/kusudama_limit_cone/2/radius = 0.349066
-constraints/40/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/40/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/40/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/40/kusudama_twist = Transform3D(0.718037, 0.694823, 0.0405462, -0.694823, 0.712206, 0.0999153, 0.0405462, -0.0999153, 0.994169, 1.86265e-09, 0.0848126, -0.0120752)
+constraints/40/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.86265e-09, 0.0848126, -0.0120752)
+constraints/40/bone_direction = Transform3D(1, -0.000679767, -9.70018e-07, 0.000679767, 0.999996, 0.00285397, -9.70018e-07, -0.00285397, 0.999996, 0, 0, 0)
 constraints/41/bone_name = &"LeftLowerArm"
 constraints/41/twist_from = -1.309
 constraints/41/twist_range = -1.0472
@@ -1314,9 +960,9 @@ constraints/41/kusudama_limit_cone/0/center = Vector3(0, 0, 1)
 constraints/41/kusudama_limit_cone/0/radius = 0.349066
 constraints/41/kusudama_limit_cone/1/center = Vector3(0, 0.8, 0)
 constraints/41/kusudama_limit_cone/1/radius = 0.349066
-constraints/41/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/41/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/41/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/41/kusudama_twist = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0.000147959, 0.217661, 0.0006212)
+constraints/41/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000147959, 0.217661, 0.0006212)
+constraints/41/bone_direction = Transform3D(0.999996, -0.00294609, -1.82031e-06, 0.00294609, 0.999995, 0.00123574, -1.82031e-06, -0.00123574, 0.999999, 0, 0, 0)
 constraints/42/bone_name = &"LeftHand"
 constraints/42/twist_from = -4.79966
 constraints/42/twist_range = -0.349066
@@ -1324,8 +970,8 @@ constraints/42/twist_current = null
 constraints/42/kusudama_limit_cone_count = 1
 constraints/42/kusudama_limit_cone/0/center = Vector3(0, 1, 0)
 constraints/42/kusudama_limit_cone/0/radius = 0.349066
-constraints/42/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/42/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/42/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000624299, 0.211906, 0.000261864)
+constraints/42/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000624299, 0.211906, 0.000261864)
 constraints/42/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/43/bone_name = &"LeftIndexProximal"
 constraints/43/twist_from = 0.0
@@ -1480,36 +1126,50 @@ constraints/61/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/61/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/61/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/62/bone_name = &"RightShoulder"
-constraints/62/twist_from = 0.0
-constraints/62/twist_range = 6.28318
+constraints/62/twist_from = 4.36332
+constraints/62/twist_range = -0.698132
 constraints/62/twist_current = null
-constraints/62/kusudama_limit_cone_count = 0
-constraints/62/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/62/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/62/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/62/kusudama_limit_cone_count = 1
+constraints/62/kusudama_limit_cone/0/center = Vector3(-1, 0, 0)
+constraints/62/kusudama_limit_cone/0/radius = 0.261799
+constraints/62/kusudama_twist = Transform3D(2.22045e-16, -1, 0, 1, 2.22045e-16, 0, 0, 0, 1, -0.0221645, 0.104655, -0.0296766)
+constraints/62/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0221645, 0.104655, -0.0296766)
+constraints/62/bone_direction = Transform3D(1, 2.17426e-08, -1.54005e-09, -2.17426e-08, 0.990016, -0.140955, -1.54005e-09, 0.140955, 0.990016, 0, 0, 0)
 constraints/63/bone_name = &"RightUpperArm"
-constraints/63/twist_from = 0.0
-constraints/63/twist_range = 6.28318
+constraints/63/twist_from = 2.0944
+constraints/63/twist_range = 1.0472
 constraints/63/twist_current = null
-constraints/63/kusudama_limit_cone_count = 0
-constraints/63/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/63/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/63/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/63/kusudama_limit_cone_count = 3
+constraints/63/kusudama_limit_cone/0/center = Vector3(0, 1, -0.5)
+constraints/63/kusudama_limit_cone/0/radius = 0.872665
+constraints/63/kusudama_limit_cone/1/center = Vector3(-2, 0.5, -0.2)
+constraints/63/kusudama_limit_cone/1/radius = 1.13446
+constraints/63/kusudama_limit_cone/2/center = Vector3(0, 0.2, 1)
+constraints/63/kusudama_limit_cone/2/radius = 0.349066
+constraints/63/kusudama_twist = Transform3D(0.718037, -0.694823, -0.0405462, 0.694823, 0.712206, 0.0999153, -0.0405462, -0.0999153, 0.994169, -1.86265e-09, 0.0848125, -0.0120753)
+constraints/63/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86264e-09, 0.0848125, -0.0120753)
+constraints/63/bone_direction = Transform3D(1, 0.000680742, 9.70851e-07, -0.000680742, 0.999996, 0.00285232, 9.70851e-07, -0.00285232, 0.999996, 0, 0, 0)
 constraints/64/bone_name = &"RightLowerArm"
-constraints/64/twist_from = 0.0
-constraints/64/twist_range = 6.28318
+constraints/64/twist_from = 1.309
+constraints/64/twist_range = 1.0472
 constraints/64/twist_current = null
-constraints/64/kusudama_limit_cone_count = 0
-constraints/64/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/64/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/64/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/64/kusudama_limit_cone_count = 2
+constraints/64/kusudama_limit_cone/0/center = Vector3(0, 0, 1)
+constraints/64/kusudama_limit_cone/0/radius = 0.349066
+constraints/64/kusudama_limit_cone/1/center = Vector3(0, 0.8, 0)
+constraints/64/kusudama_limit_cone/1/radius = 0.349066
+constraints/64/kusudama_twist = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.000148172, 0.217661, 0.000620842)
+constraints/64/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000148172, 0.217661, 0.000620842)
+constraints/64/bone_direction = Transform3D(0.999996, 0.00294497, 1.81636e-06, -0.00294497, 0.999995, 0.00123353, 1.81636e-06, -0.00123353, 0.999999, 0, 0, 0)
 constraints/65/bone_name = &"RightHand"
-constraints/65/twist_from = 0.0
-constraints/65/twist_range = 6.28318
+constraints/65/twist_from = 4.79966
+constraints/65/twist_range = 0.349066
 constraints/65/twist_current = null
-constraints/65/kusudama_limit_cone_count = 0
-constraints/65/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/65/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/65/kusudama_limit_cone_count = 1
+constraints/65/kusudama_limit_cone/0/center = Vector3(0, 1, 0)
+constraints/65/kusudama_limit_cone/0/radius = 0.349066
+constraints/65/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000624061, 0.211906, 0.000261394)
+constraints/65/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000624061, 0.211906, 0.000261394)
 constraints/65/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/66/bone_name = &"RightIndexProximal"
 constraints/66/twist_from = 0.0
@@ -1665,28 +1325,36 @@ constraints/84/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 
 constraints/84/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/85/bone_name = &"LeftUpperLeg"
 constraints/85/twist_from = 0.0
-constraints/85/twist_range = 6.28318
+constraints/85/twist_range = 6.10865
 constraints/85/twist_current = null
-constraints/85/kusudama_limit_cone_count = 0
-constraints/85/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/85/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/85/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/85/kusudama_limit_cone_count = 1
+constraints/85/kusudama_limit_cone/0/center = Vector3(0, 1, 0)
+constraints/85/kusudama_limit_cone/0/radius = 2.79253
+constraints/85/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0763605, -0.0393862, -0.00362056)
+constraints/85/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0763605, -0.0393862, -0.00362056)
+constraints/85/bone_direction = Transform3D(0.999829, -0.0185069, 0.000158979, 0.0185069, 0.999681, -0.0171778, 0.000158979, 0.0171778, 0.999852, 0, 0, 0)
 constraints/86/bone_name = &"LeftLowerLeg"
-constraints/86/twist_from = 0.0
-constraints/86/twist_range = 6.28318
+constraints/86/twist_from = 1.5708
+constraints/86/twist_range = 0.349066
 constraints/86/twist_current = null
-constraints/86/kusudama_limit_cone_count = 0
-constraints/86/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/86/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/86/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/86/kusudama_limit_cone_count = 2
+constraints/86/kusudama_limit_cone/0/center = Vector3(0, 1, 0)
+constraints/86/kusudama_limit_cone/0/radius = 0.174533
+constraints/86/kusudama_limit_cone/1/center = Vector3(0, -0.8, -1)
+constraints/86/kusudama_limit_cone/1/radius = 0.698132
+constraints/86/kusudama_twist = Transform3D(1, 0, 0, 0, -0.432617, 0.901578, 0, -0.901578, -0.432617, 0.00645694, 0.348783, -0.00599324)
+constraints/86/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00645694, 0.348783, -0.00599324)
+constraints/86/bone_direction = Transform3D(0.99966, 0.0260592, 0.000674219, -0.0260592, 0.998323, 0.0517019, 0.000674219, -0.0517019, 0.998662, 0, 0, 0)
 constraints/87/bone_name = &"LeftFoot"
-constraints/87/twist_from = 0.0
-constraints/87/twist_range = 6.28318
+constraints/87/twist_from = 3.14159
+constraints/87/twist_range = 6.10865
 constraints/87/twist_current = null
-constraints/87/kusudama_limit_cone_count = 0
-constraints/87/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/87/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/87/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/87/kusudama_limit_cone_count = 1
+constraints/87/kusudama_limit_cone/0/center = Vector3(1, 0, 0)
+constraints/87/kusudama_limit_cone/0/radius = 1.5708
+constraints/87/kusudama_twist = Transform3D(2.22045e-16, 1, 0, -1, 2.22045e-16, 0, 0, 0, 1, -0.0106744, 0.408933, 0.0211781)
+constraints/87/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0106744, 0.408933, 0.0211781)
+constraints/87/bone_direction = Transform3D(1, 0, 0, 0, 2.22045e-16, -1, 0, 1, 2.22045e-16, 0, 0, 0)
 constraints/88/bone_name = &"LeftToes"
 constraints/88/twist_from = 0.0
 constraints/88/twist_range = 6.28318
@@ -1761,28 +1429,36 @@ constraints/96/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 
 constraints/96/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/97/bone_name = &"RightUpperLeg"
 constraints/97/twist_from = 0.0
-constraints/97/twist_range = 6.28318
+constraints/97/twist_range = 6.10865
 constraints/97/twist_current = null
-constraints/97/kusudama_limit_cone_count = 0
-constraints/97/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/97/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/97/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/97/kusudama_limit_cone_count = 1
+constraints/97/kusudama_limit_cone/0/center = Vector3(0, -1, 0)
+constraints/97/kusudama_limit_cone/0/radius = 2.79253
+constraints/97/kusudama_twist = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.0763606, -0.0393862, -0.00362056)
+constraints/97/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0763606, -0.0393862, -0.00362056)
+constraints/97/bone_direction = Transform3D(0.999829, 0.0185082, -0.000158987, -0.0185082, 0.999681, -0.0171775, -0.000158987, 0.0171775, 0.999852, 0, 0, 0)
 constraints/98/bone_name = &"RightLowerLeg"
-constraints/98/twist_from = 0.0
-constraints/98/twist_range = 6.28318
+constraints/98/twist_from = 1.5708
+constraints/98/twist_range = 0.349066
 constraints/98/twist_current = null
-constraints/98/kusudama_limit_cone_count = 0
-constraints/98/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/98/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/98/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/98/kusudama_limit_cone_count = 2
+constraints/98/kusudama_limit_cone/0/center = Vector3(0, 1, 0)
+constraints/98/kusudama_limit_cone/0/radius = 0.174533
+constraints/98/kusudama_limit_cone/1/center = Vector3(0, -0.8, -1)
+constraints/98/kusudama_limit_cone/1/radius = 0.698132
+constraints/98/kusudama_twist = Transform3D(1, 0, 0, 0, -0.432617, 0.901578, 0, -0.901578, -0.432617, -0.0064574, 0.348783, -0.00599312)
+constraints/98/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0064574, 0.348783, -0.00599312)
+constraints/98/bone_direction = Transform3D(0.99966, -0.0260612, -0.000674267, 0.0260612, 0.998322, 0.0517015, -0.000674267, -0.0517015, 0.998662, 0, 0, 0)
 constraints/99/bone_name = &"RightFoot"
-constraints/99/twist_from = 0.0
-constraints/99/twist_range = 6.28318
+constraints/99/twist_from = 3.14159
+constraints/99/twist_range = 6.10865
 constraints/99/twist_current = null
-constraints/99/kusudama_limit_cone_count = 0
-constraints/99/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/99/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/99/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/99/kusudama_limit_cone_count = 1
+constraints/99/kusudama_limit_cone/0/center = Vector3(1, 0, 0)
+constraints/99/kusudama_limit_cone/0/radius = 1.5708
+constraints/99/kusudama_twist = Transform3D(2.22045e-16, 1, 0, -1, 2.22045e-16, 0, 0, 0, 1, 0.0106752, 0.408933, 0.021178)
+constraints/99/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0106752, 0.408933, 0.021178)
+constraints/99/bone_direction = Transform3D(1, 0, 0, 0, 2.22045e-16, -1, 0, 1, 2.22045e-16, 0, 0, 0)
 constraints/100/bone_name = &"RightToes"
 constraints/100/twist_from = 0.0
 constraints/100/twist_range = 6.28318
@@ -1855,7 +1531,6 @@ constraints/108/kusudama_limit_cone_count = 0
 constraints/108/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/108/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/108/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-bone_count = 109
 bone/0/bone_name = "Root"
 bone/0/damp = 3.14159
 bone/1/bone_name = "Hips"
@@ -2077,20 +1752,17 @@ bone/108/damp = 3.14159
 
 [node name="Root" type="Marker3D" parent="GeneralSkeleton/ManyBoneIK3D" index="0"]
 
-[node name="Hips" type="Marker3D" parent="GeneralSkeleton/ManyBoneIK3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000231911, 0.896172, 0.0120455)
+[node name="Head" type="Marker3D" parent="GeneralSkeleton/ManyBoneIK3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000231875, 1.46945, -0.01599)
 
-[node name="Head" type="Marker3D" parent="GeneralSkeleton/ManyBoneIK3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000231875, 1.36945, -0.01599)
+[node name="LeftHand" type="Marker3D" parent="GeneralSkeleton/ManyBoneIK3D" index="2"]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 0.649563, 1.25757, -0.0166055)
 
-[node name="LeftHand" type="Marker3D" parent="GeneralSkeleton/ManyBoneIK3D" index="3"]
-transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 0.536313, 1.25757, -0.0166055)
-
-[node name="RightHand" type="Marker3D" parent="GeneralSkeleton/ManyBoneIK3D" index="4"]
+[node name="RightHand" type="Marker3D" parent="GeneralSkeleton/ManyBoneIK3D" index="3"]
 transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.536776, 1.25758, -0.0166062)
 
-[node name="LeftFoot" type="Marker3D" parent="GeneralSkeleton/ManyBoneIK3D" index="5"]
-transform = Transform3D(-1, 0, 0, 0, -2.22045e-16, 1, 0, 1, 2.22045e-16, 0.0589973, 0.0990702, -0.0187464)
+[node name="LeftFoot" type="Marker3D" parent="GeneralSkeleton/ManyBoneIK3D" index="4"]
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, 0.0589973, 0.0990702, -0.0187464)
 
-[node name="RightFoot" type="Marker3D" parent="GeneralSkeleton/ManyBoneIK3D" index="6"]
-transform = Transform3D(-1, 0, 0, 0, -2.22045e-16, 1, 0, 1, 2.22045e-16, -0.0594599, 0.0990702, -0.0187461)
+[node name="RightFoot" type="Marker3D" parent="GeneralSkeleton/ManyBoneIK3D" index="5"]
+transform = Transform3D(-1, 2.41285e-17, 1.20064e-16, 0, 0.980399, -0.197024, -1.22465e-16, -0.197024, -0.980399, -0.0594599, 0.0990702, -0.0187461)

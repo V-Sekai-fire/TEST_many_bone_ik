@@ -45,8 +45,8 @@ func _run():
 	skeleton.reset_bone_poses()
 	var humanoid_profile : SkeletonProfileHumanoid = SkeletonProfileHumanoid.new()
 	var humanoid_bones : PackedStringArray = []
-	for bone_i in humanoid_profile.bone_size:
-		var bone_name : String = humanoid_profile.get_bone_name(bone_i)
+	for profile_i in humanoid_profile.bone_size:
+		var bone_name : String = humanoid_profile.get_bone_name(profile_i)
 		humanoid_bones.push_back(bone_name)
 	var is_humanoid : bool = false
 	var is_filtering : bool = true
@@ -126,24 +126,16 @@ func _run():
 	}
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
-		if bone_name in humanoid_bones:
-			is_humanoid = true
-			continue
-		if is_humanoid:
-			new_ik.filter_bones.push_back(bone_name)
-	if is_filtering and is_humanoid:
 		new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
 		"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
-#			"LeftShoulder", "RightShoulder",
-#			"LeftUpperLeg", "LeftUpperLeg",
+	#			"LeftShoulder", "RightShoulder",
+	#			"LeftUpperLeg", "LeftUpperLeg",
 		"RightEye", "LeftEye",
 		"RightToes", "LeftToes",
 		])
-	var json : JSON = JSON.new()
-#	var config : Dictionary = str_to_var(FileAccess.open("res://data.txt", FileAccess.READ).get_as_text())
-	var bone_name_from_to_twist = config.get("bone_name_from_to_twist")
-	var bone_name_cones = config.get("bone_name_cones")
-	for bone_i in humanoid_profile.bone_size:
+	var bone_name_from_to_twist = config["bone_name_from_to_twist"]
+	var bone_name_cones = config["bone_name_cones"]
+	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		var keys : Array = bone_name_from_to_twist.keys()
 		if keys.has(bone_name):
@@ -159,38 +151,37 @@ func _run():
 					new_ik.set_kusudama_limit_cone_center(bone_i, cone_i, cone["center"])
 				if cone.keys().has("radius"):
 					new_ik.set_kusudama_limit_cone_radius(bone_i, cone_i, cone["radius"])
-			var skeleton_bone_name = humanoid_profile.get_bone_name(bone_i)
-		var skeleton_bone_name = humanoid_profile.get_bone_name(bone_i)
-		if not skeleton_bone_name in ["Hips", "Root", "Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand"]:
+		if not bone_name in ["Root", "Head", "LeftFoot", "RightFoot", "LeftHand", "RightHand"]:
 			continue
-		tune_bone(new_ik, skeleton, skeleton_bone_name, skeleton.find_bone(skeleton_bone_name))
+		tune_bone(new_ik, skeleton, bone_i)
 	new_ik.visible = true
 
-func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_name, bone_i):
+func tune_bone(new_ik : ManyBoneIK3D, skeleton, bone_i):
 	var node_3d : BoneAttachment3D = BoneAttachment3D.new()
+	var bone_name = skeleton.get_bone_name(bone_i)
 	node_3d.name = bone_name
-	node_3d.bone_name = bone_name
 	node_3d.bone_idx = bone_i
 	node_3d.set_use_external_skeleton (true)
 	node_3d.set_external_skeleton("../" + str(new_ik.get_path_to(skeleton)))
 	new_ik.add_child(node_3d, true)
-#	if bone_name in ["Root"]:
-#		new_ik.set_pin_passthrough_factor(bone_i, 0)
-#	if bone_name in ["Head"]:
-#		# Move slightly higher to avoid the crunching into the body effect.
-##		node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
-#		new_ik.set_pin_passthrough_factor(bone_i, 1)
-#	if bone_name in ["LeftHand"]:
-#		new_ik.set_pin_passthrough_factor(bone_i, 1)
-#	if bone_name in ["RightHand"]:
-#		new_ik.set_pin_passthrough_factor(bone_i, 1)
-#	if bone_name in ["LeftFoot", "RightFoot"]:
-#		new_ik.set_pin_passthrough_factor(bone_i, 1)
+	if bone_name in ["Root"]:
+		new_ik.set_pin_passthrough_factor(bone_i, 0)
+	if bone_name in ["Head"]:
+		# Move slightly higher to avoid the crunching into the body effect.
+		node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
+		new_ik.set_pin_passthrough_factor(bone_i, 1)
+	if bone_name in ["LeftHand"]:
+		new_ik.set_pin_passthrough_factor(bone_i, 1)
+	if bone_name in ["RightHand"]:
+		new_ik.set_pin_passthrough_factor(bone_i, 1)
+	if bone_name in ["LeftFoot", "RightFoot"]:
+		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, PI, 0))
+		new_ik.set_pin_passthrough_factor(bone_i, 1)
 	node_3d.owner = new_ik.owner
-	new_ik.set_pin_nodepath(bone_i, NodePath(bone_name))
+	new_ik.set_pin_nodepath(bone_i, NodePath(node_3d.name))
 	var node_global_transform = node_3d.global_transform
 	var marker_3d : Marker3D = Marker3D.new()
-	marker_3d.name = bone_name
+	marker_3d.name = node_3d.name
 	marker_3d.global_transform = node_global_transform
 	node_3d.replace_by(marker_3d, true)
 
