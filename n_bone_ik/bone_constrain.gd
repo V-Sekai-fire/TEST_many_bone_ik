@@ -18,12 +18,12 @@ var is_filtering : bool = true
 #	"LeftLowerLeg", 
 	"LeftFoot", 
 #	"RightLowerLeg", 
-#	"RightFoot", 
+	"RightFoot", 
 #	"RightToes",
 #	"LeftLowerArm", 
 	"LeftHand",
 ##	"RightLowerArm", 
-#	"RightHand",
+	"RightHand",
 #	"RightToes"
 	]
 @export	var config : Dictionary = {
@@ -58,9 +58,8 @@ var is_filtering : bool = true
 			"Head": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(15)}],
 			"LeftShoulder": [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(15)}],
 			"LeftUpperArm":  [
-				{"center": Vector3(0, 1, -0.5), "radius": deg_to_rad(50)},
-				{"center": Vector3(2, 0.5, -0.2), "radius": deg_to_rad(65)},
-				{"center": Vector3(0, 0.2, 1), "radius": deg_to_rad(20)},
+				{"center": Vector3(0.2, 1, -0.5), "radius": deg_to_rad(40)},
+				{"center": Vector3(1, 0, 0), "radius": deg_to_rad(20)},
 			],
 			"LeftLowerArm":  [
 				{"center": Vector3(0, 0, 1), "radius": deg_to_rad(20)},
@@ -78,9 +77,8 @@ var is_filtering : bool = true
 			"LeftToes":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(5)}],
 			"RightShoulder": [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(15)}],
 			"RightUpperArm":  [
-				{"center": Vector3(0, 1, -0.5), "radius": deg_to_rad(50)},
-				{"center": Vector3(-2, 0.5, -0.2), "radius": deg_to_rad(65)},
-				{"center": Vector3(0, 0.2, 1), "radius": deg_to_rad(20)},
+				{"center": Vector3(-0.2, 1, -0.5), "radius": deg_to_rad(40)},
+				{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(20)},
 			],
 			"RightLowerArm":  [
 				{"center": Vector3(0, 0, 1), "radius": deg_to_rad(20)},
@@ -148,7 +146,7 @@ func _run():
 	"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
 #			"LeftShoulder", "RightShoulder",
 #			"LeftUpperLeg", "LeftUpperLeg",
-	"RightEye", "LeftEye",
+#	"RightEye", "LeftEye",
 #	"RightToes", "LeftToes",
 	])
 	var bone_name_from_to_twist = config["bone_name_from_to_twist"]
@@ -158,8 +156,6 @@ func _run():
 		new_ik.set_kusudama_twist(bone_i, Vector2(0, TAU))
 		new_ik.set_pin_weight(bone_i, 0)
 		new_ik.set_kusudama_limit_cone_count(bone_i, 0)
-		if bone_name.find("Right") != -1:
-			new_ik.filter_bones.push_back(bone_name)
 		if not human_bones.has(bone_name):
 			new_ik.filter_bones.push_back(bone_name)
 		var keys : Array = bone_name_from_to_twist.keys()
