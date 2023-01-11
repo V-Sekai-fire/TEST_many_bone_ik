@@ -67,11 +67,11 @@ var is_filtering : bool = true
 			],
 			"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 			"LeftUpperLeg":  [
-				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(160)}
+				{"center": Vector3(0, -1, 0), "radius": deg_to_rad(20)}
 			],
 			"LeftLowerLeg":  [
 				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
-				{"center": Vector3(0, -0.8, 1), "radius": deg_to_rad(40)},
+				{"center": Vector3(0, 0.8, 1), "radius": deg_to_rad(40)},
 			],
 			"LeftFoot":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(20)}],
 			"LeftToes":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(5)}],
@@ -86,11 +86,11 @@ var is_filtering : bool = true
 			],
 			"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 			"RightUpperLeg":  [
-				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(160)}
+				{"center": Vector3(0, -1, 0), "radius": deg_to_rad(20)}
 			],
 			"RightLowerLeg":  [
 				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
-				{"center": Vector3(0, -0.8, 1), "radius": deg_to_rad(40)},
+				{"center": Vector3(0, 0.8, 1), "radius": deg_to_rad(40)},
 			],
 			"RightFoot":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(20)}],
 			"RightToes":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(5)}],
