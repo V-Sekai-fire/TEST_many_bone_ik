@@ -25,6 +25,8 @@ var is_filtering : bool = true
 ##	"RightLowerArm", 
 	"RightHand",
 #	"RightToes"
+	"LeftIndexDistal", "LeftLittleDistal", "LeftMiddleDistal", "LeftRingDistal", "LeftThumbDistal",
+	"RightIndexDistal", "RightLittleDistal", "RightMiddleDistal", "RightRingDistal", "RightThumbDistal"
 	]
 
 static func copy_kusudama(p_bone_name_from : String, p_bone_name_to : String, p_ik : ManyBoneIK3D, p_mirror : Vector3):
@@ -61,6 +63,7 @@ var basic_z_axis = Vector3(0, 0, 1)
 			"LeftUpperLeg": Vector2(deg_to_rad(160), deg_to_rad(40)),
 			"LeftLowerLeg": Vector2(deg_to_rad(90), deg_to_rad(20)),
 			"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(5)),
+			"LeftEye": Vector2(deg_to_rad(180), deg_to_rad(5)),
 		},
 		"bone_name_cones": {
 			# Don't put constraints on the root or hip bone
@@ -88,6 +91,7 @@ var basic_z_axis = Vector3(0, 0, 1)
 			],
 			"LeftFoot":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(20)}],
 			"LeftToes":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(5)}],
+			"LeftEye": [{"center": basic_y_axis, "radius": deg_to_rad(10)}],
 		},
 	}
 
@@ -100,20 +104,9 @@ func _run():
 		if property["name"] == "update_in_editor":
 			root.set("update_in_editor", true)
 	var iks : Array[Node] = root.find_children("*", "ManyBoneIK3D")
-	var reniks : Array[Node] = root.find_children("*", "RenIK")
 	var skeletons : Array[Node] = root.find_children("*", "Skeleton3D")
 	var skeleton : Skeleton3D = skeletons[0]
 	for ik in iks:
-		var renik : RenIK = reniks[0]
-		for node in skeleton.get_children():
-			if str(node.name) in targets:
-				node.free()
-		renik.armature_head_target = "Head"
-		renik.armature_left_hand_target = "LeftHand"
-		renik.armature_right_hand_target = "RightHand"
-		renik.armature_hip_target = "Hips"
-		renik.armature_left_foot_target = "LeftFoot"
-		renik.armature_right_foot_target = "RightFoot"
 		ik.free()
 	var new_ik : ManyBoneIK3D = ManyBoneIK3D.new()
 	skeleton.add_child(new_ik, true)
@@ -136,13 +129,6 @@ func _run():
 	for bone_i in skeleton_profile.bone_size:
 		var bone_name : String = skeleton_profile.get_bone_name(bone_i)
 		human_bones.push_back(bone_name)
-	new_ik.filter_bones.append_array(["LeftIndexProximal", "LeftLittleProximal", "LeftMiddleProximal", "LeftRingProximal", "LeftThumbMetacarpal",
-	"RightIndexProximal", "RightLittleProximal", "RightMiddleProximal", "RightRingProximal", "RightThumbMetacarpal",
-#			"LeftShoulder", "RightShoulder",
-#			"LeftUpperLeg", "LeftUpperLeg",
-#	"RightEye", "LeftEye",
-#	"RightToes", "LeftToes",
-	])
 	var bone_name_from_to_twist = config["bone_name_from_to_twist"]
 	var bone_name_cones = config["bone_name_cones"]
 	
@@ -171,7 +157,7 @@ func _run():
 					new_ik.set_kusudama_limit_cone_radius(bone_i, cone_i, cone["radius"])
 		if not bone_name in targets:
 			continue
-		tune_bone(new_ik, reniks[0], skeleton, bone_i)
+		tune_bone(new_ik, skeleton, bone_i)
 
 	copy_kusudama("LeftUpperArm", "RightUpperArm", new_ik, Vector3(-1, 1, 1))
 	copy_kusudama("LeftShoulder", "RightShoulder", new_ik, Vector3(-1, 1, 1))
@@ -182,8 +168,9 @@ func _run():
 	copy_kusudama("LeftLowerLeg", "RightLowerLeg", new_ik, Vector3(1, 1, 1))
 	copy_kusudama("LeftFoot", "RightFoot", new_ik, Vector3(1, 1, 1))
 	copy_kusudama("LeftToes", "RightToes", new_ik, Vector3(1, 1, 1))
+	copy_kusudama("LeftEyes", "RightEyes", new_ik, Vector3(1, 1, 1))
 	
-func tune_bone(new_ik : ManyBoneIK3D, renik : RenIK, skeleton : Skeleton3D, bone_i : int):
+func tune_bone(new_ik : ManyBoneIK3D, skeleton : Skeleton3D, bone_i : int):
 	var node_3d : Marker3D = Marker3D.new()
 	var bone_name = skeleton.get_bone_name(bone_i)
 	node_3d.name = bone_name
