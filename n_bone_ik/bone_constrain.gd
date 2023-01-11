@@ -191,23 +191,19 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton : Skeleton3D, bone_name : String,
 	node_3d.global_transform = skeleton.global_transform.affine_inverse() * skeleton.get_bone_global_pose_no_override(bone_i)
 	if not children.size():
 		new_ik.add_child(node_3d, true)
+	new_ik.set_pin_passthrough_factor(bone_i, 1)
 	if bone_name in ["Root"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
-		new_ik.set_pin_weight(bone_i, 0)
+		new_ik.set_pin_weight(bone_i, 1)
 	if bone_name in ["Hips"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
 		new_ik.set_pin_weight(bone_i, 0)
 	if bone_name in ["Head"]:
 		# Move slightly higher to avoid the crunching into the body effect.
 		node_3d.global_transform.origin = node_3d.global_transform.origin + Vector3(0, 0.1, 0)
-		new_ik.set_pin_passthrough_factor(bone_i, 1)
 		new_ik.set_pin_weight(bone_i, 1)
 	if bone_name in ["LeftHand"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 1)
 		new_ik.set_pin_weight(bone_i, 1)
 		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, 0, -PI / 2))
 	if bone_name in ["RightHand"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 1)
 		new_ik.set_pin_weight(bone_i, 1)
 		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, 0, PI / 2))
 	if bone_name.ends_with("Distal"):
