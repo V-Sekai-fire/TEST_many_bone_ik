@@ -40,14 +40,14 @@ var is_filtering : bool = true
 			"LeftHand": Vector2(deg_to_rad(-275), deg_to_rad(-20)),
 			"LeftUpperLeg": Vector2(deg_to_rad(00), deg_to_rad(350)),
 			"LeftLowerLeg": Vector2(deg_to_rad(90), deg_to_rad(20)),
-#			"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(5)),
+			"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(5)),
 			"RightShoulder": Vector2(deg_to_rad(250), deg_to_rad(-40)),
 			"RightUpperArm": Vector2(deg_to_rad(120), deg_to_rad(60)),
 			"RightLowerArm": Vector2(deg_to_rad(75), deg_to_rad(60)),
 			"RightHand": Vector2(deg_to_rad(275), deg_to_rad(20)),
 			"RightUpperLeg": Vector2(deg_to_rad(00), deg_to_rad(350)),
 			"RightLowerLeg": Vector2(deg_to_rad(90), deg_to_rad(20)),
-#			"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(5)),
+			"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(5)),
 		},
 		"bone_name_cones": {
 			# Don't put constraints on the root or hip bone
@@ -75,7 +75,7 @@ var is_filtering : bool = true
 				{"center": Vector3(0, -0.8, 1), "radius": deg_to_rad(40)},
 			],
 			"LeftFoot":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(20)}],
-#			"LeftToes":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
+			"LeftToes":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(5)}],
 			"RightShoulder": [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(15)}],
 			"RightUpperArm":  [
 				{"center": Vector3(0, 1, -0.5), "radius": deg_to_rad(50)},
@@ -95,7 +95,7 @@ var is_filtering : bool = true
 				{"center": Vector3(0, -0.8, 1), "radius": deg_to_rad(40)},
 			],
 			"RightFoot":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(20)}],
-#			"RightToes":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(90)}],
+			"RightToes":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(5)}],
 		},
 	}
 
@@ -191,11 +191,9 @@ func tune_bone(new_ik : ManyBoneIK3D, renik : RenIK, skeleton : Skeleton3D, bone
 	if bone_name in ["Root"]:
 		new_ik.set_pin_passthrough_factor(bone_i, 0)
 		new_ik.set_pin_weight(bone_i, 0)
-		new_ik.set_pin_direction_priorities(bone_i, Vector3())
 	if bone_name in ["Hips"]:
 		new_ik.set_pin_passthrough_factor(bone_i, 0)
 		new_ik.set_pin_weight(bone_i, 0)
-		new_ik.set_pin_direction_priorities(bone_i, Vector3())
 	if bone_name in ["Head"]:
 		# Move slightly higher to avoid the crunching into the body effect.
 		node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
