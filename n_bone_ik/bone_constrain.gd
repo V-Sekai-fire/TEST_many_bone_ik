@@ -28,9 +28,7 @@ var is_filtering : bool = true
 	]
 @export	var config : Dictionary = {
 		"bone_name_from_to_twist": {
-			# Don't put constraints on the root bone.
-			# Spine
-			"Hips": Vector2(deg_to_rad(0), deg_to_rad(350)),
+			# Don't put constraints on the root or hip bone.
 			"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
 			"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
 			"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
@@ -52,10 +50,7 @@ var is_filtering : bool = true
 #			"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(5)),
 		},
 		"bone_name_cones": {
-			# Don't put constraints on the root bone.			
-			"Hips": [
-				{"center": Vector3(0, -1, 0), "radius": deg_to_rad(5)},
-			],
+			# Don't put constraints on the root or hip bone
 			"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
 			"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
 			"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
@@ -92,7 +87,6 @@ var is_filtering : bool = true
 				{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(20)},
 			],
 			"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
-			# Legs
 			"RightUpperLeg":  [
 				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(160)}
 			],
