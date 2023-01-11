@@ -26,9 +26,29 @@ var is_filtering : bool = true
 	"RightHand",
 #	"RightToes"
 	]
+
+static func copy_kusudama(p_bone_name_from : String, p_bone_name_to : String, p_ik : ManyBoneIK3D, p_mirror : Vector3):
+	if is_zero_approx(p_mirror.length_squared()):
+		p_mirror = Vector3(0, 1, 0)
+	p_mirror = p_mirror.normalized()
+	var from = p_ik.find_constraint(p_bone_name_from)
+	var to = p_ik.find_constraint(p_bone_name_to)
+	var cone_count = p_ik.get_kusudama_limit_cone_count(from)
+	p_ik.set_kusudama_limit_cone_count(to, cone_count)
+	for cone_i in range(cone_count):
+		p_ik.set_kusudama_limit_cone_center(to, cone_i, p_ik.get_kusudama_limit_cone_center(from, cone_i) * p_mirror)
+		p_ik.set_kusudama_limit_cone_radius(to, cone_i, p_ik.get_kusudama_limit_cone_radius(from, cone_i))
+	var twist = p_ik.get_kusudama_twist(from)
+	p_ik.set_kusudama_twist(to, twist * p_mirror.normalized().sign().x)
+
+var basic_x_axis = Vector3(1, 0,  0)
+var basic_y_axis = Vector3(0, 1, 0)
+var basic_z_axis = Vector3(0, 0, 1)
+	
 @export	var config : Dictionary = {
 		"bone_name_from_to_twist": {
 			# Don't put constraints on the root or hip bone.
+			"Hips": Vector2(deg_to_rad(0), deg_to_rad(-20)),
 			"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
 			"Chest":  Vector2(deg_to_rad(355), deg_to_rad(30)),
 			"UpperChest": Vector2(deg_to_rad(355), deg_to_rad(30)),
@@ -38,25 +58,18 @@ var is_filtering : bool = true
 			"LeftUpperArm": Vector2(deg_to_rad(-120), deg_to_rad(-60)),
 			"LeftLowerArm": Vector2(deg_to_rad(-75), deg_to_rad(-60)),
 			"LeftHand": Vector2(deg_to_rad(-275), deg_to_rad(-20)),
-			"LeftUpperLeg": Vector2(deg_to_rad(00), deg_to_rad(350)),
+			"LeftUpperLeg": Vector2(deg_to_rad(160), deg_to_rad(40)),
 			"LeftLowerLeg": Vector2(deg_to_rad(90), deg_to_rad(20)),
 			"LeftFoot": Vector2(deg_to_rad(180), deg_to_rad(5)),
-			"RightShoulder": Vector2(deg_to_rad(250), deg_to_rad(-40)),
-			"RightUpperArm": Vector2(deg_to_rad(120), deg_to_rad(60)),
-			"RightLowerArm": Vector2(deg_to_rad(75), deg_to_rad(60)),
-			"RightHand": Vector2(deg_to_rad(275), deg_to_rad(20)),
-			"RightUpperLeg": Vector2(deg_to_rad(00), deg_to_rad(350)),
-			"RightLowerLeg": Vector2(deg_to_rad(90), deg_to_rad(20)),
-			"RightFoot": Vector2(deg_to_rad(180), deg_to_rad(5)),
 		},
 		"bone_name_cones": {
 			# Don't put constraints on the root or hip bone
-			"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
-			"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
-			"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
-			"Neck": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(15)}],
-			"Head": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(15)}],
-			"LeftShoulder": [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(15)}],
+			"Spine": [{"center": basic_y_axis, "radius": deg_to_rad(10)}],
+			"UpperChest": [{"center": basic_y_axis, "radius": deg_to_rad(5)}],
+			"Chest": [{"center": basic_y_axis, "radius": deg_to_rad(10)}],
+			"Neck": [{"center": basic_y_axis, "radius": deg_to_rad(15)}],
+			"Head": [{"center": basic_y_axis, "radius": deg_to_rad(15)}],
+			"LeftShoulder": [{"center": basic_x_axis, "radius": deg_to_rad(15)}],
 			"LeftUpperArm":  [
 				{"center": Vector3(0.2, 1, -0.5), "radius": deg_to_rad(40)},
 				{"center": Vector3(1, 0, 0), "radius": deg_to_rad(20)},
@@ -67,37 +80,18 @@ var is_filtering : bool = true
 			],
 			"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
 			"LeftUpperLeg":  [
-				{"center": Vector3(0, -1, 0), "radius": deg_to_rad(20)}
+				{"center": Vector3(0, -1, 0), "radius": deg_to_rad(40)}
 			],
 			"LeftLowerLeg":  [
-				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
-				{"center": Vector3(0, 0.8, 1), "radius": deg_to_rad(40)},
+				{"center": basic_y_axis, "radius": deg_to_rad(10)},
+				{"center": Vector3(0, 0.8, -1), "radius": deg_to_rad(20)},
 			],
 			"LeftFoot":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(20)}],
 			"LeftToes":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(5)}],
-			"RightShoulder": [{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(15)}],
-			"RightUpperArm":  [
-				{"center": Vector3(-0.2, 1, -0.5), "radius": deg_to_rad(40)},
-				{"center": Vector3(-1, 0, 0), "radius": deg_to_rad(20)},
-			],
-			"RightLowerArm":  [
-				{"center": Vector3(0, 0, 1), "radius": deg_to_rad(20)},
-				{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(20)},
-			],
-			"RightHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
-			"RightUpperLeg":  [
-				{"center": Vector3(0, -1, 0), "radius": deg_to_rad(20)}
-			],
-			"RightLowerLeg":  [
-				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)},
-				{"center": Vector3(0, 0.8, 1), "radius": deg_to_rad(40)},
-			],
-			"RightFoot":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(20)}],
-			"RightToes":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(5)}],
 		},
 	}
 
-func _run():
+func _run():	
 	var root : Node3D = get_editor_interface().get_edited_scene_root()
 	if root == null:
 		return
@@ -151,6 +145,7 @@ func _run():
 	])
 	var bone_name_from_to_twist = config["bone_name_from_to_twist"]
 	var bone_name_cones = config["bone_name_cones"]
+	
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		new_ik.set_kusudama_twist(bone_i, Vector2(0, TAU))
@@ -178,6 +173,16 @@ func _run():
 			continue
 		tune_bone(new_ik, reniks[0], skeleton, bone_i)
 
+	copy_kusudama("LeftUpperArm", "RightUpperArm", new_ik, Vector3(-1, 1, 1))
+	copy_kusudama("LeftShoulder", "RightShoulder", new_ik, Vector3(-1, 1, 1))
+	copy_kusudama("LeftUpperArm", "RightUpperArm", new_ik, Vector3(-1, 1, 1))
+	copy_kusudama("LeftLowerArm", "RightLowerArm", new_ik, Vector3(-1, 1, 1))
+	copy_kusudama("LeftHand", "RightHand", new_ik, Vector3(-1, 1, 1))
+	copy_kusudama("LeftUpperLeg", "RightUpperLeg", new_ik, Vector3(1, 1, 1))
+	copy_kusudama("LeftLowerLeg", "RightLowerLeg", new_ik, Vector3(1, 1, 1))
+	copy_kusudama("LeftFoot", "RightFoot", new_ik, Vector3(1, 1, 1))
+	copy_kusudama("LeftToes", "RightToes", new_ik, Vector3(1, 1, 1))
+	
 func tune_bone(new_ik : ManyBoneIK3D, renik : RenIK, skeleton : Skeleton3D, bone_i : int):
 	var node_3d : Marker3D = Marker3D.new()
 	var bone_name = skeleton.get_bone_name(bone_i)
@@ -195,11 +200,11 @@ func tune_bone(new_ik : ManyBoneIK3D, renik : RenIK, skeleton : Skeleton3D, bone
 		node_3d.transform.origin = node_3d.transform.origin + Vector3(0, 0.1, 0)
 		new_ik.set_pin_passthrough_factor(bone_i, 1)
 	if bone_name in ["LeftHand"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
+		new_ik.set_pin_passthrough_factor(bone_i, 1)
 	if bone_name in ["RightHand"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
+		new_ik.set_pin_passthrough_factor(bone_i, 1)
 	if bone_name in ["LeftFoot", "RightFoot"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
+		new_ik.set_pin_passthrough_factor(bone_i, 1)
 		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, PI, 0))
 	node_3d.owner = new_ik.owner
 	new_ik.set_pin_nodepath(bone_i, str(node_3d.name))
