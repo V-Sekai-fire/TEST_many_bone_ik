@@ -33,19 +33,19 @@ var is_filtering : bool = true
 	}
 
 
-static func copy_kusudama(p_bone_name_from : String, p_bone_name_to : String, p_ik : ManyBoneIK3D, p_axis : Vector3):
-	if is_zero_approx(p_axis.length_squared()):
-		p_axis = Vector3(0, 1, 0)
-	p_axis = p_axis.normalized()
+static func copy_kusudama(p_bone_name_from : String, p_bone_name_to : String, p_ik : ManyBoneIK3D, p_mirror : Vector3):
+	if is_zero_approx(p_mirror.length_squared()):
+		p_mirror = Vector3(0, 1, 0)
+	p_mirror = p_mirror.normalized()
 	var from = p_ik.find_constraint(p_bone_name_from)
 	var to = p_ik.find_constraint(p_bone_name_to)
 	var cone_count = p_ik.get_kusudama_limit_cone_count(from)
 	p_ik.set_kusudama_limit_cone_count(to, cone_count)
 	for cone_i in range(cone_count):
-		p_ik.set_kusudama_limit_cone_center(to, cone_i, p_ik.get_kusudama_limit_cone_center(from, cone_i) * p_axis)
+		p_ik.set_kusudama_limit_cone_center(to, cone_i, p_ik.get_kusudama_limit_cone_center(from, cone_i) * p_mirror)
 		p_ik.set_kusudama_limit_cone_radius(to, cone_i, p_ik.get_kusudama_limit_cone_radius(from, cone_i))
 	var twist = p_ik.get_kusudama_twist(from)
-	p_ik.set_kusudama_twist(to, twist * p_axis.normalized().sign().x)
+	p_ik.set_kusudama_twist(to, twist * p_mirror.normalized().sign().x)
 
 var basic_x_axis = Vector3(1, 0,  0)
 var basic_y_axis = Vector3(0, 1, 0)
