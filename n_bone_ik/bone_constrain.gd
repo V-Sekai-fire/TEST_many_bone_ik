@@ -15,6 +15,7 @@ var is_filtering : bool = true
 @export var targets : Dictionary = {
 	"Root": "ManyBoneIK3D",
 	"Head": "Root",
+	"Hips": "Head",
 	"LeftFoot": "Root", 
 	"RightFoot": "Root", 
 	"LeftHand": "Root",
@@ -191,6 +192,7 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton : Skeleton3D, bone_name : String,
 	if bone_name in ["Root"]:
 		new_ik.set_pin_weight(bone_i, 0)
 	if bone_name in ["Hips"]:
+		new_ik.set_pin_passthrough_factor(bone_i, 1)
 		new_ik.set_pin_weight(bone_i, 0)
 	if bone_name in ["Head"]:
 		# Move slightly higher to avoid the crunching into the body effect.
