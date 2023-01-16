@@ -13,13 +13,12 @@ var is_humanoid : bool = true
 var is_filtering : bool = true
 	
 @export var targets : Dictionary = {
-	"Root": "ManyBoneIK3D", 
-	"Hips": "Root",
-	"Head": "Hips",
-	"LeftFoot": "Hips", 
-	"RightFoot": "Hips", 
-	"LeftHand": "Hips",
-	"RightHand": "Hips",
+	"Root": "ManyBoneIK3D",
+	"Head": "Root",
+	"LeftFoot": "Root", 
+	"RightFoot": "Root", 
+	"LeftHand": "Root",
+	"RightHand": "Root",
 #	"LeftIndexDistal": "LeftHand",
 #	"LeftLittleDistal": "LeftHand", 
 #	"LeftMiddleDistal": "LeftHand", 
@@ -36,7 +35,6 @@ var is_filtering : bool = true
 static func copy_kusudama(p_bone_name_from : String, p_bone_name_to : String, p_ik : ManyBoneIK3D, p_mirror : Vector3):
 	if is_zero_approx(p_mirror.length_squared()):
 		p_mirror = Vector3(0, 1, 0)
-	p_mirror = p_mirror.normalized()
 	var from = p_ik.find_constraint(p_bone_name_from)
 	var to = p_ik.find_constraint(p_bone_name_to)
 	var cone_count = p_ik.get_kusudama_limit_cone_count(from)
@@ -163,7 +161,6 @@ func _run():
 
 	copy_kusudama("LeftUpperArm", "RightUpperArm", new_ik, Vector3(-1, 1, 1))
 	copy_kusudama("LeftShoulder", "RightShoulder", new_ik, Vector3(-1, 1, 1))
-	copy_kusudama("LeftUpperArm", "RightUpperArm", new_ik, Vector3(-1, 1, 1))
 	copy_kusudama("LeftLowerArm", "RightLowerArm", new_ik, Vector3(-1, 1, 1))
 	copy_kusudama("LeftHand", "RightHand", new_ik, Vector3(-1, 1, 1))
 	copy_kusudama("LeftUpperLeg", "RightUpperLeg", new_ik, Vector3(-1, 1, 1))
@@ -191,7 +188,6 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton : Skeleton3D, bone_name : String,
 	node_3d.global_transform = skeleton.global_transform.affine_inverse() * skeleton.get_bone_global_pose_no_override(bone_i)
 	if not children.size():
 		new_ik.add_child(node_3d, true)
-	new_ik.set_pin_passthrough_factor(bone_i, 1)
 	if bone_name in ["Root"]:
 		new_ik.set_pin_weight(bone_i, 0)
 	if bone_name in ["Hips"]:
@@ -211,7 +207,6 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton : Skeleton3D, bone_name : String,
 		new_ik.set_pin_direction_priorities(bone_i, Vector3())
 		new_ik.set_pin_weight(bone_i, 1)
 	if bone_name in ["LeftFoot", "RightFoot"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
 		new_ik.set_pin_weight(bone_i, 1)
 		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, PI, 0))
 	node_3d.owner = new_ik.owner
