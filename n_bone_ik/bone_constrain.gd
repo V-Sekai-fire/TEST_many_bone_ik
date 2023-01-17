@@ -11,6 +11,7 @@ extends EditorScript
 
 var is_humanoid : bool = true
 var is_filtering : bool = true
+var is_thumbs_up : bool = false
 	
 @export var targets : Dictionary = {
 	"Hips": "ManyBoneIK3D",
@@ -206,10 +207,12 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton : Skeleton3D, bone_name : String,
 		new_ik.set_pin_weight(bone_i, 1)
 	if bone_name in ["LeftHand"]:
 		new_ik.set_pin_weight(bone_i, 1)
-		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, 0, -PI / 2))
+		if is_thumbs_up:
+			node_3d.global_transform.basis = Basis.from_euler(Vector3(0, 0, -PI / 2))
 	if bone_name in ["RightHand"]:
 		new_ik.set_pin_weight(bone_i, 1)
-		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, 0, PI / 2))
+		if is_thumbs_up:
+			node_3d.global_transform.basis = Basis.from_euler(Vector3(0, 0, PI / 2))
 	if bone_name.ends_with("Distal"):
 		new_ik.set_pin_passthrough_factor(bone_i, 0)
 		new_ik.set_pin_direction_priorities(bone_i, Vector3())
