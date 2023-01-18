@@ -86,10 +86,10 @@ var basic_z_axis = Vector3(0, 0, 1)
 				{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(20)},
 			],
 			"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
-			"LeftUpperLeg":  [
-				{"center":  Vector3(0, -1.0, 0), "radius": deg_to_rad(20)},
-				{"center": Vector3(0, -0.8, 1), "radius": deg_to_rad(40)},
-			],
+#			"LeftUpperLeg":  [
+#				{"center":  Vector3(0, -1.0, 0), "radius": deg_to_rad(20)},
+#				{"center": Vector3(0, -0.8, 1), "radius": deg_to_rad(40)},
+#			],
 			"LeftLowerLeg":  [
 				{"center": basic_y_axis, "radius": deg_to_rad(20)},
 				{"center": Vector3(0, 0.8, -1), "radius": deg_to_rad(40)},
@@ -192,10 +192,8 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton : Skeleton3D, bone_name : String,
 	node_3d.global_transform = skeleton.global_transform.affine_inverse() * skeleton.get_bone_global_pose_no_override(bone_i)
 	if not children.size():
 		new_ik.add_child(node_3d, true)
-	if bone_name in ["Root"]:
-		new_ik.set_pin_weight(bone_i, 0.01)
 	if bone_name in ["Hips"]:
-		new_ik.set_pin_weight(bone_i, 0.01)
+		new_ik.set_pin_weight(bone_i, 0)
 	if bone_name in ["Head"]:
 		# Move slightly higher to avoid the crunching into the body effect.
 		node_3d.global_transform.origin = node_3d.global_transform.origin + Vector3(0, 0.1, 0)
