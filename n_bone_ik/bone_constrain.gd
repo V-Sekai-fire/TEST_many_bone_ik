@@ -36,18 +36,19 @@ var is_thumbs_up : bool = false
 	}
 
 
-static func copy_kusudama(p_bone_name_from : String, p_bone_name_to : String, p_ik : ManyBoneIK3D, p_mirror : Vector3):
+static func copy_kusudama(p_bone_name_from : String, p_bone_name_to : PackedStringArray, p_ik : ManyBoneIK3D, p_mirror : Vector3):
 	if is_zero_approx(p_mirror.length_squared()):
 		p_mirror = Vector3(0, 1, 0)
 	var from = p_ik.find_constraint(p_bone_name_from)
-	var to = p_ik.find_constraint(p_bone_name_to)
-	var cone_count = p_ik.get_kusudama_limit_cone_count(from)
-	p_ik.set_kusudama_limit_cone_count(to, cone_count)
-	for cone_i in range(cone_count):
-		p_ik.set_kusudama_limit_cone_center(to, cone_i, p_ik.get_kusudama_limit_cone_center(from, cone_i) * p_mirror)
-		p_ik.set_kusudama_limit_cone_radius(to, cone_i, p_ik.get_kusudama_limit_cone_radius(from, cone_i))
-	var twist = p_ik.get_kusudama_twist(from)
-	p_ik.set_kusudama_twist(to, twist * p_mirror.normalized().sign().x)
+	for bone_name_to in p_bone_name_to:
+		var to = p_ik.find_constraint(bone_name_to)
+		var cone_count = p_ik.get_kusudama_limit_cone_count(from)
+		p_ik.set_kusudama_limit_cone_count(to, cone_count)
+		for cone_i in range(cone_count):
+			p_ik.set_kusudama_limit_cone_center(to, cone_i, p_ik.get_kusudama_limit_cone_center(from, cone_i) * p_mirror)
+			p_ik.set_kusudama_limit_cone_radius(to, cone_i, p_ik.get_kusudama_limit_cone_radius(from, cone_i))
+		var twist = p_ik.get_kusudama_twist(from)
+		p_ik.set_kusudama_twist(to, twist * p_mirror.normalized().sign().x)
 
 var basic_x_axis = Vector3(1, 0,  0)
 var basic_y_axis = Vector3(0, 1, 0)
@@ -162,17 +163,17 @@ func _run():
 	for target_i in keys.size():
 		tune_bone(new_ik, skeleton, keys[target_i], targets[keys[target_i]], root)
 
-	copy_kusudama("LeftUpperArm", "RightUpperArm", new_ik, Vector3(-1, 1, 1))
-	copy_kusudama("LeftShoulder", "RightShoulder", new_ik, Vector3(-1, 1, 1))
-	copy_kusudama("LeftLowerArm", "RightLowerArm", new_ik, Vector3(-1, 1, 1))
-	copy_kusudama("LeftHand", "RightHand", new_ik, Vector3(-1, 1, 1))
-	copy_kusudama("LeftUpperLeg", "RightUpperLeg", new_ik, Vector3(-1, 1, 1))
-	copy_kusudama("LeftLowerLeg", "RightLowerLeg", new_ik, Vector3(1, 1, 1))
-	copy_kusudama("LeftFoot", "RightFoot", new_ik, Vector3(1, 1, 1))
-	copy_kusudama("LeftToes", "RightToes", new_ik, Vector3(1, 1, 1))
-	copy_kusudama("LeftEyes", "RightEyes", new_ik, Vector3(1, 1, 1))
-	copy_kusudama("Spine", "Chest", new_ik, Vector3(1, 1, 1))
-	copy_kusudama("Spine", "UpperChest", new_ik, Vector3(1, 1, 1))
+	copy_kusudama("LeftUpperArm", ["RightUpperArm"], new_ik, Vector3(-1, 1, 1))
+	copy_kusudama("LeftShoulder", ["RightShoulder"], new_ik, Vector3(-1, 1, 1))
+	copy_kusudama("LeftLowerArm", ["RightLowerArm"], new_ik, Vector3(-1, 1, 1))
+	copy_kusudama("LeftHand", ["RightHand"], new_ik, Vector3(-1, 1, 1))
+	copy_kusudama("LeftUpperLeg", ["RightUpperLeg"], new_ik, Vector3(-1, 1, 1))
+	copy_kusudama("LeftLowerLeg", ["RightLowerLeg"], new_ik, Vector3(1, 1, 1))
+	copy_kusudama("LeftFoot", ["RightFoot"], new_ik, Vector3(1, 1, 1))
+	copy_kusudama("LeftToes", ["RightToes"], new_ik, Vector3(1, 1, 1))
+	copy_kusudama("LeftEyes", ["RightEyes"], new_ik, Vector3(1, 1, 1))
+	copy_kusudama("Spine", ["Chest"], new_ik, Vector3(1, 1, 1))
+	copy_kusudama("Spine", ["UpperChest"], new_ik, Vector3(1, 1, 1))
 	
 func tune_bone(new_ik : ManyBoneIK3D, skeleton : Skeleton3D, bone_name : String, bone_name_parent : String, owner):
 	var node_3d : Marker3D = Marker3D.new()
