@@ -50,10 +50,7 @@ static func copy_kusudama(p_bone_name_from : String, p_bone_name_to : PackedStri
 		var twist = p_ik.get_kusudama_twist(from)
 		p_ik.set_kusudama_twist(to, twist * p_mirror.normalized().sign().x)
 
-var basic_x_axis = Vector3(1, 0,  0)
-var basic_y_axis = Vector3(0, 1, 0)
-var basic_z_axis = Vector3(0, 0, 1)
-	
+
 @export	var config : Dictionary = {
 		"bone_name_from_to_twist": {
 			"Spine": Vector2(deg_to_rad(355), deg_to_rad(30)),
@@ -71,12 +68,13 @@ var basic_z_axis = Vector3(0, 0, 1)
 			"LeftEye": Vector2(deg_to_rad(180), deg_to_rad(5)),
 		},
 		"bone_name_cones": {
-			"Spine": [{"center": basic_y_axis, "radius": deg_to_rad(10)}],
-			"UpperChest": [{"center": basic_y_axis, "radius": deg_to_rad(5)}],
-			"Chest": [{"center": basic_y_axis, "radius": deg_to_rad(10)}],
-			"Neck": [{"center": basic_y_axis, "radius": deg_to_rad(15)}],
-			"Head": [{"center": basic_y_axis, "radius": deg_to_rad(15)}],
-			"LeftShoulder": [{"center": basic_x_axis, "radius": deg_to_rad(15)}],
+			"Spine": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
+			"UpperChest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(5)}],
+			"Chest": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
+			"Neck": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(15)}],
+			"Head": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(15)}],
+			"LeftEye": [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(10)}],
+			"LeftShoulder": [{"center": Vector3(1, 0,  0), "radius": deg_to_rad(15)}],
 			"LeftUpperArm":  [
 				{"center": Vector3(0.2, 1, -0.5), "radius": deg_to_rad(40)},
 				{"center": Vector3(1, 0, 0), "radius": deg_to_rad(20)},
@@ -86,17 +84,16 @@ var basic_z_axis = Vector3(0, 0, 1)
 				{"center": Vector3(0, 0.8, 0), "radius": deg_to_rad(20)},
 			],
 			"LeftHand":  [{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)}],
-#			"LeftUpperLeg":  [
-#				{"center":  Vector3(0, -1.0, 0), "radius": deg_to_rad(20)},
-#				{"center": Vector3(0, -0.8, 1), "radius": deg_to_rad(40)},
-#			],
+			"LeftUpperLeg":  [
+				{"center":  Vector3(0, -1.0, 0), "radius": deg_to_rad(20)},
+				{"center": Vector3(0, -0.8, 1), "radius": deg_to_rad(40)},
+			],
 			"LeftLowerLeg":  [
-				{"center": basic_y_axis, "radius": deg_to_rad(20)},
+				{"center": Vector3(0, 1, 0), "radius": deg_to_rad(20)},
 				{"center": Vector3(0, 0.8, -1), "radius": deg_to_rad(40)},
 			],
 			"LeftFoot":  [{"center": Vector3(0, -1, 0), "radius": deg_to_rad(20)}],
 			"LeftToes":  [{"center": Vector3(1, 0, 0), "radius": deg_to_rad(5)}],
-			"LeftEye": [{"center": basic_y_axis, "radius": deg_to_rad(10)}],
 		},
 	}
 
