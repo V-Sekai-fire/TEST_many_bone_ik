@@ -127,13 +127,6 @@ func _run():
 	
 	var skeleton_profile = SkeletonProfileHumanoid.new()
 	var human_bones : Array
-#	for bone_i in skeleton_profile.bone_size:
-#		var bone_name : String = skeleton_profile.get_bone_name(bone_i)
-#		human_bones.push_back(bone_name)
-#	for bone_i in skeleton.get_bone_count():
-#		var bone_name = skeleton.get_bone_name(bone_i)
-#		if human_bones.find(bone_name) == -1:
-#			new_ik.filter_bones.push_back(bone_name)
 	var bone_name_from_to_twist = config["bone_name_from_to_twist"]
 	var bone_name_cones = config["bone_name_cones"]
 	
