@@ -10,7 +10,6 @@ extends EditorScript
 # 4. Hips to Legs
 
 var is_humanoid : bool = true
-var is_filtering : bool = true
 var is_thumbs_up : bool = false
 	
 @export var targets : Dictionary = {
@@ -119,7 +118,6 @@ func _run():
 	new_ik.owner = root
 	new_ik.iterations_per_frame = 15
 	new_ik.default_damp = deg_to_rad(1)
-	new_ik.filter_bones = []
 	new_ik.queue_print_skeleton()
 #	new_ik.constraint_mode = true
 	skeleton.reset_bone_poses()
