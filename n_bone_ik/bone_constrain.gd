@@ -15,10 +15,6 @@ var is_thumbs_up : bool = false
 @export var targets : Dictionary = {
 	"Hips": "ManyBoneIK3D",
 	"Head": "ManyBoneIK3D",
-	"LeftFoot": "ManyBoneIK3D", 
-#	"LeftLowerLeg": "ManyBoneIK3D", 
-	"RightFoot": "ManyBoneIK3D", 
-#	"RightLowerLeg": "ManyBoneIK3D", 
 	"LeftHand": "ManyBoneIK3D",
 #	"LeftLowerArm": "ManyBoneIK3D",
 	"RightHand": "ManyBoneIK3D",
@@ -33,6 +29,10 @@ var is_thumbs_up : bool = false
 #	"RightMiddleDistal": "RightHand", 
 #	"RightRingDistal": "RightHand", 
 #	"RightThumbDistal": "RightHand", 
+	"LeftFoot": "ManyBoneIK3D", 
+#	"LeftLowerLeg": "ManyBoneIK3D", 
+	"RightFoot": "ManyBoneIK3D", 
+#	"RightLowerLeg": "ManyBoneIK3D", 
 	}
 
 
