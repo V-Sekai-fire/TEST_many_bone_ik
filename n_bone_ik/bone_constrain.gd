@@ -131,19 +131,20 @@ func _run():
 	
 	var skeleton_profile = SkeletonProfileHumanoid.new()
 	var human_bones : Array
-	for bone_i in skeleton_profile.bone_size:
-		var bone_name : String = skeleton_profile.get_bone_name(bone_i)
-		human_bones.push_back(bone_name)
+#	for bone_i in skeleton_profile.bone_size:
+#		var bone_name : String = skeleton_profile.get_bone_name(bone_i)
+#		human_bones.push_back(bone_name)
+#	for bone_i in skeleton.get_bone_count():
+#		var bone_name = skeleton.get_bone_name(bone_i)
+#		if human_bones.find(bone_name) == -1:
+#			new_ik.filter_bones.push_back(bone_name)
 	var bone_name_from_to_twist = config["bone_name_from_to_twist"]
 	var bone_name_cones = config["bone_name_cones"]
 	
 	for bone_i in skeleton.get_bone_count():
 		var bone_name : String = skeleton.get_bone_name(bone_i)
 		new_ik.set_kusudama_twist(bone_i, Vector2(0, TAU))
-		new_ik.set_pin_weight(bone_i, 0)
 		new_ik.set_kusudama_limit_cone_count(bone_i, 0)
-		if not human_bones.has(bone_name):
-			new_ik.filter_bones.push_back(bone_name)
 		var twist_keys : Array = bone_name_from_to_twist.keys()
 		if twist_keys.has(bone_name):
 			new_ik.set_pin_weight(bone_i, 1)
@@ -151,7 +152,6 @@ func _run():
 			new_ik.set_kusudama_twist(bone_i, twist)
 		var cone_keys = bone_name_cones.keys()
 		if cone_keys.has(bone_name):
-			new_ik.set_pin_weight(bone_i, 1)
 			var cones : Array = bone_name_cones[bone_name]
 			new_ik.set_kusudama_limit_cone_count(bone_i, cones.size())
 			for cone_i in range(cones.size()):
@@ -194,31 +194,21 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton : Skeleton3D, bone_name : String,
 	if not children.size():
 		new_ik.add_child(node_3d, true)
 	if bone_name in ["Root"]:
-		new_ik.set_pin_weight(bone_i, 0)
+		new_ik.set_pin_weight(bone_i, 0.01)
 	if bone_name in ["Hips"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
-		new_ik.set_pin_weight(bone_i, 0)
-	if bone_name in ["Spine", "Chest", "UpperChest", "LeftLowerArm", "RightLowerArm", "LeftLowerLeg", "LeftLowerLeg"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
-		new_ik.set_pin_weight(bone_i, 0.3)
+		new_ik.set_pin_weight(bone_i, 0.01)
 	if bone_name in ["Head"]:
 		# Move slightly higher to avoid the crunching into the body effect.
 		node_3d.global_transform.origin = node_3d.global_transform.origin + Vector3(0, 0.1, 0)
-		new_ik.set_pin_weight(bone_i, 1)
 	if bone_name in ["LeftHand"]:
-		new_ik.set_pin_weight(bone_i, 1)
 		if is_thumbs_up:
 			node_3d.global_transform.basis = Basis.from_euler(Vector3(0, 0, -PI / 2))
 	if bone_name in ["RightHand"]:
-		new_ik.set_pin_weight(bone_i, 1)
 		if is_thumbs_up:
 			node_3d.global_transform.basis = Basis.from_euler(Vector3(0, 0, PI / 2))
 	if bone_name.ends_with("Distal"):
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
 		new_ik.set_pin_direction_priorities(bone_i, Vector3())
-		new_ik.set_pin_weight(bone_i, 1)
 	if bone_name in ["LeftFoot", "RightFoot"]:
-		new_ik.set_pin_weight(bone_i, 1)
 		node_3d.global_transform.origin = node_3d.global_transform.origin + Vector3(0, -0.1, 0)
 		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, PI, 0))
 	node_3d.owner = new_ik.owner
