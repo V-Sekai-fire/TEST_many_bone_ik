@@ -13,13 +13,14 @@ var is_humanoid : bool = true
 var is_thumbs_up : bool = false
 	
 @export var targets : Dictionary = {
-	"Root": "ManyBoneIK3D",
-	"LeftFoot": "Root", 
-	"RightFoot": "Root", 
-	"LeftHand": "Root",
-#	"LeftLowerArm": "ManyBoneIK3D",
-	"RightHand": "Root",
-#	"RightLowerArm": "ManyBoneIK3D",
+	"Hips": "ManyBoneIK3D",
+	"Head": "Hips",
+	"LeftFoot": "Hips", 
+	"RightFoot": "Hips", 
+	"LeftHand": "Hips",
+#	"LeftLowerArm": "Hips",
+	"RightHand": "Hips",
+#	"RightLowerArm": "Hips",
 #	"LeftIndexDistal": "LeftHand",
 #	"LeftLittleDistal": "LeftHand", 
 #	"LeftMiddleDistal": "LeftHand", 
@@ -30,7 +31,6 @@ var is_thumbs_up : bool = false
 #	"RightMiddleDistal": "RightHand", 
 #	"RightRingDistal": "RightHand", 
 #	"RightThumbDistal": "RightHand", 
-	"Head": "Roots",
 	}
 
 
@@ -111,7 +111,6 @@ func _run():
 	new_ik.skeleton_node_path = ".."
 	new_ik.owner = root
 	new_ik.iterations_per_frame = 15
-	new_ik.default_damp = deg_to_rad(1)
 	new_ik.queue_print_skeleton()
 #	new_ik.constraint_mode = true
 	skeleton.reset_bone_poses()
@@ -168,7 +167,6 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton : Skeleton3D, bone_name : String,
 	var bone_i = skeleton.find_bone(bone_name)
 	var children : Array[Node] = owner.find_children("*", "")
 	var parent : Node = null
-	new_ik.set_pin_passthrough_factor(bone_i, 1)
 	for node in children:
 		if str(node.name) == bone_name_parent:
 			print(node.name)
@@ -180,21 +178,17 @@ func tune_bone(new_ik : ManyBoneIK3D, skeleton : Skeleton3D, bone_name : String,
 	if not children.size():
 		new_ik.add_child(node_3d, true)
 	if bone_name in ["Head"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
 		# Move slightly higher to avoid the crunching into the body effect.
 		node_3d.transform.origin = node_3d.get_parent_node_3d().global_transform.affine_inverse() * node_3d.global_transform.origin + Vector3(0, 0.1, 0)
 	if bone_name in ["LeftHand"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
 		if is_thumbs_up:
 			node_3d.global_transform.basis = Basis.from_euler(Vector3(0, 0, -PI / 2))
 	if bone_name in ["RightHand"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
 		if is_thumbs_up:
 			node_3d.global_transform.basis = Basis.from_euler(Vector3(0, 0, PI / 2))
 	if bone_name.ends_with("Distal"):
 		new_ik.set_pin_direction_priorities(bone_i, Vector3())
 	if bone_name in ["LeftFoot", "RightFoot"]:
-		new_ik.set_pin_passthrough_factor(bone_i, 0)
 		node_3d.global_transform.origin = node_3d.global_transform.origin + Vector3(0, -0.1, 0)
 		node_3d.global_transform.basis = Basis.from_euler(Vector3(0, PI, 0))
 	node_3d.owner = new_ik.owner
