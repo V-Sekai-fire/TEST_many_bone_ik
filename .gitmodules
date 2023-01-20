@@ -4,3 +4,6 @@
 [submodule "addons/Godot-MToon-Shader"]
 	path = addons/Godot-MToon-Shader
 	url = https://github.com/V-Sekai/Godot-MToon-Shader.git
+[submodule "addons/splerger"]
+	path = addons/splerger
+	url = https://github.com/V-Sekai/godot-splerger.git
