@@ -11,8 +11,7 @@ config_version=5
 [application]
 
 config/name="Test ManyBoneIK3D Game Project"
-run/main_scene="res://frog/scenes/sub_viewport.tscn"
-config/features=PackedStringArray("4.0", "Double Precision")
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
 [debug]
