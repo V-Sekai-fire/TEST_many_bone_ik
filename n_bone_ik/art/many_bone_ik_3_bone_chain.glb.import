@@ -28,3 +28,4 @@ animation/fps=15
 animation/trimming=false
 import_script/path="res://addons/catboost/correct_bone_dir_post_scene_import.gd"
 _subresources={}
+meshes/handle_gltf_embedded_images=1
