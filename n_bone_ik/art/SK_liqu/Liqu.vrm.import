@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bg15qvgshgovd"
-path="res://.godot/imported/Liqu.vrm-3df9eb274dc915e96d45ab525c9c2cd4.scn"
+path="res://.godot/imported/Liqu.vrm-96de1a39f9cfea0de88b557f29e78c97.scn"
 
 [deps]
 
-source_file="res://SK_liqu/art/SK_liqu/Liqu.vrm"
-dest_files=["res://.godot/imported/Liqu.vrm-3df9eb274dc915e96d45ab525c9c2cd4.scn"]
+source_file="res://n_bone_ik/art/SK_liqu/Liqu.vrm"
+dest_files=["res://.godot/imported/Liqu.vrm-96de1a39f9cfea0de88b557f29e78c97.scn"]
 
 [params]
 

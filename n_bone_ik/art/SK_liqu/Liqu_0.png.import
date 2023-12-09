@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2crcp22en817"
-path.s3tc="res://.godot/imported/Liqu_FX_D.png-72dcdb7c4b16c6bdb90a94ca1b20ad5b.s3tc.ctex"
+uid="uid://c81rqme0msga1"
+path.s3tc="res://.godot/imported/Liqu_0.png-1983bb73e09a78155118109e10eccf37.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://SK_liqu/art/SK_liqu/Liqu_FX_D.png"
-dest_files=["res://.godot/imported/Liqu_FX_D.png-72dcdb7c4b16c6bdb90a94ca1b20ad5b.s3tc.ctex"]
+source_file="res://n_bone_ik/art/SK_liqu/Liqu_0.png"
+dest_files=["res://.godot/imported/Liqu_0.png-1983bb73e09a78155118109e10eccf37.s3tc.ctex"]
 
 [params]
 

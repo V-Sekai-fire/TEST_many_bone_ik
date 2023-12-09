@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dh01msad3j838"
-path.s3tc="res://.godot/imported/Liqu_Body_D.png-774a91d8a8ea8ff758b5ff58054c6ba6.s3tc.ctex"
+path.s3tc="res://.godot/imported/Liqu_Body_D.png-358e35756da8841d564175e271c20517.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://SK_liqu/art/SK_liqu/Liqu_Body_D.png"
-dest_files=["res://.godot/imported/Liqu_Body_D.png-774a91d8a8ea8ff758b5ff58054c6ba6.s3tc.ctex"]
+source_file="res://n_bone_ik/art/SK_liqu/Liqu_Body_D.png"
+dest_files=["res://.godot/imported/Liqu_Body_D.png-358e35756da8841d564175e271c20517.s3tc.ctex"]
 
 [params]
 
