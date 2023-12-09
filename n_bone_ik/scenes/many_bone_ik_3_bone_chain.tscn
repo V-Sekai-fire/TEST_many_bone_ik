@@ -37,8 +37,9 @@ bones/9/rotation = Quaternion(-6.8145e-07, -1.79655e-07, 0.212037, 0.977262)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/position = Vector3(4.91738e-06, 0.100029, -7.12632e-09)
 bones/10/rotation = Quaternion(2.42614e-07, 2.42924e-08, -0.0134919, 0.999909)
+bones/10/scale = Vector3(1, 1, 1)
 bones/11/position = Vector3(-1.75834e-06, 0.100034, 8.49855e-09)
-bones/11/rotation = Quaternion(9.91783e-08, 6.19395e-08, -0.511815, 0.859096)
+bones/11/rotation = Quaternion(9.45111e-08, -5.05607e-08, -0.00819048, 0.999966)
 
 [node name="ManyBoneIK3D" type="ManyBoneIK3D" parent="Armature/Skeleton3D" index="1"]
 process_priority = 1
@@ -248,4 +249,4 @@ transform = Transform3D(-8.9407e-08, -1, -6.43939e-08, 1, -5.96047e-08, 9.83842e
 transform = Transform3D(-8.94069e-08, -1, -6.43939e-08, 1, -5.96047e-08, 9.83843e-08, -1.1827e-07, -1.09278e-07, 1, -0.175651, 0.450187, 2.21873e-07)
 
 [node name="C3" type="Marker3D" parent="Armature/Skeleton3D/ManyBoneIK3D" index="11"]
-transform = Transform3D(0.93889, -0.344217, -6.43936e-08, 0.344217, 0.938891, 9.83843e-08, 6.70674e-09, -1.59422e-07, 1, -0.240719, 0.597752, 1.9706e-07)
+transform = Transform3D(0.160484, -0.987039, -1.17321e-07, 0.987038, 0.160484, -7.86685e-09, 6.70674e-09, -1.59422e-07, 1, -0.240719, 0.597752, 1.9706e-07)

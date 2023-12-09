@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://4m15l1khkov3"]
 
-[ext_resource type="PackedScene" uid="uid://cfek0gpqx0r3q" path="res://frog/art/Frogdude.glb" id="1_xs2dd"]
+[ext_resource type="PackedScene" uid="uid://cun2852dv6r10" path="res://frog/art/Frogdude.glb" id="1_xs2dd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go3im"]
 no_depth_test = true

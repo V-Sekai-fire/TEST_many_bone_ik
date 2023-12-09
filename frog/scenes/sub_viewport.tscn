@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://frog/core/sub_viewport.gd" id="1_hh7p1"]
 [ext_resource type="Script" path="res://frog/core/markers.gd" id="2_gcfv0"]
-[ext_resource type="PackedScene" path="res://frog/art/SK_frog.tscn" id="2_txihs"]
+[ext_resource type="PackedScene" uid="uid://4m15l1khkov3" path="res://frog/art/SK_frog.tscn" id="2_txihs"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_3ipuk"]
 
