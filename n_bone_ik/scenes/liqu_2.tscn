@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcygw8prvo7x1"]
+
+[ext_resource type="PackedScene" uid="uid://bg15qvgshgovd" path="res://n_bone_ik/art/SK_liqu/Liqu.vrm" id="1_cce4b"]
+
+[node name="Liqu2" instance=ExtResource("1_cce4b")]
+
+[node name="ManyBoneIK3D" type="ManyBoneIK3D" parent="Armature/Skeleton3D" index="8"]
+process_priority = 1
+iterations_per_frame = 15.0
+
+[node name="Hips" type="Marker3D" parent="Armature/Skeleton3D/ManyBoneIK3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35367e-16, 0.721485, 0.010541)
+gizmo_extents = 0.01
+
+[node name="Head" type="Marker3D" parent="Armature/Skeleton3D/ManyBoneIK3D/Hips" index="0"]
+transform = Transform3D(0.940531, 0.339707, 0, -0.339707, 0.940531, 0, 0, 0, 1, 1.2489e-07, 0.461522, 0.0254798)
+gizmo_extents = 0.01
+
+[node name="LeftFoot" type="Marker3D" parent="Armature/Skeleton3D/ManyBoneIK3D/Hips" index="1"]
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, -0.0376808, -0.776556, 0.0236614)
+gizmo_extents = 0.01
+
+[node name="RightFoot" type="Marker3D" parent="Armature/Skeleton3D/ManyBoneIK3D/Hips" index="2"]
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, 0.0376792, -0.776559, 0.023661)
+gizmo_extents = 0.01
+
+[node name="LeftHand" type="Marker3D" parent="Armature/Skeleton3D/ManyBoneIK3D/Hips" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.401153, 0.278603, 0.0273902)
+gizmo_extents = 0.01
+
+[node name="RightHand" type="Marker3D" parent="Armature/Skeleton3D/ManyBoneIK3D/Hips" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.401154, 0.278607, 0.0273928)
+gizmo_extents = 0.01
