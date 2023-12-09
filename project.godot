@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Test ManyBoneIK3D Game Project"
-config/features=PackedStringArray("4.0", "Double Precision")
+config/features=PackedStringArray("4.2", "Double Precision")
 config/icon="res://icon.png"
 
 [debug]
@@ -27,8 +27,8 @@ window/size/borderless=true
 window/size/always_on_top=true
 window/size/transparent=true
 window/size/extend_to_title=true
-window/per_pixel_transparency/allowed=true
 window/stretch/aspect="keep_height"
+window/per_pixel_transparency/allowed=true
 
 [editor]
 
