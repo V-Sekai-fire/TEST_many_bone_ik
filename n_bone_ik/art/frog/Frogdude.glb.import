@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cun2852dv6r10"
-path="res://.godot/imported/Frogdude.glb-2c44b8053a3c4c6bc509eddc68a7fee1.scn"
+path="res://.godot/imported/Frogdude.glb-9100db5b85ffe637a04d40ebf5000e36.scn"
 
 [deps]
 
-source_file="res://frog/art/Frogdude.glb"
-dest_files=["res://.godot/imported/Frogdude.glb-2c44b8053a3c4c6bc509eddc68a7fee1.scn"]
+source_file="res://n_bone_ik/art/frog/Frogdude.glb"
+dest_files=["res://.godot/imported/Frogdude.glb-9100db5b85ffe637a04d40ebf5000e36.scn"]
 
 [params]
 

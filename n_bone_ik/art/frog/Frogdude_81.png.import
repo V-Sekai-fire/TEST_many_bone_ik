@@ -2,18 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v5eenupbioxv"
-path.s3tc="res://.godot/imported/Frogdude_1.png-c7e0b39f80fa0828dee7665762f5e739.s3tc.ctex"
+uid="uid://ck0y6jhv530tp"
+path.s3tc="res://.godot/imported/Frogdude_81.png-da2c75493826ea3cd8bf6b5b82896e87.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://frog/art/Frogdude_1.png"
-dest_files=["res://.godot/imported/Frogdude_1.png-c7e0b39f80fa0828dee7665762f5e739.s3tc.ctex"]
+source_file="res://n_bone_ik/art/frog/Frogdude_81.png"
+dest_files=["res://.godot/imported/Frogdude_81.png-da2c75493826ea3cd8bf6b5b82896e87.s3tc.ctex"]
 
 [params]
 

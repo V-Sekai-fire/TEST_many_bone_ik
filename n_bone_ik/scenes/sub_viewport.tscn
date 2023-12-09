@@ -1,0 +1,320 @@
+[gd_scene load_steps=13 format=3 uid="uid://6c3teffhbwkg"]
+
+[ext_resource type="Script" path="res://n_bone_ik/core/sub_viewport.gd" id="1_hh7p1"]
+[ext_resource type="Script" path="res://n_bone_ik/core/markers.gd" id="2_gcfv0"]
+[ext_resource type="PackedScene" uid="uid://4m15l1khkov3" path="res://n_bone_ik/scenes/SK_frog.tscn" id="2_txihs"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_3ipuk"]
+
+[sub_resource type="Sky" id="Sky_ojjmd"]
+sky_material = SubResource("PhysicalSkyMaterial_3ipuk")
+
+[sub_resource type="Environment" id="Environment_hlkql"]
+background_mode = 2
+background_energy_multiplier = 4.03
+sky = SubResource("Sky_ojjmd")
+tonemap_mode = 3
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87raj"]
+no_depth_test = true
+albedo_color = Color(0.662745, 0.52549, 0.184314, 0.403922)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bki46"]
+material = SubResource("StandardMaterial3D_87raj")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bxlrg"]
+transparency = 4
+no_depth_test = true
+albedo_color = Color(0.223529, 0.709804, 0.631373, 0.368627)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kgyyx"]
+transparency = 4
+no_depth_test = true
+albedo_color = Color(0.92549, 0.47451, 0.317647, 0.368627)
+
+[sub_resource type="Curve2D" id="Curve2D_vdcp6"]
+_data = {
+"points": PackedVector2Array(80.8816, 52.0293, -80.8816, -52.0293, 537.341, 416.781, 0, 0, 0, 0, 458.894, 297.417, 0, 0, 0, 0, 530.419, 175.245, 0, 0, 0, 0, 578.872, 177, 0, 0, 0, 0, 664.241, 308.3, 0, 0, 0, 0, 585.409, 416.43, 0, 0, 0, 0, 537.341, 416.781)
+}
+point_count = 7
+
+[sub_resource type="GDScript" id="GDScript_dcack"]
+script/source = "extends \"res://frog/core/markers.gd\"
+"
+
+[node name="SubViewportContainer" type="SubViewportContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_hh7p1")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+msaa_3d = 2
+scaling_3d_mode = 1
+scaling_3d_scale = 2.0
+canvas_item_default_texture_filter = 2
+physics_object_picking = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 1.258, 1.348)
+environment = SubResource("Environment_hlkql")
+
+[node name="Pointer" type="Node3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.083976, 1.29816, 0.794532)
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="SubViewport/Pointer"]
+mesh = SubResource("SphereMesh_bki46")
+skeleton = NodePath("../../Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton/ManyBoneIK3D/Hips")
+surface_material_override/0 = SubResource("StandardMaterial3D_bxlrg")
+
+[node name="PointerSecondary" type="Node3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0506585, 1.29816, 0.794532)
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="SubViewport/PointerSecondary"]
+mesh = SubResource("SphereMesh_bki46")
+skeleton = NodePath("../../Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton/ManyBoneIK3D/Hips")
+surface_material_override/0 = SubResource("StandardMaterial3D_kgyyx")
+
+[node name="Node3D" parent="SubViewport" instance=ExtResource("2_txihs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0.668)
+
+[node name="GeneralSkeleton" parent="SubViewport/Node3D/Frogdude/Frogdude2/RootNode" index="0"]
+bones/0/position = Vector3(-0.13585, 0.535019, 0.162277)
+bones/0/rotation = Quaternion(0.414577, 0.122339, 0.038864, 0.900915)
+bones/1/position = Vector3(1.59872e-14, 0.0532063, 0.00128478)
+bones/1/rotation = Quaternion(-0.618867, -0.236657, 0.163928, 0.730838)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(-1.23235e-14, 0.062074, 0.00149891)
+bones/2/rotation = Quaternion(-0.622766, -0.206628, 0.141641, 0.741218)
+bones/3/position = Vector3(2.09277e-14, 0.0709418, 0.00171305)
+bones/3/rotation = Quaternion(-0.652706, -0.156869, 0.136949, 0.728431)
+bones/4/position = Vector3(8.9373e-15, 0.0798094, 0.00192718)
+bones/4/rotation = Quaternion(-0.663041, -0.251896, -0.0396629, 0.703812)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(1.36349e-15, 0.0585746, 0.0180559)
+bones/5/rotation = Quaternion(-0.0368809, -0.27805, -0.0702772, 0.957282)
+bones/6/position = Vector3(0, 0.0979709, 0.0301999)
+bones/6/rotation = Quaternion(0, 0, 0, 1)
+bones/7/position = Vector3(0.0381882, 0.0659051, 0.0018699)
+bones/7/rotation = Quaternion(0.709545, 0.690068, -0.0608631, 0.129029)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(-0.000114552, 0.0766562, -0.028059)
+bones/8/rotation = Quaternion(0.110004, 0.901299, -0.383841, 0.168004)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(-0.0083796, 0.070478, 0.0620828)
+bones/9/rotation = Quaternion(0.472868, -0.547802, 0.37163, 0.58155)
+bones/10/position = Vector3(0.0526088, 0.0700578, 0.00847566)
+bones/10/rotation = Quaternion(-0.395479, 0.801595, 0.195913, 0.403311)
+bones/10/scale = Vector3(1, 1, 1)
+bones/19/position = Vector3(0.0177001, 0.0456543, 0.0356682)
+bones/19/rotation = Quaternion(0, 0, 0, 1)
+bones/20/position = Vector3(0.00285796, 0.0121304, 0.0088674)
+bones/20/rotation = Quaternion(0, 0, 0, 1)
+bones/21/position = Vector3(0.00286211, 0.0110572, 0.0111547)
+bones/21/rotation = Quaternion(0, 0, 0, 1)
+bones/22/position = Vector3(0.00203571, 0.00769766, 0.00836853)
+bones/22/rotation = Quaternion(0, 0, 0, 1)
+bones/23/position = Vector3(-0.0381882, 0.0659052, 0.00198446)
+bones/23/rotation = Quaternion(0.750339, -0.461493, -0.395968, -0.259279)
+bones/24/position = Vector3(-0.000114553, 0.0766562, -0.028059)
+bones/24/rotation = Quaternion(0.0506304, 0.895223, -0.35739, -0.261312)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/position = Vector3(0.00864858, 0.070478, 0.0620828)
+bones/25/rotation = Quaternion(0.213281, 0.747701, -0.616832, 0.122364)
+bones/26/position = Vector3(-0.0526088, 0.0700578, 0.00830746)
+bones/26/rotation = Quaternion(0.471716, 0.758195, 0.233582, -0.384791)
+bones/26/scale = Vector3(1, 1, 1)
+bones/32/position = Vector3(0.0010449, 0.0108271, 0.00909671)
+bones/32/rotation = Quaternion(0, 0, 0, 1)
+bones/33/position = Vector3(0.00119357, 0.00955499, 0.0110137)
+bones/33/rotation = Quaternion(0, 0, 0, 1)
+bones/34/position = Vector3(0.000798325, 0.00806171, 0.00704392)
+bones/34/rotation = Quaternion(0, 0, 0, 1)
+bones/36/position = Vector3(-0.00269504, 0.0117643, 0.00912903)
+bones/36/rotation = Quaternion(0, 0, 0, 1)
+bones/37/position = Vector3(-0.0025205, 0.00987204, 0.0104414)
+bones/37/rotation = Quaternion(0, 0, 0, 1)
+bones/38/position = Vector3(-0.00176373, 0.00733554, 0.0066329)
+bones/38/rotation = Quaternion(0, 0, 0, 1)
+bones/39/position = Vector3(0.0874459, -0.0294881, -0.00239364)
+bones/39/rotation = Quaternion(0.900748, 0.323934, 0.288235, 0.0253273)
+bones/39/scale = Vector3(1, 1, 1)
+bones/40/position = Vector3(-0.0112005, 0.170136, -0.0184781)
+bones/40/rotation = Quaternion(-0.592422, -0.216481, 0.220874, 0.7439)
+bones/40/scale = Vector3(1, 1, 1)
+bones/41/position = Vector3(-0.00266424, 0.125629, 0.00673422)
+bones/41/rotation = Quaternion(0.0102035, 0.712387, -0.690102, -0.127123)
+bones/41/scale = Vector3(1, 1, 1)
+bones/44/position = Vector3(-0.0874459, -0.0294881, -0.000676899)
+bones/44/rotation = Quaternion(0.873373, 0.31456, 0.369588, 0.0409371)
+bones/44/scale = Vector3(1, 1, 1)
+bones/45/position = Vector3(0.0112005, 0.170136, -0.0206751)
+bones/45/rotation = Quaternion(-0.586045, -0.24211, 0.211317, 0.743828)
+bones/45/scale = Vector3(1, 1, 1)
+bones/46/position = Vector3(0.00266434, 0.125629, 0.00629914)
+bones/46/rotation = Quaternion(0.0108004, 0.724309, -0.661619, -0.193699)
+bones/46/scale = Vector3(1, 1, 1)
+
+[node name="ManyBoneIK3D" parent="SubViewport/Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton" index="1"]
+process_priority = 1
+constraints/0/resistance = 0.0
+constraints/0/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13585, 0.535019, 0.162277)
+constraints/0/bone_direction = Transform3D(1, -3.35927e-18, -2.22481e-19, 1.63754e-17, 1, 8.86435e-18, -9.35913e-18, 8.86435e-18, 1, 0, 0, 0)
+constraints/1/resistance = 0.0
+constraints/1/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/1/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59872e-14, 0.0532063, 0.00128478)
+constraints/1/bone_direction = Transform3D(1, 9.43822e-16, 7.4554e-18, -9.95688e-16, 0.999709, 0.0241401, 2.26586e-17, -0.0241401, 0.999709, 0, 0, 0)
+constraints/2/resistance = 0.0
+constraints/2/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/2/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23235e-14, 0.062074, 0.00149891)
+constraints/2/bone_direction = Transform3D(1, -1.21639e-13, -1.46192e-15, 1.21706e-13, 0.999709, 0.0241402, -1.35454e-15, -0.0241402, 0.999709, 0, 0, 0)
+constraints/3/resistance = 0.0
+constraints/3/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/3/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09277e-14, 0.0709418, 0.00171305)
+constraints/3/bone_direction = Transform3D(1, -7.23563e-15, -4.81974e-18, 7.35079e-15, 0.999627, 0.0273102, -1.33911e-16, -0.0273102, 0.999627, 0, 0, 0)
+constraints/4/resistance = 0.0
+constraints/4/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/4/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9373e-15, 0.0798094, 0.00192718)
+constraints/4/bone_direction = Transform3D(1, 2.70244e-14, 4.07105e-15, -2.70728e-14, 0.955628, 0.294577, 4.01861e-15, -0.294577, 0.955628, 0, 0, 0)
+constraints/5/resistance = 0.0
+constraints/5/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/5/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36349e-15, 0.0585746, 0.0180559)
+constraints/5/bone_direction = Transform3D(0.876576, -0.433451, -0.209129, 0.433451, 0.52223, 0.734436, -0.209129, -0.734436, 0.645654, 0, 0, 0)
+constraints/6/resistance = 0.0
+constraints/6/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/6/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0381882, 0.0659051, 0.0018699)
+constraints/6/bone_direction = Transform3D(0.999999, 0.0014033, -0.00024876, -0.0014033, 0.939066, -0.343733, -0.00024876, 0.343733, 0.939067, 0, 0, 0)
+constraints/7/resistance = 0.0
+constraints/7/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/7/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000114552, 0.0766562, -0.028059)
+constraints/7/bone_direction = Transform3D(0.995481, 0.0888653, 0.0334824, -0.0888653, 0.747416, 0.658386, 0.0334824, -0.658386, 0.751936, 0, 0, 0)
+constraints/8/resistance = 0.0
+constraints/8/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/8/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0083796, 0.070478, 0.0620828)
+constraints/8/bone_direction = Transform3D(0.801088, -0.597688, -0.0320461, 0.597688, 0.795925, 0.0962918, -0.0320461, -0.0962918, 0.994837, 0, 0, 0)
+constraints/9/resistance = 0.0
+constraints/9/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/9/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0526088, 0.0700578, 0.00847566)
+constraints/9/bone_direction = Transform3D(0.537357, 0.787937, -0.30067, -0.787937, 0.341953, -0.512077, -0.30067, 0.512077, 0.804596, 0, 0, 0)
+constraints/10/resistance = 0.0
+constraints/11/resistance = 0.0
+constraints/12/resistance = 0.0
+constraints/13/resistance = 0.0
+constraints/14/resistance = 0.0
+constraints/15/resistance = 0.0
+constraints/16/resistance = 0.0
+constraints/17/resistance = 0.0
+constraints/18/resistance = 0.0
+constraints/19/resistance = 0.0
+constraints/19/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/19/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0381882, 0.0659052, 0.00198446)
+constraints/19/bone_direction = Transform3D(0.999999, 0.00140332, -0.000248762, -0.00140332, 0.939066, -0.343733, -0.000248762, 0.343733, 0.939067, 0, 0, 0)
+constraints/20/resistance = 0.0
+constraints/20/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/20/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000114553, 0.0766562, -0.028059)
+constraints/20/bone_direction = Transform3D(0.995188, -0.0916942, -0.0345432, 0.0916942, 0.747224, 0.658216, -0.0345432, -0.658216, 0.752036, 0, 0, 0)
+constraints/21/resistance = 0.0
+constraints/21/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/21/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00864858, 0.070478, 0.0620828)
+constraints/21/bone_direction = Transform3D(0.801032, 0.597797, 0.0314191, -0.597797, 0.79607, 0.0943981, 0.0314191, -0.0943981, 0.995039, 0, 0, 0)
+constraints/22/resistance = 0.0
+constraints/22/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/22/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0526088, 0.0700578, 0.00830746)
+constraints/22/bone_direction = Transform3D(0.545379, -0.780812, 0.304786, 0.780812, 0.341045, -0.523469, 0.304786, 0.523469, 0.795667, 0, 0, 0)
+constraints/23/resistance = 0.0
+constraints/24/resistance = 0.0
+constraints/25/resistance = 0.0
+constraints/26/resistance = 0.0
+constraints/27/resistance = 0.0
+constraints/28/resistance = 0.0
+constraints/29/resistance = 0.0
+constraints/30/resistance = 0.0
+constraints/31/resistance = 0.0
+constraints/32/resistance = 0.0
+constraints/32/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/32/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0874459, -0.0294881, -0.00239364)
+constraints/32/bone_direction = Transform3D(0.997859, 0.065308, -0.0035323, -0.065308, 0.992031, -0.107742, -0.0035323, 0.107742, 0.994173, 0, 0, 0)
+constraints/33/resistance = 0.0
+constraints/33/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/33/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0112005, 0.170136, -0.0184781)
+constraints/33/bone_direction = Transform3D(0.999776, 0.0211721, 0.000566983, -0.0211721, 0.998343, 0.0535152, 0.000566983, -0.0535152, 0.998567, 0, 0, 0)
+constraints/34/resistance = 0.0
+constraints/34/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/34/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00266424, 0.125629, 0.00673422)
+constraints/34/bone_direction = Transform3D(0.966798, -0.251149, -0.0471834, 0.251149, 0.899746, 0.356905, -0.0471834, -0.356905, 0.932948, 0, 0, 0)
+constraints/35/resistance = 0.0
+constraints/36/resistance = 0.0
+constraints/36/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/36/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0874459, -0.0294881, -0.000676899)
+constraints/36/bone_direction = Transform3D(0.997864, -0.0652128, 0.00394362, 0.0652128, 0.990584, -0.120377, 0.00394362, 0.120377, 0.99272, 0, 0, 0)
+constraints/37/resistance = 0.0
+constraints/37/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/37/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0112005, 0.170136, -0.0206751)
+constraints/37/bone_direction = Transform3D(0.999776, -0.0211766, -0.000530514, 0.0211766, 0.998521, 0.0500667, -0.000530514, -0.0500667, 0.998746, 0, 0, 0)
+constraints/38/resistance = 0.0
+constraints/38/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/38/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00266434, 0.125629, 0.00629914)
+constraints/38/bone_direction = Transform3D(0.92885, -0.365379, -0.0611284, 0.365379, 0.876332, 0.313913, -0.0611284, -0.313913, 0.947482, 0, 0, 0)
+constraints/39/resistance = 0.0
+
+[node name="Hips" parent="SubViewport/Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton/ManyBoneIK3D" index="0"]
+script = ExtResource("2_gcfv0")
+
+[node name="Path2D" type="Path2D" parent="SubViewport/Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton/ManyBoneIK3D/Hips" index="1"]
+position = Vector2(-845.339, -479.172)
+scale = Vector2(2.60047, 2.84843)
+curve = SubResource("Curve2D_vdcp6")
+
+[node name="Head" parent="SubViewport/Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton/ManyBoneIK3D" index="1"]
+script = ExtResource("2_gcfv0")
+
+[node name="LeftLowerArm" parent="SubViewport/Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton/ManyBoneIK3D" index="2"]
+script = SubResource("GDScript_dcack")
+
+[node name="LeftHand" parent="SubViewport/Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton/ManyBoneIK3D" index="3"]
+script = ExtResource("2_gcfv0")
+
+[node name="RightLowerArm" parent="SubViewport/Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton/ManyBoneIK3D" index="4"]
+script = ExtResource("2_gcfv0")
+
+[node name="RightHand" parent="SubViewport/Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton/ManyBoneIK3D" index="5"]
+script = ExtResource("2_gcfv0")
+
+[node name="LeftLowerLeg" parent="SubViewport/Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton/ManyBoneIK3D" index="6"]
+script = ExtResource("2_gcfv0")
+
+[node name="LeftFoot" parent="SubViewport/Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton/ManyBoneIK3D" index="7"]
+script = ExtResource("2_gcfv0")
+
+[node name="RightLowerLeg" parent="SubViewport/Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton/ManyBoneIK3D" index="8"]
+script = ExtResource("2_gcfv0")
+
+[node name="RightFoot" parent="SubViewport/Node3D/Frogdude/Frogdude2/RootNode/GeneralSkeleton/ManyBoneIK3D" index="9"]
+script = ExtResource("2_gcfv0")
+
+[node name="Label3D" type="Label3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.480718, 1.64879, 0.156756)
+no_depth_test = true
+text = "LASSO_POINT
+"
+font_size = 16
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(-0.866024, -0.428136, 0.258267, 0, 0.516532, 0.856268, -0.500003, 0.741548, -0.447329, 0, 0, 0)
+shadow_enabled = true
+
+[editable path="SubViewport/Node3D"]
+[editable path="SubViewport/Node3D/Frogdude"]

@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck0y6jhv530tp"
-path.s3tc="res://.godot/imported/Frogdude_81.png-496a9d84f359cfcf3ca0a19456278904.s3tc.ctex"
+uid="uid://wxet8rxu6m38"
+path.s3tc="res://.godot/imported/Frogdude_2.png-cf81fafc9a1c86b329c94f108e1cf8a7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://frog/art/Frogdude_81.png"
-dest_files=["res://.godot/imported/Frogdude_81.png-496a9d84f359cfcf3ca0a19456278904.s3tc.ctex"]
+source_file="res://n_bone_ik/art/frog/Frogdude_2.png"
+dest_files=["res://.godot/imported/Frogdude_2.png-cf81fafc9a1c86b329c94f108e1cf8a7.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +21,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://frog/art/Frogdude_2.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

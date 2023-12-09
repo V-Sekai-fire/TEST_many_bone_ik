@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvxygg86v5dqu"]
 
-[ext_resource type="PackedScene" uid="uid://cun2852dv6r10" path="res://frog/art/Frogdude.glb" id="1_wv22i"]
+[ext_resource type="PackedScene" uid="uid://cun2852dv6r10" path="res://n_bone_ik/art/frog/Frogdude.glb" id="1_wv22i"]
 
 [node name="Frogdude" instance=ExtResource("1_wv22i")]
 
