@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Test ManyBoneIK3D Game Project"
 run/main_scene="res://n_bone_ik/scenes/sub_viewport.tscn"
-config/features=PackedStringArray("4.2", "Double Precision")
+config/features=PackedStringArray("4.3", "Double Precision")
 config/icon="res://icon.png"
 
 [debug]

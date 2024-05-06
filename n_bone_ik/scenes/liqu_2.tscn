@@ -6,7 +6,6 @@
 
 [node name="ManyBoneIK3D" type="ManyBoneIK3D" parent="Armature/Skeleton3D" index="8"]
 process_priority = 1
-iterations_per_frame = 15.0
 
 [node name="Hips" type="Marker3D" parent="Armature/Skeleton3D/ManyBoneIK3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35367e-16, 0.721485, 0.010541)
