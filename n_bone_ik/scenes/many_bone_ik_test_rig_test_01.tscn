@@ -6,6 +6,7 @@
 
 [node name="ManyBoneIK3D" type="ManyBoneIK3D" parent="Simple_Test_Rig_Armature/Skeleton3D" index="1"]
 process_priority = 1
+default_damp = 3.1415927
 pin_count = 3
 pins/0/bone_name = "Bone_01"
 pins/0/target_node = NodePath("Bone_01")
@@ -26,9 +27,7 @@ constraint_count = 3
 constraints/0/bone_name = &"Bone_01"
 constraints/0/twist_start = 0.0
 constraints/0/twist_end = 0.01745
-constraints/0/kusudama_open_cone_count = 1
-constraints/0/kusudama_open_cone/0/center = Vector3(6.7762636e-21, -1, 0)
-constraints/0/kusudama_open_cone/0/radius = 0.064577185
+constraints/0/kusudama_open_cone_count = 0
 constraints/0/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/0/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/0/bone_direction = Transform3D(1, -6.7762636e-21, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -36,22 +35,22 @@ constraints/1/bone_name = &"Bone_02"
 constraints/1/twist_start = 0.0
 constraints/1/twist_end = 0.01745
 constraints/1/kusudama_open_cone_count = 0
-constraints/1/kusudama_twist = Transform3D(1, -6.7762636e-21, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/1/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4624942e-17, 0.6000006, -2.842171e-14)
+constraints/1/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+constraints/1/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.86132e-17, 0.6000006, -2.842171e-14)
 constraints/1/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 constraints/2/bone_name = &"Bone_03"
 constraints/2/twist_start = 0.0
 constraints/2/twist_end = 0.01745
 constraints/2/kusudama_open_cone_count = 0
 constraints/2/kusudama_twist = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-constraints/2/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.109461e-08, 0.6000851, -4.1915337e-07)
+constraints/2/kusudama_orientation = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2330711e-06, 0.5999768, -5.9641898e-06)
 constraints/2/bone_direction = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Bone_01" type="Marker3D" parent="Simple_Test_Rig_Armature/Skeleton3D/ManyBoneIK3D" index="0"]
 transform = Transform3D(1, -7.81678e-15, 1.27477e-07, 6.82644e-14, 1, -4.74185e-07, -1.27477e-07, 4.74185e-07, 1, 0, 0, 0)
 
 [node name="Bone_02" type="Marker3D" parent="Simple_Test_Rig_Armature/Skeleton3D/ManyBoneIK3D" index="1"]
-transform = Transform3D(0.99059796, -0.13680488, 1.9114927e-07, 0.13680488, 0.99059796, -4.5228717e-07, -1.27477e-07, 4.74185e-07, 1, -4.69008e-15, 0.600001, 2.84512e-07)
+transform = Transform3D(0.99050945, -0.13744457, 1.9323174e-07, 0.09025148, 0.6504062, -0.7542058, 0.10366136, 0.7470479, 0.656638, -4.69008e-15, 0.6023059, 0.037117045)
 
 [node name="Bone_03" type="Marker3D" parent="Simple_Test_Rig_Armature/Skeleton3D/ManyBoneIK3D" index="2"]
-transform = Transform3D(0.9670726, 0.24614441, -0.06468046, -0.25450066, 0.9353197, -0.2457786, -1.2329099e-07, 0.254147, 0.967166, -9.38015e-15, 1.2, 5.69023e-07)
+transform = Transform3D(0.99589205, -0.08757268, 0.023012016, 0.08806773, 0.9958835, -0.021463268, -0.02103769, 0.023401558, 0.9995046, -9.38015e-15, 1.1976951, -0.03711619)
