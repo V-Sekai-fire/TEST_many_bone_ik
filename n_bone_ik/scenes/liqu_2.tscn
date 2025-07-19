@@ -7,406 +7,175 @@
 [sub_resource type="Resource" id="Resource_e6xbs"]
 resource_name = "Tail1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("Tail1", "Tail2", "Tail3", "Tail4", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_wmnky"]
 resource_name = "LeftHair_A_1_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("LeftHair_A_1_1", "LeftHair_A_1_2", "LeftHair_A_1_3", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_1v3ch"]
 resource_name = "LeftHair_A_2_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("LeftHair_A_2_1", "LeftHair_A_2_2", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_dqxt5"]
 resource_name = "LeftHair_A_3_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("LeftHair_A_3_1", "LeftHair_A_3_2", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_ph4lg"]
 resource_name = "LeftHair_B_1_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("LeftHair_B_1_1", "LeftHair_B_1_2", "LeftHair_B_1_3", "LeftHair_B_1_4", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_lydx8"]
 resource_name = "LeftHair_B_2_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("LeftHair_B_2_1", "LeftHair_B_2_2", "LeftHair_B_2_3", "LeftHair_B_2_4", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_ua8jm"]
 resource_name = "LeftHair_B_3_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("LeftHair_B_3_1", "LeftHair_B_3_2", "LeftHair_B_3_3", "LeftHair_B_3_4", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_bqe8n"]
 resource_name = "LeftHair_B_4_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("LeftHair_B_4_1", "LeftHair_B_4_2", "LeftHair_B_4_3", "LeftHair_B_4_4", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_7cp1e"]
 resource_name = "LeftHair_B_5_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("LeftHair_B_5_1", "LeftHair_B_5_2", "LeftHair_B_5_3", "LeftHair_B_5_4", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_oadbd"]
 resource_name = "LeftKemo1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("LeftKemo1", "LeftKemo2", "LeftKemo3", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_yp2j0"]
 resource_name = "RighitHair_A_1_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("RighitHair_A_1_1", "RighitHair_A_1_2", "RighitHair_A_1_3", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_2tblg"]
 resource_name = "RighitHair_A_2_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("RighitHair_A_2_1", "RighitHair_A_2_2", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_om4ae"]
 resource_name = "RighitHair_A_3_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("RighitHair_A_3_1", "RighitHair_A_3_2", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_5wk61"]
 resource_name = "RighitHair_B_1_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("RighitHair_B_1_1", "RighitHair_B_1_2", "RighitHair_B_1_3", "RighitHair_B_1_4", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_qcakb"]
 resource_name = "RighitHair_B_2_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("RighitHair_B_2_1", "RighitHair_B_2_2", "RighitHair_B_2_3", "RighitHair_B_2_4", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_1whro"]
 resource_name = "RighitHair_B_3_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("RighitHair_B_3_1", "RighitHair_B_3_2", "RighitHair_B_3_3", "RighitHair_B_3_4", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_1bgfm"]
 resource_name = "RighitHair_B_4_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("RighitHair_B_4_1", "RighitHair_B_4_2", "RighitHair_B_4_3", "RighitHair_B_4_4", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_sotgv"]
 resource_name = "RighitHair_B_5_1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("RighitHair_B_5_1", "RighitHair_B_5_2", "RighitHair_B_5_3", "RighitHair_B_5_4", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_jmxud"]
 resource_name = "RightKemo1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("RightKemo1", "RightKemo2", "RightKemo3", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_s5kp0"]
 resource_name = "LeftCord1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("LeftCord1", "LeftCord2", "LeftCord3", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [sub_resource type="Resource" id="Resource_5l0d8"]
 resource_name = "RightCord1"
 script = ExtResource("2_ti4re")
-comment = ""
 joint_nodes = PackedStringArray("RightCord1", "RightCord2", "RightCord3", "")
-stiffness_scale = 1.0
 drag_force_scale = 0.4
 hit_radius_scale = 0.02
 gravity_scale = 0.0
-gravity_dir_default = Vector3(0, -1, 0)
-collider_groups = Array[ExtResource("3_6qdvl")]([])
-stiffness_force = PackedFloat64Array()
-gravity_power = PackedFloat64Array()
-gravity_dir = PackedVector3Array()
-drag_force = PackedFloat64Array()
-hit_radius = PackedFloat64Array()
-center_bone = ""
-center_node = NodePath("")
 
 [node name="Liqu2" instance=ExtResource("1_cce4b")]
 spring_bones = Array[ExtResource("2_ti4re")]([SubResource("Resource_e6xbs"), SubResource("Resource_wmnky"), SubResource("Resource_1v3ch"), SubResource("Resource_dqxt5"), SubResource("Resource_ph4lg"), SubResource("Resource_lydx8"), SubResource("Resource_ua8jm"), SubResource("Resource_bqe8n"), SubResource("Resource_7cp1e"), SubResource("Resource_oadbd"), SubResource("Resource_yp2j0"), SubResource("Resource_2tblg"), SubResource("Resource_om4ae"), SubResource("Resource_5wk61"), SubResource("Resource_qcakb"), SubResource("Resource_1whro"), SubResource("Resource_1bgfm"), SubResource("Resource_sotgv"), SubResource("Resource_jmxud"), SubResource("Resource_s5kp0"), SubResource("Resource_5l0d8")])
 
-[node name="ManyBoneIK3D" type="ManyBoneIK3D" parent="Armature/GeneralSkeleton" index="4"]
+[node name="ManyBoneIK3D" type="EWBIK3D" parent="Armature/GeneralSkeleton" index="5"]
 process_thread_group = 2
 process_thread_group_order = 100
 process_thread_messages = 0
